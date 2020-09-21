@@ -1,0 +1,15 @@
+
+v
+java:S1450"YRemove the "accountDAO" field and declare it as a local variable in the relevant methods.(âÄİü8ªğÌƒË.
+e
+java:S1989"PHandle the following exception that could be thrown by "getWriter": IOException.(€ªëJ
+z
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¦¸Õ•ûÿÿÿÿ8ÑøÇƒË.
+u
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(âÄİü8ÀìÉƒË.
+z
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Ê¦Ïûÿÿÿÿ8ÀìÉƒË.
+‚
+java:S1450"`Remove the "dataSourceBuilder" field and declare it as a local variable in the relevant methods.(¦¸Õ•ûÿÿÿÿ8ªğÌƒË.
+S
+java:S3655"7Call "Optional#isPresent()" before accessing the value.(€ªëJ8”›×ƒË.
