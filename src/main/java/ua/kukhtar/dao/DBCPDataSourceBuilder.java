@@ -7,11 +7,11 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class ConnectionPool {
+public class DBCPDataSourceBuilder implements DataSourceBuilder{
 
     private DataSource dataSource;
 
-    public ConnectionPool(){
+    public DBCPDataSourceBuilder(){
         try {
             Context ctx = new InitialContext();
             dataSource = (DataSource)ctx.lookup("java:comp/env/jdbc/repairAgencyDB");
@@ -24,7 +24,7 @@ public class ConnectionPool {
     }
 
 
-    public Connection getConncetion() throws SQLException {
-        return dataSource.getConnection();
+    public DataSource getDataSource() {
+        return dataSource;
     }
 }

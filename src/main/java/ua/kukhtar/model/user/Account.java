@@ -2,13 +2,24 @@ package ua.kukhtar.model.user;
 
 public class Account {
 
+    private int id;
     private String login;
     private  String password;
 
-    public Account(String login, String password) {
+    public Account(int id, String login, String password) {
+        this.id = id;
         this.login = login;
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "id = " + id + "  Login = " + login + "  password = " + password;
+    }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public String getLogin() {
         return login;
