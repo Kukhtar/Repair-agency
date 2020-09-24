@@ -1,5 +1,7 @@
 package ua.kukhtar.dao.user;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.kukhtar.constant.SQLQueryConstant;
 import ua.kukhtar.model.user.Account;
 import ua.kukhtar.model.user.Consumer;
@@ -12,7 +14,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 public class AccountDAOImpl implements AccountDAO{
-
+    private static final Logger logger = LogManager.getLogger(AccountDAOImpl.class);
     private DataSource dataSource;
 
     public AccountDAOImpl(DataSource dataSource){
@@ -42,7 +44,7 @@ public class AccountDAOImpl implements AccountDAO{
             return Optional.empty();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
             throw new IllegalStateException(e);
         }
     }

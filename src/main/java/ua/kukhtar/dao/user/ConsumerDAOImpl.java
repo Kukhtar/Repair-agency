@@ -1,5 +1,7 @@
 package ua.kukhtar.dao.user;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.kukhtar.constant.SQLQueryConstant;
 import ua.kukhtar.dao.user.ConsumerDAO;
 import ua.kukhtar.model.user.Account;
@@ -13,6 +15,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 public class ConsumerDAOImpl implements ConsumerDAO {
+    private static final Logger logger = LogManager.getLogger(ConsumerDAOImpl.class);
     private DataSource dataSource;
     private AccountDAO accountDAO;
 
@@ -52,6 +55,7 @@ public class ConsumerDAOImpl implements ConsumerDAO {
                     if (!accountOptional.isPresent()){
                         //should add better error handling
                         //System.out.println("ASD");
+                        logger.error("Can't find this account by id: {}", accountid);
                         throw new IllegalStateException("Can't find this account");
                     }
 
@@ -65,7 +69,7 @@ public class ConsumerDAOImpl implements ConsumerDAO {
             return Optional.empty();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
             throw new IllegalStateException(e);
         }
     }

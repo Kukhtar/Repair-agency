@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="debug" name="RoutingTest" packages="org.apache.logging.log4j.test">
     <Properties>
-        <Property name="filename">/home/kukhtar/Java/Epam/HomeWorks/FinalProject/Repair-agency/src/main/webapp/WEB-INF/rollingFile.log</Property>
+        <Property name="filename">/home/kukhtar/Java/Epam/HomeWorks/FinalProject/Repair-agency/target/logs/rollingFile.log</Property>
     </Properties>
     <ThresholdFilter level="debug"/>
 
