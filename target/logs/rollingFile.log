@@ -1,3 +1,4 @@
-2020-09-24 23:44:19,631 INFO u.k.c.ControllerServlet [http-nio-8080-exec-6] Servlet was initialized
-2020-09-24 23:44:19,665 INFO u.k.c.ControllerServlet [http-nio-8080-exec-6] DAO objects successfully created
-2020-09-24 23:44:19,665 DEBUG u.k.c.ControllerServlet [http-nio-8080-exec-6] starting doGet method
+2020-09-29 13:58:53,105 DEBUG u.k.c.ControllerServlet [http-nio-8080-exec-12] starting doGet method
+2020-09-29 13:58:53,436 DEBUG u.k.f.SessionLocaleFilter [http-nio-8080-exec-13] SessionLocaleFilter successfully run
+2020-09-29 13:58:53,437 DEBUG u.k.f.SessionLocaleFilter [http-nio-8080-exec-13] Lang parameter has been changed to: ua
+2020-09-29 13:58:53,437 DEBUG u.k.c.ControllerServlet [http-nio-8080-exec-13] starting doGet method

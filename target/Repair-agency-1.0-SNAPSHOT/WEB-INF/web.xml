@@ -10,9 +10,23 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/f</url-pattern>
+        <url-pattern>/startPage</url-pattern>
     </servlet-mapping>
-    
+
+
+
+    <filter>
+        <filter-name>SessionLocaleFilter</filter-name> <!-- mandatory -->
+        <filter-class>ua.kukhtar.filter.SessionLocaleFilter</filter-class> <!-- mandatory -->
+
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SessionLocaleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
     <listener>
         <listener-class>ua.kukhtar.util.LogerConfigurationListener</listener-class>
     </listener>
@@ -34,5 +48,8 @@
         <location>/jsp/error.jsp</location>
     </error-page>
 
-
+    <mime-mapping>
+        <extension>css</extension>
+        <mime-type>text/css</mime-type>
+    </mime-mapping>
 </web-app>

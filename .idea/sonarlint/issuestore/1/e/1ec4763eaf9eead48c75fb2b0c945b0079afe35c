@@ -1,26 +1,24 @@
 
-~
-java:S1989*"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ù¤«Ô8õ¿Ì.
-z
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¦¸Õ•ûÿÿÿÿ8ş¨Ë.
-l
-java:S1989'"PHandle the following exception that could be thrown by "getWriter": IOException.(¹‘ŠH8á®¹Ì.
-m
-java:S1989<"PHandle the following exception that could be thrown by "getWriter": IOException.(Ô¨Ù´8˜æâ«Ë.
-z
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Ê¦Ïûÿÿÿÿ8ş¨Ë.
-^
-java:S18540"<Remove this useless assignment to local variable "password".(…ˆíİşÿÿÿÿ8÷¼ß«Ë.
+]	java:S125"<This block of commented-out lines of code should be removed.(‹„ÍÚÿÿÿÿÿ8À’Í.
+U
+java:S1854%"8Remove this useless assignment to local variable "name".(Û÷“ë8À’Í.
+K
+java:S3740"/Provide the parametrized type for this generic.(¦Èk8ø¤ù¥Í.
 O
-java:S14810"-Remove this unused "password" local variable.(…ˆíİşÿÿÿÿ8÷¼ß«Ë.
-u
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(âÄİü8ş¨Ë.
-X	java:S125)"<This block of commented-out lines of code should be removed.(ñ“½Ó8èŠÀÌ.
-l
-java:S1989:"PHandle the following exception that could be thrown by "getWriter": IOException.(Ôá˜u8»³í«Ë.
-‚
-java:S1450"`Remove the "dataSourceBuilder" field and declare it as a local variable in the relevant methods.(¦¸Õ•ûÿÿÿÿ8ş¨Ë.
+java:S1481&"-Remove this unused "password" local variable.(…ˆíİşÿÿÿÿ8÷¼ß«Ë.
+^
+java:S1854&"<Remove this useless assignment to local variable "password".(…ˆíİşÿÿÿÿ8÷¼ß«Ë.
 Q
-java:S1068"/Remove this unused "consumerDAO" private field.(Ê¦Ïûÿÿÿÿ8éÇ«Ë.
-|
-java:S1450"ZRemove the "consumerDAO" field and declare it as a local variable in the relevant methods.(Ê¦Ïûÿÿÿÿ8éÇ«Ë.
+java:S1854"5Remove this useless assignment to local variable "a".(¦Èk8ø¤ù¥Í.
+F
+java:S1481%")Remove this unused "name" local variable.(Û÷“ë8À’Í.
+z
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Ôæä­ùÿÿÿÿ8À’Í.
+ƒ
+java:S1989 "aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(­ì‹´úÿÿÿÿ8¤âÌ.
+K
+java:S3740"/Provide the parametrized type for this generic.(¦Èk8ø¤ù¥Í.
+N
+java:S1068",Remove this unused "commands" private field.(Ôæä­ùÿÿÿÿ8À’Í.
+B
+java:S1481"&Remove this unused "a" local variable.(¦Èk8ø¤ù¥Í.

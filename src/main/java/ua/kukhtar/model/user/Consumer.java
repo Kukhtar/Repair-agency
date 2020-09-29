@@ -14,6 +14,10 @@ public class Consumer {
         this.userInfo = userInfo;
     }
 
+    public Consumer() {
+
+    }
+
     @Override
     public String toString() {
         return "id = " + id + "  Account: " + account + " \nbank_account = " + bankAccount;
