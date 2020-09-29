@@ -1,24 +1,16 @@
 
-]	java:S125"<This block of commented-out lines of code should be removed.(‹„ÍÚÿÿÿÿÿ8À’Í.
-U
-java:S1854%"8Remove this useless assignment to local variable "name".(Û÷“ë8À’Í.
-K
-java:S3740"/Provide the parametrized type for this generic.(¦Èk8ø¤ù¥Í.
-O
-java:S1481&"-Remove this unused "password" local variable.(…ˆíİşÿÿÿÿ8÷¼ß«Ë.
 ^
-java:S1854&"<Remove this useless assignment to local variable "password".(…ˆíİşÿÿÿÿ8÷¼ß«Ë.
-Q
-java:S1854"5Remove this useless assignment to local variable "a".(¦Èk8ø¤ù¥Í.
-F
-java:S1481%")Remove this unused "name" local variable.(Û÷“ë8À’Í.
-z
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Ôæä­ùÿÿÿÿ8À’Í.
-ƒ
-java:S1989 "aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(­ì‹´úÿÿÿÿ8¤âÌ.
-K
-java:S3740"/Provide the parametrized type for this generic.(¦Èk8ø¤ù¥Í.
+java:S1854%"<Remove this useless assignment to local variable "password".(…ˆíİşÿÿÿÿ8÷¼ß«Ë.
 N
 java:S1068",Remove this unused "commands" private field.(Ôæä­ùÿÿÿÿ8À’Í.
-B
-java:S1481"&Remove this unused "a" local variable.(¦Èk8ø¤ù¥Í.
+U
+java:S1854$"8Remove this useless assignment to local variable "name".(Û÷“ë8À’Í.
+O
+java:S1481%"-Remove this unused "password" local variable.(…ˆíİşÿÿÿÿ8÷¼ß«Ë.
+]	java:S125"<This block of commented-out lines of code should be removed.(‹„ÍÚÿÿÿÿÿ8À’Í.
+z
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Ôæä­ùÿÿÿÿ8À’Í.
+F
+java:S1481$")Remove this unused "name" local variable.(Û÷“ë8À’Í.
+ƒ
+java:S1989"aHandle the following exceptions that could be thrown by "include": ServletException, IOException.(ÈêşÂûÿÿÿÿ8´ÂºÔÍ.
