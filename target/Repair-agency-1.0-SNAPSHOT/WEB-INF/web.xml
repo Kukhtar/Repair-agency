@@ -35,9 +35,9 @@
     </filter-mapping>
 
 
-    <listener>
-        <listener-class>ua.kukhtar.util.LogerConfigurationListener</listener-class>
-    </listener>
+<!--    <listener>-->
+<!--        <listener-class>ua.kukhtar.util.LogerConfigurationListener</listener-class>-->
+<!--    </listener>-->
 
     <resource-ref>
         <description>

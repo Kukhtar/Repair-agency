@@ -16,7 +16,6 @@
 <div class="form-style-2">
     <div class="form-style-2-heading">
         <fmt:message key="label.welcome" />
-        ${pageContext.request.contextPath}
     </div>
     <form method="get" action="/Repair_agency_war/startPage">
         <label for="name"><fmt:message key="label.login" />
