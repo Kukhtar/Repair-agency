@@ -21,12 +21,6 @@ g
 7src/main/java/ua/kukhtar/dao/DBCPDataSourceBuilder.java,0/8/084da54f58b67b0a310854d2e6d542be61f71763
 g
 7src/main/java/ua/kukhtar/constant/SQLQueryConstant.java,3/1/31aca64fe999c0f94c53a5ec136e6065edbe1fe7
-R
-"src/main/webapp/WEB-INF/log4j2.xml,7/d/7d3f6eaa29f4640d4b490947ff16f2ae61b85215
-d
-4target/Repair-agency-1.0-SNAPSHOT/WEB-INF/log4j2.xml,d/f/df52f81b74dc01daa1f92c1423f95b32cb3817d0
-m
-=src/main/java/ua/kukhtar/util/LogerConfigurationListener.java,1/7/17f9d7845f50a69c2654be7aee05c862710eb87b
 M
 src/main/webapp/jsp/login.jsp,a/f/af55eee015fec33e99bf54ec2d8713a26133aad7
 M

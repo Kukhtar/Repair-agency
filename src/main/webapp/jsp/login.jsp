@@ -17,7 +17,7 @@
     <div class="form-style-2-heading">
         <fmt:message key="label.welcome" />
     </div>
-    <form method="get" action="/Repair_agency_war/startPage">
+    <form method="post" action="${pageContext.request.contextPath}/api/login">
         <label for="name"><fmt:message key="label.login" />
             <input class="input-field" type="text" id="name" name="name">
         </label>
@@ -30,7 +30,7 @@
     <br>
 
     <li><a href="?sessionLocale=en">English</a></li>
-    <li><a href="?sessionLocale=ua">Ukrainian</a></li>
+    <li><a href="?sessionLocale=uk">Ukrainian</a></li>
 </div>
 </body>
 </html>

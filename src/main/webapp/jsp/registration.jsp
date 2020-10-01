@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Registration</title>
     <meta charset="utf-8">
     <link rel="stylesheet"  href="${pageContext.request.contextPath}/css/styles.css" />
 </head>
@@ -30,7 +30,7 @@
     <br>
 
     <li><a href="?sessionLocale=en">English</a></li>
-    <li><a href="?sessionLocale=uk">Ukrainian</a></li>
+    <li><a href="?sessionLocale=ua">Ukrainian</a></li>
 </div>
 </body>
 </html>

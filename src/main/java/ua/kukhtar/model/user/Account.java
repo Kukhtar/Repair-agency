@@ -12,6 +12,10 @@ public class Account {
         this.password = password;
     }
 
+    public Account() {
+
+    }
+
     @Override
     public String toString() {
         return "id = " + id + "  Login = " + login + "  password = " + password;

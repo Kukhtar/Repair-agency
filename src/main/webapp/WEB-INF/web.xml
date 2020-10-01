@@ -10,12 +10,16 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/startPage</url-pattern>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 
     <filter>
         <filter-name>SessionLocaleFilter</filter-name> <!-- mandatory -->
         <filter-class>ua.kukhtar.filter.SessionLocaleFilter</filter-class> <!-- mandatory -->
+    </filter>
+    <filter>
+        <filter-name>AuthFilter</filter-name> <!-- mandatory -->
+        <filter-class>ua.kukhtar.filter.AuthFilter</filter-class> <!-- mandatory -->
     </filter>
     <filter>
         <filter-name>EncodingFilter</filter-name>
@@ -29,6 +33,11 @@
 
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
