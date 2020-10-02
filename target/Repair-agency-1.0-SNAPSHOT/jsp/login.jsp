@@ -17,14 +17,14 @@
     <div class="form-style-2-heading">
         <fmt:message key="label.welcome" />
     </div>
-    <form method="post" action="${pageContext.request.contextPath}/api/login">
+    <form method="post" action="${pageContext.request.contextPath}/app/login">
         <label for="name"><fmt:message key="label.login" />
             <input class="input-field" type="text" id="name" name="name">
         </label>
         <label for="password"><fmt:message key="label.password" />
             <input class="input-field" type="password" id="password" name="password">
         </label>
-        <input type="submit" value="Sign Up">
+        <input type="submit" value="Sign In">
     </form>
     <br>
     <br>

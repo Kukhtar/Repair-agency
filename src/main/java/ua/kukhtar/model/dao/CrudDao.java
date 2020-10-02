@@ -3,7 +3,8 @@ package ua.kukhtar.model.dao;
 import java.util.Optional;
 
 public interface CrudDao<T> {
-    Optional<T> findOptional(int id);
     void create(T object);
+    T read(int id);
     void update(T object);
+    void delete(T object);
 }

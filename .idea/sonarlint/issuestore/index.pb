@@ -15,10 +15,6 @@ f
 6target/Repair-agency-1.0-SNAPSHOT/META-INF/context.xml,4/e/4eef7ec32206516bd4ed3743b5c4d78344f61eaf
 j
 :src/main/java/ua/kukhtar/controller/ControllerServlet.java,1/e/1ec4763eaf9eead48c75fb2b0c945b0079afe35c
-c
-3src/main/java/ua/kukhtar/dao/DataSourceBuilder.java,f/8/f8592b7dd132cbfb73ab048fd9e8b361f1218f24
-g
-7src/main/java/ua/kukhtar/dao/DBCPDataSourceBuilder.java,0/8/084da54f58b67b0a310854d2e6d542be61f71763
 g
 7src/main/java/ua/kukhtar/constant/SQLQueryConstant.java,3/1/31aca64fe999c0f94c53a5ec136e6065edbe1fe7
 M
@@ -37,19 +33,5 @@ N
 src/main/webapp/css/styles.css,2/2/226fdb532cdd154e562e34b81688c3c0b8ee225f
 h
 8src/main/java/ua/kukhtar/filter/SessionLocaleFilter.java,3/8/3884f8aed03b1eb5568f9f83b046d3f60ff4946a
-\
-,src/main/java/ua/kukhtar/dao/AccountDao.java,4/b/4bfc9c7d5ecfb26bc0bea37feb46a9da4fa02b70
-Y
-)src/main/java/ua/kukhtar/dao/CrudDao.java,d/6/d6eb7a880dc0db247b26bc3e281b3e1af103230d
-]
--src/main/java/ua/kukhtar/dao/ConsumerDao.java,5/3/538aed9b0137f50d13df79ea380d3f7d85f870e8
-\
-,src/main/java/ua/kukhtar/dao/DaoFactory.java,c/1/c123e3c4e3187435d305e2bf4b9faab2d1a7d85b
-e
-5src/main/java/ua/kukhtar/dao/impl/AccountDaoImpl.java,d/6/d61cb31a44cd20d2306eb4015e7ee4ba3d237aa5
-f
-6src/main/java/ua/kukhtar/dao/impl/ConsumerDaoImpl.java,8/7/87ee4130d4dd82e2a02d2c74811ef4f3a4a28170
-e
-5src/main/java/ua/kukhtar/dao/impl/JDBCDaoFactory.java,3/a/3a2238a8ed2a77a3fad2bee8a3dfeaecc385e4cd
 N
 src/main/webapp/jsp/styles.css,9/e/9e3eaee10c8d8b6a2fddffde03740cde08cd8069

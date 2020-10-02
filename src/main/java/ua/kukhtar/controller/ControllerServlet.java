@@ -4,10 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import ua.kukhtar.controller.command.Command;
 import ua.kukhtar.controller.command.LoginCommand;
-import ua.kukhtar.model.dao.ConsumerDao;
 import ua.kukhtar.model.dao.impl.JDBCDaoFactory;
-import ua.kukhtar.model.service.ConsumerService;
-import ua.kukhtar.model.user.Consumer;
+import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,27 +24,30 @@ public class ControllerServlet extends HttpServlet {
 
     public void init(){
 //        commands.put("logout", new LogOut());
-        commands.put("login", new LoginCommand(new ConsumerService()));
+        commands.put("login", new LoginCommand(new UserService()));
 //        commands.put("registration", new Registration());
 //        commands.put("exception" , new Exception());
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.debug("starting doGet method");
-//        resp.sendRedirect("/Repair_agency_war/jsp/login.jsp");
-        req.getRequestDispatcher("/jsp/login.jsp").forward(req, resp);
+        processRequest(req, resp);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String path = request.getRequestURI();
         System.out.println(path);
-        path = path.replaceAll(".*/api/" , "");
+        path = path.replaceAll(".*/app/" , "");
         System.out.println(path);
         Command command = commands.getOrDefault(path ,
-                (r)->"/index.jsp)");
+                (r)->"/jsp/index.jsp");
         String page = command.execute(request);
         if(page.contains("redirect:")){
             response.sendRedirect(page.replace("redirect:", "/Repair_agency_war"));
