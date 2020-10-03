@@ -14,32 +14,41 @@
     </servlet-mapping>
 
     <filter>
+        <filter-name>CacheControlFilter</filter-name>
+        <filter-class>ua.kukhtar.filter.CacheControlFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CacheControlFilter</filter-name>
+        <url-pattern>/app/login/*</url-pattern>
+        <url-pattern>/user/*</url-pattern>
+    </filter-mapping>
+    <filter>
         <filter-name>SessionLocaleFilter</filter-name> <!-- mandatory -->
         <filter-class>ua.kukhtar.filter.SessionLocaleFilter</filter-class> <!-- mandatory -->
     </filter>
-    <filter>
-        <filter-name>AuthFilter</filter-name> <!-- mandatory -->
-        <filter-class>ua.kukhtar.filter.AuthFilter</filter-class> <!-- mandatory -->
-    </filter>
-    <filter>
-        <filter-name>EncodingFilter</filter-name>
-        <filter-class>ua.kukhtar.filter.EncodingFilter</filter-class>
-    </filter>
-
     <filter-mapping>
         <filter-name>SessionLocaleFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>AuthFilter</filter-name> <!-- mandatory -->
+        <filter-class>ua.kukhtar.filter.AuthFilter</filter-class> <!-- mandatory -->
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>ua.kukhtar.filter.EncodingFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter-mapping>
-        <filter-name>AuthFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
     <resource-ref>
         <description>

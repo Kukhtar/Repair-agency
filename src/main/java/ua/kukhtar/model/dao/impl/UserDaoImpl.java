@@ -60,6 +60,7 @@ public class UserDaoImpl implements UserDao {
         user.setLogin(resultSet.getString("login"));
         user.setPassword(resultSet.getString("password"));
         user.setPhoneNumber(resultSet.getString("phone_number"));
+        user.setRole(User.ROLE.valueOf(resultSet.getString("role")));
         return user;
     }
 

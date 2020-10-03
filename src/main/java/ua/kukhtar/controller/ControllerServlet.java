@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import ua.kukhtar.controller.command.Command;
 import ua.kukhtar.controller.command.LoginCommand;
+import ua.kukhtar.controller.command.LogoutCommand;
 import ua.kukhtar.model.dao.impl.JDBCDaoFactory;
 import ua.kukhtar.model.service.UserService;
 
@@ -23,7 +24,7 @@ public class ControllerServlet extends HttpServlet {
     private Map<String, Command> commands = new HashMap<>();
 
     public void init(){
-//        commands.put("logout", new LogOut());
+        commands.put("logout", new LogoutCommand());
         commands.put("login", new LoginCommand(new UserService()));
 //        commands.put("registration", new Registration());
 //        commands.put("exception" , new Exception());
@@ -43,14 +44,12 @@ public class ControllerServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String path = request.getRequestURI();
-        System.out.println(path);
         path = path.replaceAll(".*/app/" , "");
-        System.out.println(path);
         Command command = commands.getOrDefault(path ,
                 (r)->"/jsp/index.jsp");
         String page = command.execute(request);
         if(page.contains("redirect:")){
-            response.sendRedirect(page.replace("redirect:", "/Repair_agency_war"));
+            response.sendRedirect(page.replace("redirect:", "/repair_agency"));
         }else {
             request.getRequestDispatcher(page).forward(request, response);
         }

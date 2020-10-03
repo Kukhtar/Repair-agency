@@ -18,19 +18,30 @@ public class LoginCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
         String name = request.getParameter("name");
         String pass = request.getParameter("password");
+
+        if (request.getSession().getAttribute("name") != null){
+            logger.debug("logged user trying to access logIn page");
+            CommandUtility.logOut(request, name);
+        }
+
         if( name == null || name.equals("") || pass == null || pass.equals("")  ){
+            logger.debug("first init of logIn page");
             return "/jsp/login.jsp";
         }
+
         Optional<User> user = service.login(name);
+        //TODO: add password encrypting
         if( user.isPresent() && user.get().getPassword().equals(pass)){
-            request.getSession().setAttribute("consumer" , user.get());
+            request.getSession().setAttribute("name" , name);
+            request.getSession().setAttribute("role" , user.get().getRole().name());
             logger.info("user "+ name+" logged successfully.");
-            return "redirect:/jsp/consumerPage.jsp";
+            return CommandUtility.getHomePageForUser(user.get().getRole());
 
         }
-        logger.info("Invalid attempt of login user:'"+ name+"'");
+        logger.info("Invalid attempt of login user:{}", name);
         return "/jsp/login.jsp";
     }
 }

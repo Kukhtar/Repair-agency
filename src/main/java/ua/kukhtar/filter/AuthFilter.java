@@ -2,6 +2,7 @@ package ua.kukhtar.filter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ua.kukhtar.model.entity.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,17 @@ public class AuthFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String path = request.getRequestURI();
+        String role = (String) request.getSession().getAttribute("role");
         if (path.contains("consumer")) {
-            if (((HttpServletRequest) servletRequest).getSession().getAttribute("consumer") != null) {
+            if ((role != null && User.ROLE.USER.name().equals(role))) {
+                logger.info("Access confirmed");
+                filterChain.doFilter(servletRequest, servletResponse);
+            } else {
+                servletResponse.getWriter().append("AccessDenied");
+                return;
+            }
+        }else if(path.contains("manager")){
+            if ((role != null && User.ROLE.MANAGER.name().equals(role))) {
                 logger.info("Access confirmed");
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
