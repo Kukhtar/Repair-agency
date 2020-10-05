@@ -5,8 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LogoutCommand implements Command{
     @Override
     public String execute(HttpServletRequest request) {
-        String name = (String) request.getSession().getAttribute("name");
-        CommandUtility.logOut(request, name);
+        CommandUtility.logOut(request);
         return "redirect:/jsp/index.jsp";
     }
 }

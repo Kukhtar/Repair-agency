@@ -21,6 +21,7 @@
         <filter-name>CacheControlFilter</filter-name>
         <url-pattern>/app/login/*</url-pattern>
         <url-pattern>/user/*</url-pattern>
+        <url-pattern>/manager/*</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>SessionLocaleFilter</filter-name> <!-- mandatory -->

@@ -7,12 +7,18 @@ import ua.kukhtar.model.entity.User;
 import java.util.Optional;
 
 public class UserService {
-    DaoFactory daoFactory = DaoFactory.getInstance();
+    private DaoFactory daoFactory = DaoFactory.getInstance();
+    private UserDao userDao = daoFactory.createUserDao();
 
     public Optional<User> login(String login){
         Optional<User> result;
-        UserDao userDao = daoFactory.createUserDao();
         result = userDao.findByLogin(login);
         return result;
+    }
+
+    public boolean isLoginFree(String login){
+        int id = userDao.getUserID(login);
+
+        return id==-1;
     }
 }

@@ -5,15 +5,18 @@ import org.apache.logging.log4j.core.Logger;
 import ua.kukhtar.controller.command.Command;
 import ua.kukhtar.controller.command.LoginCommand;
 import ua.kukhtar.controller.command.LogoutCommand;
+import ua.kukhtar.controller.command.RegistrationCommand;
 import ua.kukhtar.model.dao.impl.JDBCDaoFactory;
 import ua.kukhtar.model.service.UserService;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 
@@ -23,10 +26,13 @@ public class ControllerServlet extends HttpServlet {
 
     private Map<String, Command> commands = new HashMap<>();
 
-    public void init(){
+    public void init(ServletConfig servletConfig){
+        servletConfig.getServletContext()
+                .setAttribute("loggedUsers", new HashSet<String>());
+
         commands.put("logout", new LogoutCommand());
         commands.put("login", new LoginCommand(new UserService()));
-//        commands.put("registration", new Registration());
+        commands.put("registration", new RegistrationCommand(new UserService()));
 //        commands.put("exception" , new Exception());
     }
 
@@ -34,7 +40,6 @@ public class ControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

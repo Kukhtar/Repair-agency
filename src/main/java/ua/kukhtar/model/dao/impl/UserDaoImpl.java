@@ -27,6 +27,17 @@ public class UserDaoImpl implements UserDao {
     }
 
 
+    private static User extractUserFromResultSet(ResultSet resultSet) throws SQLException {
+        User user = new User();
+        user.setFullName(resultSet.getString("full_name"));
+        user.setId(resultSet.getInt("id"));
+        user.setLogin(resultSet.getString("login"));
+        user.setPassword(resultSet.getString("password"));
+        user.setPhoneNumber(resultSet.getString("phone_number"));
+        user.setRole(User.ROLE.valueOf(resultSet.getString("role")));
+        return user;
+    }
+
     @Override
     public Optional<User> findByLogin(String login) {
         try(Connection connection = getConncetion();
@@ -47,21 +58,10 @@ public class UserDaoImpl implements UserDao {
             return Optional.empty();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
             throw new IllegalStateException(e);
         }
 
-    }
-
-    private static User extractUserFromResultSet(ResultSet resultSet) throws SQLException {
-        User user = new User();
-        user.setFullName(resultSet.getString("full_name"));
-        user.setId(resultSet.getInt("id"));
-        user.setLogin(resultSet.getString("login"));
-        user.setPassword(resultSet.getString("password"));
-        user.setPhoneNumber(resultSet.getString("phone_number"));
-        user.setRole(User.ROLE.valueOf(resultSet.getString("role")));
-        return user;
     }
 
     @Override
@@ -82,5 +82,30 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void delete(User object) {
 
+    }
+
+    @Override
+    public int getUserID(String name) {
+        try(Connection connection = getConncetion();
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_GET_USER_ID_BY_LOGIN)) {
+
+            statement.setString(1, name);
+
+            try(ResultSet resultSet = statement.executeQuery()){
+
+                if (resultSet.next()){
+                    int id = resultSet.getInt("id");
+                    logger.debug("User id for {} = {}", name, id);
+                    return id;
+                }
+            }
+
+            logger.debug("Can't find user by login");
+            return -1;
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
     }
 }
