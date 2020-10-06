@@ -1,0 +1,11 @@
+
+—
+java:S1186^"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(”Ù¯Î
+Z
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Óƒ
+H
+java:S1481‚"*Remove this unused "users" local variable.(Ğ÷¤¤8»£÷ÔÏ.
+–
+java:S1186c"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(æôò7
+{
+java:S1192;"YDefine a constant instead of duplicating this literal "Can't find user by login" 3 times.(èõœşşÿÿÿÿ8¯ş÷ÔÏ.

@@ -7,16 +7,15 @@ import ua.kukhtar.model.dao.UserDao;
 import ua.kukhtar.model.entity.User;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class UserDaoImpl implements UserDao {
-    private final static Logger logger = LogManager.getLogger(UserDaoImpl.class);
+    private static final Logger logger = LogManager.getLogger(UserDaoImpl.class);
 
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
     public UserDaoImpl(DataSource dataSource){
         this.dataSource = dataSource;
@@ -65,8 +64,22 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void create(User object) {
+    public void create(User user) {
+        try(Connection connection = getConncetion();
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_ADD_USER)) {
 
+            statement.setString(1,user.getLogin());
+            statement.setString(2,user.getPassword());
+            statement.setString(3,user.getFullName());
+            statement.setString(4,user.getPhoneNumber());
+
+            statement.execute();
+            logger.debug("User successfully added");
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
     }
 
     @Override
@@ -102,6 +115,28 @@ public class UserDaoImpl implements UserDao {
 
             logger.debug("Can't find user by login");
             return -1;
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public List<User> findAll() {
+        List<User> users = new ArrayList<>();
+
+        try(Connection connection = getConncetion();
+            Statement statement = connection.createStatement()) {
+
+            try(ResultSet resultSet = statement.executeQuery(SQLQueryConstant.SQL_FIND_ALL_USERS)){
+
+                while (resultSet.next()){
+                    users.add(extractUserFromResultSet(resultSet));
+                }
+            }
+
+            return users;
 
         } catch (SQLException e) {
             logger.error(e);

@@ -11,7 +11,7 @@
 </head>
 <body>
 <h2>
-    <fmt:message key="label.mainPageHeader"/>
+    <fmt:message key="header.mainPage"/>
 </h2>
 
 <br/>

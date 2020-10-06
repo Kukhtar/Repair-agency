@@ -2,10 +2,7 @@ package ua.kukhtar.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
-import ua.kukhtar.controller.command.Command;
-import ua.kukhtar.controller.command.LoginCommand;
-import ua.kukhtar.controller.command.LogoutCommand;
-import ua.kukhtar.controller.command.RegistrationCommand;
+import ua.kukhtar.controller.command.*;
 import ua.kukhtar.model.dao.impl.JDBCDaoFactory;
 import ua.kukhtar.model.service.UserService;
 
@@ -33,6 +30,8 @@ public class ControllerServlet extends HttpServlet {
         commands.put("logout", new LogoutCommand());
         commands.put("login", new LoginCommand(new UserService()));
         commands.put("registration", new RegistrationCommand(new UserService()));
+        commands.put("users", new UserListCommand(new UserService()));
+
 //        commands.put("exception" , new Exception());
     }
 

@@ -10,7 +10,7 @@
     <title>Consumer</title>
 </head>
 <body>
-<h3><fmt:message key="label.consumerPageHeader" /></h3>
+<h3><fmt:message key="header.consumerPage" /></h3>
 <li>
     <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>
 </li>
