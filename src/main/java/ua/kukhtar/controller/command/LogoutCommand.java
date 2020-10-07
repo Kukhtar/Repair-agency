@@ -6,6 +6,6 @@ public class LogoutCommand implements Command{
     @Override
     public String execute(HttpServletRequest request) {
         CommandUtility.logOut(request);
-        return "redirect:/jsp/index.jsp";
+        return "redirect:/app/";
     }
 }

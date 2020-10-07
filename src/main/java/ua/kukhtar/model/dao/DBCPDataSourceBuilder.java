@@ -20,7 +20,7 @@ public class DBCPDataSourceBuilder implements DataSourceBuilder{
         } catch (NamingException e) {
             logger.error(e);
             throw new IllegalStateException(e);
-            //should add error handling!!!
+            //todo: should add error handling!!!
         }
 
     }

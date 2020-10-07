@@ -17,20 +17,13 @@ public class LoginCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        //todo: refactor this s**t
-
-        if (request.getSession().getAttribute("name") != null){
-            logger.debug("logged user trying to access logIn page");
-            CommandUtility.logOut(request);
-            //todo: print correct error massage
-        }
+        //todo: add validation to the special method
 
         String name = request.getParameter("name");
         String pass = request.getParameter("password");
 
 
-        if( name == null || name.equals("") || pass == null || pass.equals("")  ){
-            logger.debug("first init of logIn page");
+        if (!isValid(name, pass, request)){
             return "/jsp/login.jsp";
         }
 
@@ -51,4 +44,13 @@ public class LoginCommand implements Command {
         return "/jsp/login.jsp";
     }
 
+    private boolean isValid(String name, String pass, HttpServletRequest request){
+        if (name == null)
+            return false;
+        else if (name.isEmpty() || pass.isEmpty()){
+            request.setAttribute("massage", "Please enter required data");
+        }
+
+        return true;
+    }
 }

@@ -31,11 +31,6 @@ public class RegistrationCommand implements Command {
             //todo: print correct error massage
         }
 
-//        if (isInit){
-//            isInit = false;
-//            return "/jsp/registration.jsp";
-//        }
-
         String name = request.getParameter("name");
         String pass = request.getParameter("password");
         String fullName = request.getParameter("full-name");
@@ -65,7 +60,7 @@ public class RegistrationCommand implements Command {
         service.addUser(user);
         user.setId(service.getUserId(name));
         logger.info("created user object: {}", user);
-        return "redirect:/user/consumerPage.jsp";
+        return "redirect:/user/index.jsp";
     }
 
 

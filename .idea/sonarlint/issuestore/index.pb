@@ -19,12 +19,8 @@ h
 8src/main/java/ua/kukhtar/filter/SessionLocaleFilter.java,3/8/3884f8aed03b1eb5568f9f83b046d3f60ff4946a
 N
 src/main/webapp/jsp/styles.css,9/e/9e3eaee10c8d8b6a2fddffde03740cde08cd8069
-U
-%src/main/webapp/user/consumerPage.jsp,7/b/7b1161ab74e1a1f5c876e60bbdea2ce25d558dd6
 _
 /src/main/java/ua/kukhtar/model/dao/CrudDao.java,9/3/9364d73cd5e5547e50c9b8d465f431528c0f8bab
-g
-7target/repair-agency-1.0-SNAPSHOT/user/consumerPage.jsp,4/b/4b1728b25134d5d3327e89d145c45942a15b7643
 f
 6target/repair-agency-1.0-SNAPSHOT/META-INF/context.xml,4/8/480ebdca78fe13bd6ee1702619d54bfd7b6bcc19
 _
@@ -73,8 +69,6 @@ t
 Dsrc/main/java/ua/kukhtar/controller/command/RegistrationCommand.java,7/1/7132d246b8b2fea66616733d6f978c1c80854ba8
 p
 @src/main/java/ua/kukhtar/controller/command/UserListCommand.java,4/3/430d93b1611202459736078b9bc162bf0eacf128
-Q
-!src/main/webapp/manager/users.jsp,f/7/f7712e6d021bef39337c827b166175c147756128
 b
 2src/main/java/ua/kukhtar/model/dao/DaoFactory.java,1/1/118763228a08c23973633ef36b28e7f02d408f85
 T
@@ -83,3 +77,7 @@ _
 /src/main/java/ua/kukhtar/model/dao/UserDao.java,a/9/a9bd5c8599a8b586c0d1c8df47782316c7c8505a
 h
 8src/main/java/ua/kukhtar/model/dao/impl/UserDaoImpl.java,2/a/2a934c23b856ab164a96e539b7308f8d44b71229
+N
+src/main/webapp/user/order.jsp,6/2/62594d8f0d974a680db4d97f86a20bb15ff6d0de
+N
+src/main/webapp/user/index.jsp,a/3/a38b52a66006d59de88d376f76769726798da7ef

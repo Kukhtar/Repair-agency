@@ -12,7 +12,7 @@
 <body>
 <h3><fmt:message key="header.managerPage" /></h3>
 <li>
-    <a href="${pageContext.request.contextPath}/app/users"><fmt:message key="label.usersList"/> </a>
+    <a href="${pageContext.request.contextPath}/app/consumers"><fmt:message key="label.usersList"/> </a>
 </li>
 <li>
     <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>

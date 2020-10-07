@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
         this.dataSource = dataSource;
     }
 
-    private Connection getConncetion() throws SQLException {
+    private Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
 
@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public Optional<User> findByLogin(String login) {
-        try(Connection connection = getConncetion();
+        try(Connection connection = getConnection();
             PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_GET_USER_BY_LOGIN)) {
 
             statement.setString(1, login);
@@ -65,8 +65,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void create(User user) {
-        try(Connection connection = getConncetion();
-            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_ADD_USER)) {
+        try(Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_USER)) {
 
             statement.setString(1,user.getLogin());
             statement.setString(2,user.getPassword());
@@ -99,7 +99,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int getUserID(String name) {
-        try(Connection connection = getConncetion();
+        try(Connection connection = getConnection();
             PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_GET_USER_ID_BY_LOGIN)) {
 
             statement.setString(1, name);
@@ -126,7 +126,7 @@ public class UserDaoImpl implements UserDao {
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
 
-        try(Connection connection = getConncetion();
+        try(Connection connection = getConnection();
             Statement statement = connection.createStatement()) {
 
             try(ResultSet resultSet = statement.executeQuery(SQLQueryConstant.SQL_FIND_ALL_USERS)){

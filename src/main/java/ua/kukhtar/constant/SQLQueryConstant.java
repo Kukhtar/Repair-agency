@@ -8,7 +8,9 @@ public class SQLQueryConstant {
     //language=SQL
     public static final String SQL_GET_USER_BY_LOGIN = "SELECT * FROM users WHERE login=?";
     //language=SQL
-    public static final String SQL_ADD_USER = "INSERT INTO public.users (login, password, full_name, phone_number, role) VALUES (?, ?, ?, ?, 'USER')";
+    public static final String SQL_INSERT_USER = "INSERT INTO public.users (login, password, full_name, phone_number, role) VALUES (?, ?, ?, ?, 'USER')";
     //language=SQL
     public static final String SQL_FIND_ALL_USERS = "SELECT * FROM users WHERE role='USER' ";
+    //language=SQL
+    public static final String SQL_INSERT_ADDRESS = "INSERT INTO address (house_number, flat_number) VALUE (?, ?)";
 }

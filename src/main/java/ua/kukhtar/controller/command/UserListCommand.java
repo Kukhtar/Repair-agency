@@ -12,6 +12,6 @@ public class UserListCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         request.getSession().setAttribute("users", service.getAllUsers());
-        return "redirect:/manager/users.jsp";
+        return "redirect:/manager/consumers.jsp";
     }
 }

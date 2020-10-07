@@ -27,6 +27,9 @@
         <input type="submit" value="Sign In">
     </form>
     <br>
+    <span style="color: #ff0000; font-size: medium;">
+        <c:out value='${requestScope.massage}'/>
+    </span>
     <br>
 
     <li><a href="?sessionLocale=en">English</a></li>

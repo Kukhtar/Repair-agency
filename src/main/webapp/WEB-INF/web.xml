@@ -42,6 +42,17 @@
     </filter-mapping>
 
     <filter>
+        <filter-name>GusetPagesFilter</filter-name>
+        <filter-class>ua.kukhtar.filter.GuestPagesFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>GusetPagesFilter</filter-name>
+        <url-pattern>/app/login</url-pattern>
+        <url-pattern>/app/registration</url-pattern>
+        <url-pattern>/app</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>EncodingFilter</filter-name>
         <filter-class>ua.kukhtar.filter.EncodingFilter</filter-class>
     </filter>
@@ -49,7 +60,6 @@
         <filter-name>EncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
 
     <resource-ref>
         <description>

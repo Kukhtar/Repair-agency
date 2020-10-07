@@ -11,7 +11,7 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
     Logger logger = LogManager.getLogger(AuthFilter.class);
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
@@ -20,28 +20,38 @@ public class AuthFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String path = request.getRequestURI();
-        String role = (String) request.getSession().getAttribute("role");
-        if (path.contains("consumer")) {
-            if ((role != null && User.ROLE.USER.name().equals(role))) {
-                logger.info("Access confirmed");
-                filterChain.doFilter(servletRequest, servletResponse);
-            } else {
-                servletResponse.getWriter().append("AccessDenied");
-                return;
-            }
-        }else if(path.contains("manager")){
-            if ((role != null && User.ROLE.MANAGER.name().equals(role))) {
-                logger.info("Access confirmed");
-                filterChain.doFilter(servletRequest, servletResponse);
-            } else {
-                servletResponse.getWriter().append("AccessDenied");
-                return;
-            }
+        String sessionRole = (String) request.getSession().getAttribute("role");
+        User.ROLE requiredRole;
+
+        if (path.contains("manager")) {
+            requiredRole = User.ROLE.MANAGER;
+        }else if (path.contains("user")){
+            requiredRole = User.ROLE.USER;
+        }else if (path.contains("master")){
+            requiredRole = User.ROLE.MASTER;
         }else {
             filterChain.doFilter(servletRequest, servletResponse);
+            return;
         }
+
+        if(isAccessible(sessionRole, requiredRole)){
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
+
+        //todo: add redirect to correct login page (only for guests )
+        servletResponse.getWriter().append("AccessDenied");
     }
 
+    private boolean isAccessible(String sessionRole, User.ROLE requiredRole){
+        if ((sessionRole != null && requiredRole.name().equals(sessionRole))) {
+            logger.info("Access confirmed");
+            return true;
+        }
+
+        return false;
+
+    }
 
     @Override
     public void destroy() {

@@ -30,7 +30,7 @@ public class ControllerServlet extends HttpServlet {
         commands.put("logout", new LogoutCommand());
         commands.put("login", new LoginCommand(new UserService()));
         commands.put("registration", new RegistrationCommand(new UserService()));
-        commands.put("users", new UserListCommand(new UserService()));
+        commands.put("consumers", new UserListCommand(new UserService()));
 
 //        commands.put("exception" , new Exception());
     }

@@ -15,7 +15,8 @@ public class CommandUtility {
         request.getSession().setAttribute("name", null);
         request.getSession().setAttribute("role", null);
 
-        HashSet<String> loggedUsers = (HashSet<String>) request.getSession().getServletContext()
+        //todo: should be in servlet context
+        HashSet<String> loggedUsers = (HashSet<String>) request.getServletContext()
                 .getAttribute("loggedUsers");
 
         logger.debug("logOut user: {}", name);
@@ -38,7 +39,7 @@ public class CommandUtility {
 
     public static String getHomePageForUser(User.ROLE role){
         if (role == User.ROLE.USER){
-            return "redirect:/user/consumerPage.jsp";
+            return "redirect:/user/index.jsp";
         }else if (role == User.ROLE.MANAGER){
             return "redirect:/manager/index.jsp";
         }
