@@ -1,5 +1,6 @@
 package ua.kukhtar.model.dao;
 
+import ua.kukhtar.model.entity.Order;
 import ua.kukhtar.model.entity.User;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface UserDao extends CrudDao<User> {
    int getUserID(String name);
 
    List<User> findAll();
+
+   List<Order> getOrders(String name);
 }

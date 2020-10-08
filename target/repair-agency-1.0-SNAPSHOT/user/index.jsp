@@ -15,6 +15,8 @@
     <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>
 </li>
 <p><a href="${pageContext.request.contextPath}/app/createOrder"><fmt:message key="label.createOrder"/> </a></p>
+<p><a href="${pageContext.request.contextPath}/app/userOrders"><fmt:message key="header.yourOrders"/> </a></p>
+
 <br><br>
 
 <li><a href="?sessionLocale=en">English</a></li>

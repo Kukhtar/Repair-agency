@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.kukhtar.constant.SQLQueryConstant;
 import ua.kukhtar.model.dao.UserDao;
+import ua.kukhtar.model.entity.Order;
 import ua.kukhtar.model.entity.User;
 
 import javax.sql.DataSource;
@@ -137,6 +138,28 @@ public class UserDaoImpl implements UserDao {
             }
 
             return users;
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public List<Order> getOrders(String name) {
+        List<Order> orders = new ArrayList<>();
+
+        try(Connection connection = getConnection();
+            Statement statement = connection.createStatement()) {
+
+            try(ResultSet resultSet = statement.executeQuery(SQLQueryConstant.SQL_FIND_ALL_ORDERS_OF_USER)){
+
+                while (resultSet.next()){
+                    orders.add(OrderDaoImpl.extractOrderFromResultSet(resultSet));
+                }
+            }
+
+            return orders;
 
         } catch (SQLException e) {
             logger.error(e);

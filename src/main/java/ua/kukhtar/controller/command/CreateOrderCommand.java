@@ -31,7 +31,7 @@ public class CreateOrderCommand implements Command {
         address.setHouseNumber(Integer.parseInt(houseNumber));
 
         service.createOrder(address, userName);
-        return "redirect:/user/create_order.jsp";
+        return "redirect:/app/userOrders";
     }
 
     private boolean isValid(String flatNumber, String houseNumber){

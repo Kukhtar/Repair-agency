@@ -15,4 +15,6 @@ public class SQLQueryConstant {
     public static final String SQL_INSERT_ADDRESS = "INSERT INTO address (house_number, flat_number) VALUES (?, ?)";
     //language=SQL
     public static final String SQL_INSERT_ORDER = " INSERT INTO public.orders ( customer_id,  status, date, address_id) VALUES (?, 'WAITING_FOR_RESPONSE', ? , ?)";
+    //language=SQL
+    public static final String SQL_FIND_ALL_ORDERS_OF_USER = "SELECT * FROM orders WHERE customer_id = (SELECT id FROM users WHERE login = 'q')";
 }

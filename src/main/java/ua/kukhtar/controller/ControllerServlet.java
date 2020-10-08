@@ -3,7 +3,6 @@ package ua.kukhtar.controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import ua.kukhtar.controller.command.*;
-import ua.kukhtar.model.dao.impl.JDBCDaoFactory;
 import ua.kukhtar.model.service.OrderService;
 import ua.kukhtar.model.service.UserService;
 
@@ -16,7 +15,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Optional;
 
 public class ControllerServlet extends HttpServlet {
 
@@ -33,6 +31,7 @@ public class ControllerServlet extends HttpServlet {
         commands.put("registration", new RegistrationCommand(new UserService()));
         commands.put("consumers", new UserListCommand(new UserService()));
         commands.put("createOrder", new CreateOrderCommand(new OrderService()));
+        commands.put("userOrders", new UserOrdersCommand(new UserService()));
 
 //        commands.put("exception" , new Exception());
     }

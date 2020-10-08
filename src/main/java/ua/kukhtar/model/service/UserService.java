@@ -2,6 +2,8 @@ package ua.kukhtar.model.service;
 
 import ua.kukhtar.model.dao.DaoFactory;
 import ua.kukhtar.model.dao.UserDao;
+import ua.kukhtar.model.dao.impl.UserDaoImpl;
+import ua.kukhtar.model.entity.Order;
 import ua.kukhtar.model.entity.User;
 
 import java.util.List;
@@ -32,5 +34,9 @@ public class UserService {
 
     public List<User> getAllUsers(){
         return userDao.findAll();
+    }
+
+    public List<Order> getOrders(String name){
+        return userDao.getOrders(name);
     }
 }

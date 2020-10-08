@@ -29,7 +29,7 @@ public class RegistrationCommand implements Command {
             CommandUtility.logOut(request);
             //todo: print correct error massage
         }
-
+        //todo: when some field wrong, should refresh with previous data
         String name = request.getParameter("name");
         String pass = request.getParameter("password");
         String fullName = request.getParameter("full-name");

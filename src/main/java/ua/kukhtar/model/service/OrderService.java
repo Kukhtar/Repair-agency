@@ -17,7 +17,7 @@ public class OrderService {
 
     public void createOrder(Address address, String userName){
         Order order = new Order();
-        //todo: fix this
+        //todo: fix this, this must be a transaction
         address.setId((int)addressDao.createAndReturnId(address));
         order.setAddress(address);
         order.setCustomer(userDao.findByLogin(userName).get());

@@ -5,10 +5,13 @@ import org.apache.logging.log4j.Logger;
 import ua.kukhtar.constant.SQLQueryConstant;
 import ua.kukhtar.model.dao.OrderDao;
 import ua.kukhtar.model.entity.Order;
+import ua.kukhtar.model.entity.User;
+import ua.kukhtar.model.entity.enums.STATUS;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.text.DateFormat;
+import java.time.LocalDate;
 
 public class OrderDaoImpl implements OrderDao {
 
@@ -22,6 +25,16 @@ public class OrderDaoImpl implements OrderDao {
 
     private Connection getConnection() throws SQLException {
         return dataSource.getConnection();
+    }
+
+    public static Order extractOrderFromResultSet(ResultSet resultSet) throws SQLException {
+        Order order = new Order();
+        order.setStatus(STATUS.valueOf(resultSet.getString("status")));
+        order.setId(resultSet.getInt("id"));
+        logger.debug("date = {} OR {}", resultSet.getDate("date"), resultSet.getDate("date").getTime());
+        order.setDate(resultSet.getDate("date").toLocalDate());
+
+        return order;
     }
 
     @Override
