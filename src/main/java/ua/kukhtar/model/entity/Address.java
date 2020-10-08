@@ -15,5 +15,5 @@ public class Address {
 
     public int getFlat_number() { return flat_number; }
 
-    public void setFlat_number(int flat_number) { this.flat_number = flat_number; }
+    public void setFlatNumber(int flat_number) { this.flat_number = flat_number; }
 }

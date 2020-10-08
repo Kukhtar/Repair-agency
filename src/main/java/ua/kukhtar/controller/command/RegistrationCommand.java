@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 public class RegistrationCommand implements Command {
     private static final Logger logger = LogManager.getLogger(LoginCommand.class);
     private UserService service ;
-    private boolean isInit = true;
     public RegistrationCommand(UserService service) {
         this.service = service;
     }

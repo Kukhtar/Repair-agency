@@ -28,7 +28,7 @@ public class AddressDaoImpl implements AddressDao {
 
             statement.setInt(1, address.getHouseNumber());
             statement.setInt(2, address.getFlat_number());
-            statement.execute();
+            statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()){
                 logger.debug("address {} added", address);

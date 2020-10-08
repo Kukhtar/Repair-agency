@@ -7,13 +7,15 @@
 
 <html>
 <head>
-    <title>Manager</title>
+    <title>Orders</title>
 </head>
 <body>
-<h3><fmt:message key="header.managerPage" /></h3>
-<li>
-    <a href="${pageContext.request.contextPath}/app/consumers"><fmt:message key="label.usersList"/> </a>
-</li>
+<h3><fmt:message key="label.usersList" /></h3>
+<br>
+<c:forEach items='${sessionScope.users}' var='i'>
+    <c:out value='${i}'/><p/>
+</c:forEach>
+<br>
 <li>
     <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>
 </li>

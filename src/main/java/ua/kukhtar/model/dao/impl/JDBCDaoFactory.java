@@ -12,4 +12,14 @@ public class JDBCDaoFactory extends DaoFactory {
     public UserDao createUserDao() {
         return new UserDaoImpl(dataSource);
     }
+
+    @Override
+    public OrderDao createOrderDao() {
+        return new OrderDaoImpl(dataSource);
+    }
+
+    @Override
+    public AddressDao createAddressDao() {
+        return new AddressDaoImpl(dataSource);
+    }
 }

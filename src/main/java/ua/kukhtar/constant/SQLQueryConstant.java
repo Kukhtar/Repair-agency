@@ -12,5 +12,7 @@ public class SQLQueryConstant {
     //language=SQL
     public static final String SQL_FIND_ALL_USERS = "SELECT * FROM users WHERE role='USER' ";
     //language=SQL
-    public static final String SQL_INSERT_ADDRESS = "INSERT INTO address (house_number, flat_number) VALUE (?, ?)";
+    public static final String SQL_INSERT_ADDRESS = "INSERT INTO address (house_number, flat_number) VALUES (?, ?)";
+    //language=SQL
+    public static final String SQL_INSERT_ORDER = " INSERT INTO public.orders ( customer_id,  status, date, address_id) VALUES (?, 'WAITING_FOR_RESPONSE', ? , ?)";
 }

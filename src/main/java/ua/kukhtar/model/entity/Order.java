@@ -2,12 +2,16 @@ package ua.kukhtar.model.entity;
 
 import ua.kukhtar.model.entity.enums.STATUS;
 
+import java.time.LocalDate;
+
+//todo: add builder instead of setters
+
 public class Order {
     private int id;
     private User customer;
     private User master;
     private STATUS status;
-    private String date;
+    private LocalDate date;
     private Address address;
     private int price;
     private String feedBack;
@@ -28,9 +32,9 @@ public class Order {
 
     public void setStatus(STATUS status) { this.status = status; }
 
-    public String getDate() {return date; }
+    public LocalDate getDate() {return date; }
 
-    public void setDate(String date) { this.date = date; }
+    public void setDate(LocalDate date) { this.date = date; }
 
     public Address getAddress() { return address;}
 

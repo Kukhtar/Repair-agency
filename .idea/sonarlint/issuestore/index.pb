@@ -81,3 +81,11 @@ N
 src/main/webapp/user/order.jsp,6/2/62594d8f0d974a680db4d97f86a20bb15ff6d0de
 N
 src/main/webapp/user/index.jsp,a/3/a38b52a66006d59de88d376f76769726798da7ef
+U
+%src/main/webapp/user/create_order.jsp,7/f/7f2d2800b43db6c89957b480daf6c36356042e2d
+s
+Csrc/main/java/ua/kukhtar/controller/command/CreateOrderCommand.java,2/e/2ec26edc8dd06f7bb76ea4ce67273fff77841728
+i
+9src/main/java/ua/kukhtar/model/dao/impl/OrderDaoImpl.java,6/a/6a244dc6ec94513de4f84b382859448541d585e9
+h
+8src/main/java/ua/kukhtar/model/service/OrderService.java,a/6/a63c6fdda0e10cb4c87ec1d9fd760798e1149c98

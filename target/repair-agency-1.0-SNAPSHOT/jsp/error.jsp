@@ -16,7 +16,7 @@
             <i>Error <%= exception %></i>
         </h2>
     <br>
-        <a href="${pageContext.request.contextPath}/index.jsp">Index</a>
+        <a href="redirect:/app/">Index</a>
 
 
     </body>

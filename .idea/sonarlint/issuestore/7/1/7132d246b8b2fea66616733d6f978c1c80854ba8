@@ -1,9 +1,8 @@
 
-X	java:S125("<This block of commented-out lines of code should be removed.(–ø¸Ã8ê­ÕÎÏ.
-L
-java:S1068"*Remove this unused "isInit" private field.(«¶Öçúÿÿÿÿ8õĞáÎÏ.
-O
-java:S1135"2Complete the task associated to this TODO comment.(äø”8´Ü‘ÀÏ.
+T
+java:S1135"2Complete the task associated to this TODO comment.(¨™Ûõøÿÿÿÿ8š¢¬¼Ğ.
 X
-java:S3416"6Update this logger to use "RegistrationCommand.class".(î•„Ğûÿÿÿÿ8š†Ğ¾Ï.
-]	java:S125"<This block of commented-out lines of code should be removed.(Ìîï£úÿÿÿÿ8õĞáÎÏ.
+java:S3416"6Update this logger to use "RegistrationCommand.class".(î•„Ğûÿÿÿÿ8š†Ğ¾Ï.
+X	java:S125)"<This block of commented-out lines of code should be removed.(–ø¸Ã8ê­ÕÎÏ.
+O
+java:S1135"2Complete the task associated to this TODO comment.(äø”8´Ü‘ÀÏ.
