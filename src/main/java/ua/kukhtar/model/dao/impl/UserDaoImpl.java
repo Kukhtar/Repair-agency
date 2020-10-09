@@ -73,7 +73,6 @@ public class UserDaoImpl implements UserDao {
             statement.setString(2,user.getPassword());
             statement.setString(3,user.getFullName());
             statement.setString(4,user.getPhoneNumber());
-
             statement.execute();
             logger.debug("User successfully added");
 
@@ -150,12 +149,18 @@ public class UserDaoImpl implements UserDao {
         List<Order> orders = new ArrayList<>();
 
         try(Connection connection = getConnection();
-            Statement statement = connection.createStatement()) {
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_FIND_ALL_ORDERS_OF_USER)) {
+            statement.setString(1, name);
+            try(ResultSet resultSet = statement.executeQuery()){
 
-            try(ResultSet resultSet = statement.executeQuery(SQLQueryConstant.SQL_FIND_ALL_ORDERS_OF_USER)){
-
+                Order order;
                 while (resultSet.next()){
-                    orders.add(OrderDaoImpl.extractOrderFromResultSet(resultSet));
+                    order = OrderDaoImpl.extractOrderFromResultSet(resultSet);
+                    User user = new User();
+                    user.setFullName(resultSet.getString("full_name"));
+                    order.setCustomer(user);
+                    order.setAddress(AddressDaoImpl.extractAddressFromResultSet(resultSet));
+                    orders.add(order);
                 }
             }
 

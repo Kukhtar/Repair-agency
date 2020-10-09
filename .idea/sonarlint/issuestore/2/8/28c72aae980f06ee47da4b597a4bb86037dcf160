@@ -1,7 +1,7 @@
 
+M
+java:S1128	"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Òù‡ÄĞ.
 o
 java:S2441"MMake "List" and its parameters serializable or don't store it in the session.(ßæû­üÿÿÿÿ8î–ÇÄĞ.
 \
 java:S1128":Remove this unused import 'ua.kukhtar.model.entity.Order'.(¸§ĞÆûÿÿÿÿ8Òù‡ÄĞ.
-M
-java:S1128	"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Òù‡ÄĞ.

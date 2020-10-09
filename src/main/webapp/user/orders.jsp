@@ -14,20 +14,28 @@
 <br>
 <table cellspacing="2" border="1" cellpadding="5" width="600">
     <tr>
-        <th>ID</th>
+        <th>Consumer name</th>
         <th>Status</th>
         <th>Date</th>
+        <th>House number</th>
+        <th>Apartment number</th>
     </tr>
     <c:forEach items='${sessionScope.orders}' var='i'>
         <tr>
             <td>
-                <c:out value='${i.id}'/>
+                <c:out value='${i.customer.fullName}'/>
             </td>
             <td>
-            <c:out value='${i.status}'/>
+                <c:out value='${i.status}'/>
             </td>
             <td>
-            <c:out value='${i.date}'/>
+                <c:out value='${i.date}'/>
+            </td>
+            <td>
+                <c:out value='${i.address.houseNumber}'/>
+            </td>
+            <td>
+                <c:out value='${i.address.flat_number}'/>
             </td>
         </tr>
     </c:forEach>

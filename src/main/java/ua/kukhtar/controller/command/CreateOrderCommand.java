@@ -45,7 +45,7 @@ public class CreateOrderCommand implements Command {
         try {
             flat = Integer.parseInt(flatNumber);
             house = Integer.parseInt(houseNumber);
-        }catch (IllegalFormatException e){
+        }catch (NumberFormatException e){
             logger.error(e);
             //todo: send massage to client that date is invalid
             return false;

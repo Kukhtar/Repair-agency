@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import ua.kukhtar.constant.SQLQueryConstant;
 import ua.kukhtar.model.dao.AddressDao;
 import ua.kukhtar.model.entity.Address;
+import ua.kukhtar.model.entity.Order;
+import ua.kukhtar.model.entity.enums.STATUS;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -20,6 +22,15 @@ public class AddressDaoImpl implements AddressDao {
 
     private Connection getConnection() throws SQLException {
         return dataSource.getConnection();
+    }
+
+    public static Address extractAddressFromResultSet(ResultSet resultSet) throws SQLException {
+        Address address = new Address();
+
+        address.setId(resultSet.getInt("address_id"));
+        address.setFlatNumber(resultSet.getInt("flat_number"));
+        address.setHouseNumber(resultSet.getInt("house_number"));
+        return address;
     }
 
     public long createAndReturnId(Address address) {

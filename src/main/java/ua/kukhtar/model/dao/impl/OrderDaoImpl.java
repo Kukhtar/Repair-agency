@@ -30,7 +30,7 @@ public class OrderDaoImpl implements OrderDao {
     public static Order extractOrderFromResultSet(ResultSet resultSet) throws SQLException {
         Order order = new Order();
         order.setStatus(STATUS.valueOf(resultSet.getString("status")));
-        order.setId(resultSet.getInt("id"));
+        order.setId(resultSet.getInt("order_id"));
         logger.debug("date = {} OR {}", resultSet.getDate("date"), resultSet.getDate("date").getTime());
         order.setDate(resultSet.getDate("date").toLocalDate());
 

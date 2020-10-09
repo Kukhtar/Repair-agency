@@ -17,7 +17,7 @@
     <div class="form-style-2-heading">
         <fmt:message key="label.welcome" />
     </div>
-    <form method="post" action="${pageContext.request.contextPath}/app/registration">
+    <form method="post" action="${pageContext.request.contextPath}/app/registration" accept-charset="UTF-8">
         <label for="name"><fmt:message key="label.login" />
             <input class="input-field" type="text" id="name" name="name">
         </label>

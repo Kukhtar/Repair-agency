@@ -113,3 +113,11 @@ Bsrc/main/java/ua/kukhtar/controller/command/UserOrdersCommand.java,2/8/28c72aa
 0src/main/java/ua/kukhtar/model/dao/OrderDao.java,a/8/a88b438ca2864a4260e0ff7570bda4560d36cef8
 O
 src/main/webapp/user/orders.jsp,0/0/006471d166435421632288bb74da712af1b89e55
+c
+3src/main/java/ua/kukhtar/filter/EncodingFilter.java,0/3/036bf481123389ffa3799e27c2fc8a3ee2a2b758
+g
+7src/main/java/ua/kukhtar/filter/CacheControlFilter.java,5/d/5d725a9d8321961ba4e386e50e28c7436a977092
+f
+6src/main/java/ua/kukhtar/listener/SessionListener.java,3/a/3a971d5439bc6973b0d57e7885a9ff5858aa406f
+U
+%src/main/webapp/manager/allOrders.jsp,9/8/98b46cec54516921a51c818ebdd5338304b2ed96
