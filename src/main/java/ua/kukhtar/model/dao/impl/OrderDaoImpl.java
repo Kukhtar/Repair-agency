@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.kukhtar.constant.SQLQueryConstant;
 import ua.kukhtar.model.dao.OrderDao;
+import ua.kukhtar.model.entity.Address;
 import ua.kukhtar.model.entity.Order;
 import ua.kukhtar.model.entity.User;
 import ua.kukhtar.model.entity.enums.STATUS;
@@ -14,6 +15,7 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class OrderDaoImpl implements OrderDao {
 
@@ -90,8 +92,41 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public Order read(int id) {
-        return null;
+    public Optional<Order> read(int id) {
+        try(Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_FIND_ORDER_BY_ID)) {
+
+            statement.setInt(1,id);
+
+            try(ResultSet resultSet = statement.executeQuery()){
+
+                if (resultSet.next()){
+                    User master = new User();
+                    master.setId(resultSet.getInt("master_id"));
+
+                    User customer = new User();
+                    customer.setId(resultSet.getInt("id"));
+                    customer.setFullName(resultSet.getString("full_name"));
+
+                    Address address = AddressDaoImpl.extractAddressFromResultSet(resultSet);
+
+                    Order order = extractOrderFromResultSet(resultSet);
+                    order.setAddress(address);
+                    order.setMaster(master);
+                    order.setCustomer(customer);
+                    logger.debug("order obtained from db {}", order);
+                    return Optional.of(order);
+                }
+            }
+
+            logger.debug("Can't find user by login");
+            return Optional.empty();
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+
     }
 
     @Override

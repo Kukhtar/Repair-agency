@@ -47,4 +47,18 @@ public class Order {
     public String getFeedBack() { return feedBack; }
 
     public void setFeedBack(String feedBack) { this.feedBack = feedBack; }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", master=" + master +
+                ", status=" + status +
+                ", date=" + date +
+                ", address=" + address +
+                ", price=" + price +
+                ", feedBack='" + feedBack + '\'' +
+                '}';
+    }
 }

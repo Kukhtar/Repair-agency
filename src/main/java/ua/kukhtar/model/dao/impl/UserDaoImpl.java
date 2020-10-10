@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User read(int id) {
+    public Optional<User> read(int id) {
         return null;
     }
 
@@ -123,11 +123,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<User> findByRole(User.ROLE role) {
         List<User> users = new ArrayList<>();
         try(Connection connection = getConnection();
-            Statement statement = connection.createStatement()) {
-            try(ResultSet resultSet = statement.executeQuery(SQLQueryConstant.SQL_FIND_ALL_USERS)){
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_FIND_USERS_BY_ROLE)) {
+            statement.setObject(1, role.name(), Types.OTHER);
+            try(ResultSet resultSet = statement.executeQuery()){
                 while (resultSet.next()){
                     users.add(extractUserFromResultSet(resultSet));
                 }

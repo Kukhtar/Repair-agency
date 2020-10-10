@@ -7,7 +7,7 @@
 
 <html>
 <head>
-    <title>Users</title>
+    <title>Order managing</title>
 </head>
 <body>
 <h3><fmt:message key="label.usersList" /></h3>
@@ -20,31 +20,28 @@
         <th>Date</th>
         <th>House number</th>
         <th>Apartment number</th>
+        <th>Master</th>
     </tr>
-    <c:forEach items='${sessionScope.orders}' var='i'>
         <tr>
             <td>
-                <c:out value='${i.customer.fullName}'/>
+                <c:out value='${requestScope.order.id}'/>
             </td>
             <td>
-                <c:out value='${i.status}'/>
+                <c:out value='${requestScope.order.status}'/>
             </td>
             <td>
-                <c:out value='${i.date}'/>
+                <c:out value='${requestScope.order.date}'/>
             </td>
             <td>
-                <c:out value='${i.address.houseNumber}'/>
+                <c:out value='${requestScope.order.address.houseNumber}'/>
             </td>
             <td>
-                <c:out value='${i.address.flat_number}'/>
+                <c:out value='${requestScope.order.address.flat_number}'/>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/app/manage_order?order_id=<c:out value='${i.id}'/>">
-                    <input type="button" value="Manage">
-                </a>
+                <c:out value='${requestScope.masters.get(requestScope.order.master.id)}'/>
             </td>
         </tr>
-    </c:forEach>
 </table>
 <br>
 <li>

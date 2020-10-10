@@ -10,6 +10,7 @@ import ua.kukhtar.model.entity.enums.STATUS;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.Optional;
 
 public class AddressDaoImpl implements AddressDao {
     private static final Logger logger = LogManager.getLogger(UserDaoImpl.class);
@@ -60,7 +61,7 @@ public class AddressDaoImpl implements AddressDao {
     }
 
     @Override
-    public Address read(int id) {
+    public Optional<Address> read(int id) {
         return null;
     }
 

@@ -15,7 +15,7 @@
     <a href="${pageContext.request.contextPath}/app/consumers"><fmt:message key="label.usersList"/> </a>
 </li>
 <li>
-    <a href="${pageContext.request.contextPath}/app/allOrders"><fmt:message key="label.allOrders"/> </a>
+    <a href="${pageContext.request.contextPath}/app/all_orders"><fmt:message key="label.allOrders"/> </a>
 </li>
 <li>
     <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>

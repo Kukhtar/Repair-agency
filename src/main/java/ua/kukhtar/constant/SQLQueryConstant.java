@@ -10,7 +10,7 @@ public class SQLQueryConstant {
     //language=SQL
     public static final String SQL_INSERT_USER = "INSERT INTO public.users (login, password, full_name, phone_number, role) VALUES (?, ?, ?, ?, 'USER')";
     //language=SQL
-    public static final String SQL_FIND_ALL_USERS = "SELECT * FROM users WHERE role='USER' ";
+    public static final String SQL_FIND_USERS_BY_ROLE = "SELECT * FROM users WHERE role=? ";
     //language=SQL
     public static final String SQL_INSERT_ADDRESS = "INSERT INTO address (house_number, flat_number) VALUES (?, ?)";
     //language=SQL
@@ -19,4 +19,8 @@ public class SQLQueryConstant {
     public static final String SQL_FIND_ALL_ORDERS_OF_USER = "SELECT orders.id AS order_id, customer_id AS id, users.full_name , status, date, address.id AS address_id, address.flat_number, address.house_number  FROM orders JOIN users ON orders.customer_id = users.id JOIN address ON orders.address_id = address.id WHERE users.login = ?";
     //language=SQL
     public static final String SQL_FIND_ALL_ORDERS = "SELECT orders.id AS order_id, customer_id AS id, users.full_name , status, date, address.id AS address_id, address.flat_number, address.house_number  FROM orders JOIN users ON orders.customer_id = users.id JOIN address ON orders.address_id = address.id ";
+    //language=SQL
+    public static final String SQL_FIND_ORDER_BY_ID = "SELECT master_id, orders.id AS order_id, customer_id AS id, users.full_name , status," +
+            " date, address.id AS address_id, address.flat_number, address.house_number  FROM orders JOIN users ON " +
+            "orders.customer_id = users.id JOIN address ON orders.address_id = address.id WHERE orders.id = ?";
 }
