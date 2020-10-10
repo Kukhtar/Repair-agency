@@ -25,15 +25,16 @@ public class ControllerServlet extends HttpServlet {
     public void init(ServletConfig servletConfig){
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
-
+        //todo: logged users shouldn't have access to index page
+        //todo: anybody can execute privileged command, fix this, maybe add user role to URL
         commands.put("logout", new LogoutCommand());
         commands.put("login", new LoginCommand(new UserService()));
         commands.put("registration", new RegistrationCommand(new UserService()));
         commands.put("consumers", new UserListCommand(new UserService()));
         commands.put("createOrder", new CreateOrderCommand(new OrderService()));
         commands.put("userOrders", new UserOrdersCommand(new UserService()));
+        commands.put("allOrders", new ManagerOrdersCommand(new OrderService()));
 
-//        commands.put("exception" , new Exception());
     }
 
     @Override
@@ -50,6 +51,8 @@ public class ControllerServlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String path = request.getRequestURI();
         path = path.replaceAll(".*/app/" , "");
+
+        //todo: maybe remove this default value
         Command command = commands.getOrDefault(path ,
                 (r)->"/jsp/index.jsp");
         String page = command.execute(request);

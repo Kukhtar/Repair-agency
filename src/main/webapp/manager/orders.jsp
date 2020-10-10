@@ -7,11 +7,12 @@
 
 <html>
 <head>
-    <title>Orders</title>
+    <title>Users</title>
 </head>
 <body>
-<h3><fmt:message key="header.yourOrders" /></h3>
+<h3><fmt:message key="label.usersList" /></h3>
 <br>
+
 <table cellspacing="2" border="1" cellpadding="5" width="600">
     <tr>
         <th>Consumer name</th>
@@ -40,7 +41,6 @@
         </tr>
     </c:forEach>
 </table>
-</body>
 <br>
 <li>
     <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>

@@ -12,6 +12,8 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.text.DateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDaoImpl implements OrderDao {
 
@@ -35,6 +37,38 @@ public class OrderDaoImpl implements OrderDao {
         order.setDate(resultSet.getDate("date").toLocalDate());
 
         return order;
+    }
+
+    @Override
+    public List<Order> findAll() {
+        List<Order> orders = new ArrayList<>();
+
+        try(Connection connection = getConnection();
+            Statement statement = connection.createStatement()) {
+
+            try(ResultSet resultSet = statement.executeQuery(SQLQueryConstant.SQL_FIND_ALL_ORDERS)){
+
+                Order order;
+                User user;
+                while (resultSet.next()){
+                    order = extractOrderFromResultSet(resultSet);
+                    order.setAddress(AddressDaoImpl.extractAddressFromResultSet(resultSet));
+
+                    user = new User();
+                    user.setId(resultSet.getInt("id"));
+                    user.setFullName(resultSet.getString("full_name"));
+
+                    order.setCustomer(user);
+                    orders.add(order);
+                }
+            }
+
+            return orders;
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
     }
 
     @Override

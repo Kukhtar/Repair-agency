@@ -17,4 +17,6 @@ public class SQLQueryConstant {
     public static final String SQL_INSERT_ORDER = " INSERT INTO public.orders ( customer_id,  status, date, address_id) VALUES (?, 'WAITING_FOR_RESPONSE', ? , ?)";
     //language=SQL
     public static final String SQL_FIND_ALL_ORDERS_OF_USER = "SELECT orders.id AS order_id, customer_id AS id, users.full_name , status, date, address.id AS address_id, address.flat_number, address.house_number  FROM orders JOIN users ON orders.customer_id = users.id JOIN address ON orders.address_id = address.id WHERE users.login = ?";
+    //language=SQL
+    public static final String SQL_FIND_ALL_ORDERS = "SELECT orders.id AS order_id, customer_id AS id, users.full_name , status, date, address.id AS address_id, address.flat_number, address.house_number  FROM orders JOIN users ON orders.customer_id = users.id JOIN address ON orders.address_id = address.id ";
 }

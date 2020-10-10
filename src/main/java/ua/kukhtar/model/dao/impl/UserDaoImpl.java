@@ -125,19 +125,14 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
-
         try(Connection connection = getConnection();
             Statement statement = connection.createStatement()) {
-
             try(ResultSet resultSet = statement.executeQuery(SQLQueryConstant.SQL_FIND_ALL_USERS)){
-
                 while (resultSet.next()){
                     users.add(extractUserFromResultSet(resultSet));
                 }
             }
-
             return users;
-
         } catch (SQLException e) {
             logger.error(e);
             throw new IllegalStateException(e);

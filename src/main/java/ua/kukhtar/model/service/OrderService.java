@@ -8,6 +8,7 @@ import ua.kukhtar.model.entity.Address;
 import ua.kukhtar.model.entity.Order;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class OrderService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
@@ -17,7 +18,7 @@ public class OrderService {
 
     public void createOrder(Address address, String userName){
         Order order = new Order();
-        //todo: fix this, this must be a transaction
+        //todo: fix this, it must be a transaction
         address.setId((int)addressDao.createAndReturnId(address));
         order.setAddress(address);
         order.setCustomer(userDao.findByLogin(userName).get());
@@ -25,5 +26,9 @@ public class OrderService {
 
 
         orderDao.create(order);
+    }
+
+    public List<Order> getAllOrders(){
+        return orderDao.findAll();
     }
 }
