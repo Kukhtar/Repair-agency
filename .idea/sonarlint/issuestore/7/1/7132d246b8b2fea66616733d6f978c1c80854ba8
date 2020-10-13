@@ -1,10 +1,10 @@
 
-X
-java:S3416"6Update this logger to use "RegistrationCommand.class".(î•„Ğûÿÿÿÿ8š†Ğ¾Ï.
-T
-java:S1135"2Complete the task associated to this TODO comment.(¨™Ûõøÿÿÿÿ8š¢¬¼Ğ.
-O
-java:S1135"2Complete the task associated to this TODO comment.(äø”8´Ü‘ÀÏ.
-X	java:S125)"<This block of commented-out lines of code should be removed.(–ø¸Ã8ê­ÕÎÏ.
 T
 java:S1135 "2Complete the task associated to this TODO comment.(ä›ó©úÿÿÿÿ8ŸÀûáĞ.
+X	java:S125)"<This block of commented-out lines of code should be removed.(–ø¸Ã8ê­ÕÎÏ.
+X
+java:S3416"6Update this logger to use "RegistrationCommand.class".(î•„Ğûÿÿÿÿ8š†Ğ¾Ï.
+O
+java:S1135"2Complete the task associated to this TODO comment.(äø”8´Ü‘ÀÏ.
+T
+java:S1135"2Complete the task associated to this TODO comment.(¨™Ûõøÿÿÿÿ8š¢¬¼Ğ.

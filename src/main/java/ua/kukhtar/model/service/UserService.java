@@ -47,4 +47,8 @@ public class UserService {
         Map<Integer, String> mastersMap = masters.stream().collect(Collectors.toMap(User::getId, User::getFullName));
         return mastersMap;
     }
+
+    public void setBankAccount(String name, String account){
+        userDao.setBankAccount(name, account);
+    }
 }

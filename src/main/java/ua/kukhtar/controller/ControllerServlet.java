@@ -3,6 +3,12 @@ package ua.kukhtar.controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import ua.kukhtar.controller.command.*;
+import ua.kukhtar.controller.command.consumer.CreateOrderCommand;
+import ua.kukhtar.controller.command.consumer.PaymentCommand;
+import ua.kukhtar.controller.command.consumer.UserOrdersCommand;
+import ua.kukhtar.controller.command.manager.ManagerOrdersCommand;
+import ua.kukhtar.controller.command.manager.OrderManagingCommand;
+import ua.kukhtar.controller.command.manager.UserListCommand;
 import ua.kukhtar.model.service.OrderService;
 import ua.kukhtar.model.service.UserService;
 
@@ -30,11 +36,12 @@ public class ControllerServlet extends HttpServlet {
         commands.put("logout", new LogoutCommand());
         commands.put("login", new LoginCommand(new UserService()));
         commands.put("registration", new RegistrationCommand(new UserService()));
-        commands.put("consumers", new UserListCommand(new UserService()));
+        commands.put("manager/consumers", new UserListCommand(new UserService()));
+        commands.put("manager/all_orders", new ManagerOrdersCommand(new OrderService()));
+        commands.put("manager/manage_order", new OrderManagingCommand(new OrderService(), new UserService()));
         commands.put("createOrder", new CreateOrderCommand(new OrderService()));
         commands.put("userOrders", new UserOrdersCommand(new UserService()));
-        commands.put("all_orders", new ManagerOrdersCommand(new OrderService()));
-        commands.put("manage_order", new OrderManagingCommand(new OrderService(), new UserService()));
+        commands.put("user/payment", new PaymentCommand(new OrderService(), new UserService()));
 
     }
 

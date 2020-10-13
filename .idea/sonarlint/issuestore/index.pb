@@ -17,8 +17,6 @@ N
 src/main/webapp/css/styles.css,2/2/226fdb532cdd154e562e34b81688c3c0b8ee225f
 h
 8src/main/java/ua/kukhtar/filter/SessionLocaleFilter.java,3/8/3884f8aed03b1eb5568f9f83b046d3f60ff4946a
-N
-src/main/webapp/jsp/styles.css,9/e/9e3eaee10c8d8b6a2fddffde03740cde08cd8069
 _
 /src/main/java/ua/kukhtar/model/dao/CrudDao.java,9/3/9364d73cd5e5547e50c9b8d465f431528c0f8bab
 f
@@ -47,8 +45,6 @@ f
 6target/repair-agency-1.0-SNAPSHOT/jsp/registration.jsp,e/2/e232afa041ed5d33a50a8ec305a49fa52c9d58a2
 `
 0target/repair-agency-1.0-SNAPSHOT/css/styles.css,6/3/63b3bf24ea594145ebfcdae699fd4a67ec4480d2
-`
-0target/repair-agency-1.0-SNAPSHOT/jsp/styles.css,6/b/6ba58fc824bcaa1bc0080cd3b4d03954a82ef973
 a
 1target/repair-agency-1.0-SNAPSHOT/WEB-INF/web.xml,9/6/96187749721b1beb8975126700564fe9a2a577f3
 _
@@ -67,8 +63,6 @@ o
 ?src/main/java/ua/kukhtar/controller/command/CommandUtility.java,3/1/31fdeae058fb1e8979979a4e11b727c830afa167
 t
 Dsrc/main/java/ua/kukhtar/controller/command/RegistrationCommand.java,7/1/7132d246b8b2fea66616733d6f978c1c80854ba8
-p
-@src/main/java/ua/kukhtar/controller/command/UserListCommand.java,4/3/430d93b1611202459736078b9bc162bf0eacf128
 b
 2src/main/java/ua/kukhtar/model/dao/DaoFactory.java,1/1/118763228a08c23973633ef36b28e7f02d408f85
 T
@@ -83,8 +77,6 @@ N
 src/main/webapp/user/index.jsp,a/3/a38b52a66006d59de88d376f76769726798da7ef
 U
 %src/main/webapp/user/create_order.jsp,7/f/7f2d2800b43db6c89957b480daf6c36356042e2d
-s
-Csrc/main/java/ua/kukhtar/controller/command/CreateOrderCommand.java,2/e/2ec26edc8dd06f7bb76ea4ce67273fff77841728
 i
 9src/main/java/ua/kukhtar/model/dao/impl/OrderDaoImpl.java,6/a/6a244dc6ec94513de4f84b382859448541d585e9
 h
@@ -107,8 +99,6 @@ c
 0src/main/java/ua/kukhtar/model/entity/Order.java,e/a/ea68ee453dca22e435938e3c23411b73645b3b58
 g
 7src/main/java/ua/kukhtar/model/entity/enums/STATUS.java,2/8/288a3cd63b8017f42149969c988e8a33e4280888
-r
-Bsrc/main/java/ua/kukhtar/controller/command/UserOrdersCommand.java,2/8/28c72aae980f06ee47da4b597a4bb86037dcf160
 `
 0src/main/java/ua/kukhtar/model/dao/OrderDao.java,a/8/a88b438ca2864a4260e0ff7570bda4560d36cef8
 O
@@ -119,5 +109,23 @@ g
 7src/main/java/ua/kukhtar/filter/CacheControlFilter.java,5/d/5d725a9d8321961ba4e386e50e28c7436a977092
 f
 6src/main/java/ua/kukhtar/listener/SessionListener.java,3/a/3a971d5439bc6973b0d57e7885a9ff5858aa406f
+R
+"src/main/webapp/manager/orders.jsp,3/4/34e4b038e076c0cbb33faffc47f3bca61baa2223
+X
+(src/main/webapp/manager/order_manage.jsp,e/3/e3e686021770579fcc695415932cd7d116538466
+|
+Lsrc/main/java/ua/kukhtar/controller/command/consumer/CreateOrderCommand.java,3/f/3f47da6732d905369ce2e52e429496dcb26c5ce7
+}
+Msrc/main/java/ua/kukhtar/controller/command/manager/ManagerOrdersCommand.java,b/5/b54e0ea82cc2a72380ccbcb9676e0bbf085ccb31
+x
+Hsrc/main/java/ua/kukhtar/controller/command/manager/UserListCommand.java,2/5/25f441056fcb5d86fccac9af30cdf4da6a3888be
+}
+Msrc/main/java/ua/kukhtar/controller/command/manager/OrderManagingCommand.java,3/c/3c39740b196a1801e03281268b73c7ecc8ad752e
+{
+Ksrc/main/java/ua/kukhtar/controller/command/consumer/UserOrdersCommand.java,9/5/950c6a963f3b4bc35dee2caa9c670afd098c4a72
+x
+Hsrc/main/java/ua/kukhtar/controller/command/consumer/PaymentCommand.java,5/7/57146db8ebe7dcdd05e9e9eb54112f95e985a686
 U
-%src/main/webapp/manager/allOrders.jsp,9/8/98b46cec54516921a51c818ebdd5338304b2ed96
+%src/main/webapp/user/payment_page.jsp,0/9/099ebb89e8d092391d987e0d3d21bf8788d8d459
+e
+5src/main/java/ua/kukhtar/filter/GuestPagesFilter.java,7/2/726634166829b230fe2e58b0f36061753b8a1bad

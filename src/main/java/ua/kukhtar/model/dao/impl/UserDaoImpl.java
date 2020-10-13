@@ -88,7 +88,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void update(User object) {
+    public void update(User user) {
 
     }
 
@@ -165,6 +165,56 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException e) {
             logger.error(e);
             throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void setBankAccount(String name, String bankAccount) {
+        Connection connection;
+        try {
+            connection = getConnection();
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+
+        try (PreparedStatement getUser = connection.prepareStatement(SQLQueryConstant.SQL_GET_USER_ID_BY_LOGIN);
+             PreparedStatement updateUser = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_CONSUMER)){
+            logger.debug("inserting bank account ");
+            connection.setAutoCommit(false);
+            getUser.setString(1, name);
+
+            int id;
+            try(ResultSet resultSet = getUser.executeQuery()){
+                if (resultSet.next()){
+                   id = resultSet.getInt("id");
+                }else {
+                    throw new IllegalStateException("Can't find this user");
+                }
+            }
+            logger.debug("inserting bank account ID = {}", id);
+
+            updateUser.setString(1, bankAccount);
+            updateUser.setInt(2, id);
+            updateUser.executeUpdate();
+
+            logger.debug("end of inserting account");
+            connection.commit();
+        }  catch (SQLException e) {
+            logger.error(e);
+            try {
+                logger.debug("Transaction is being rolled back");
+                connection.rollback();
+            } catch (SQLException excep) {
+                logger.error(excep);
+            }
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                logger.error(e);
+                throw new IllegalStateException(e);
+            }
         }
     }
 }

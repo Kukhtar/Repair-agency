@@ -39,7 +39,7 @@
                 <c:out value='${i.address.flat_number}'/>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/app/manage_order?order_id=<c:out value='${i.id}'/>">
+                <a href="${pageContext.request.contextPath}/app/manager/manage_order?order_id=<c:out value='${i.id}'/>">
                     <input type="button" value="Manage">
                 </a>
             </td>

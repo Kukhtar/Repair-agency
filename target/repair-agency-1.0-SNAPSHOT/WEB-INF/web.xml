@@ -28,9 +28,10 @@
     </filter>
     <filter-mapping>
         <filter-name>CacheControlFilter</filter-name>
-        <url-pattern>/app/login/*</url-pattern>
+        <url-pattern>/app/*</url-pattern>
         <url-pattern>/user/*</url-pattern>
         <url-pattern>/manager/*</url-pattern>
+        <url-pattern>/master/*</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>SessionLocaleFilter</filter-name> <!-- mandatory -->
@@ -61,6 +62,9 @@
         <url-pattern>/app</url-pattern>
     </filter-mapping>
 
+    <listener>
+        <listener-class>ua.kukhtar.listener.SessionListener</listener-class>
+    </listener>
 
     <resource-ref>
         <description>

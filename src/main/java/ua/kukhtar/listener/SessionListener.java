@@ -1,10 +1,14 @@
 package ua.kukhtar.listener;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.util.HashSet;
 
 public class SessionListener  implements HttpSessionListener {
+    private final Logger logger = LogManager.getLogger(SessionListener.class);
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
 
@@ -18,6 +22,7 @@ public class SessionListener  implements HttpSessionListener {
         String userName = (String) httpSessionEvent.getSession()
                 .getAttribute("name");
         loggedUsers.remove(userName);
+
         httpSessionEvent.getSession().setAttribute("loggedUsers", loggedUsers);
     }
 }

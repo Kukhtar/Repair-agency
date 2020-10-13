@@ -6,6 +6,7 @@ public class User {
     private String password;
     private String fullName;
     private String phoneNumber;
+    private String bankAccount;
 
     @Override
     public String toString() {
@@ -20,6 +21,14 @@ public class User {
     }
 
     private ROLE role;
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
 
     public enum ROLE {
         USER, MANAGER, MASTER

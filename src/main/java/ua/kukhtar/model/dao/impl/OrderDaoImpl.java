@@ -10,6 +10,7 @@ import ua.kukhtar.model.entity.User;
 import ua.kukhtar.model.entity.enums.STATUS;
 
 import javax.sql.DataSource;
+import java.lang.reflect.Type;
 import java.sql.*;
 import java.text.DateFormat;
 import java.time.LocalDate;
@@ -35,6 +36,7 @@ public class OrderDaoImpl implements OrderDao {
         Order order = new Order();
         order.setStatus(STATUS.valueOf(resultSet.getString("status")));
         order.setId(resultSet.getInt("order_id"));
+        order.setPrice(resultSet.getInt("price"));
         logger.debug("date = {} OR {}", resultSet.getDate("date"), resultSet.getDate("date").getTime());
         order.setDate(resultSet.getDate("date").toLocalDate());
 
@@ -130,12 +132,71 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public void update(Order object) {
+    public void update(Order order) {
+        Connection connection = null;
+        try {
+            connection = getConnection();
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
 
+        try(PreparedStatement updateMaster = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_MASTER_ID);
+            PreparedStatement updateStatus = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_STATUS);
+            PreparedStatement updatePrice = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_PRICE)) {
+
+            connection.setAutoCommit(false);
+
+            updateMaster.setInt(1, order.getMaster().getId());
+            updateMaster.setInt(2, order.getId());
+
+            updateStatus.setObject(1, order.getStatus().name(), Types.OTHER);
+            updateStatus.setInt(2, order.getId());
+
+            updatePrice.setInt(1, order.getPrice());
+            updatePrice.setInt(2, order.getId());
+
+            updateMaster.executeUpdate();
+            updateStatus.executeUpdate();
+            updatePrice.executeUpdate();
+
+            connection.commit();
+            logger.debug("Transaction was successful");
+
+        } catch (SQLException e) {
+            logger.error(e);
+            try {
+                logger.debug("Transaction is being rolled back");
+                connection.rollback();
+            } catch (SQLException excep) {
+                logger.error(excep);
+            }
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                logger.error(e);
+                throw new IllegalStateException(e);
+            }
+        }
     }
 
     @Override
     public void delete(Order object) {
 
+    }
+
+    @Override
+    public void updateStatus(Order order) {
+        try (Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_STATUS)){
+
+            statement.setObject(1, order.getStatus(), Types.OTHER);
+            statement.setInt(2, order.getId());
+            statement.execute();
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
     }
 }

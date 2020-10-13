@@ -1,5 +1,11 @@
 
-—
-java:S1186\"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(”Ù¯Î
 –
-java:S1186a"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(æôò7
+java:S1186`"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(æôò7
+`
+java:S1163Õ"=Refactor this code to not throw exceptions in finally blocks.(ª¢ùÅıÿÿÿÿ8¸ÂÒ.
+]
+java:S2789W"@Methods with an "Optional" return type should never return null.(¥¹ï8Š…íÃÑ.
+W
+java:S1143Õ"4Remove this throw statement from this finally block.(ª¢ùÅıÿÿÿÿ8¸ÂÒ.
+£
+java:S1186["€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(óç„¶ûÿÿÿÿ8öÊ•Ò.

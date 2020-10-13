@@ -37,6 +37,9 @@
             <td>
                 <c:out value='${i.address.flat_number}'/>
             </td>
+            <td style="border: 0px; display: ${sessionScope.orderButtons.get(i.id)}"><a href="${pageContext.request.contextPath}/user/payment_page.jsp?id=${i.id}">
+                <input type="button" value="Pay">
+                </a></td>
         </tr>
     </c:forEach>
 </table>

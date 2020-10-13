@@ -1,9 +1,0 @@
-
-Z
-java:S1128	"=Remove this unused import 'java.util.IllegalFormatException'.(©šë„8ëÏâĞ.
-T
-java:S11352"2Complete the task associated to this TODO comment.(äÀÇ×ùÿÿÿÿ8âİÌ¼Ğ.
-W
-java:S3416"5Update this logger to use "CreateOrderCommand.class".(î•„Ğûÿÿÿÿ8æÖ³¼Ğ.
-c
-java:S11266"AReplace this if-then-else statement by a single return statement.(§”¯œüÿÿÿÿ8ûÌÓ¼Ğ.
