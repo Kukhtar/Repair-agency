@@ -11,6 +11,7 @@ import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+import java.util.Optional;
 
 public class OrderManagingCommand implements Command {
     private static final Logger logger = LogManager.getLogger(OrderManagingCommand.class);
@@ -84,10 +85,19 @@ public class OrderManagingCommand implements Command {
 
         if (managingOrder.getStatus()==STATUS.WAITING_FOR_PAYMENT){
             orderService.cancelOrder(managingOrder);
-            return "/manager/order_manage.jsp";
+            return "/app/manager/all_orders";
         }
         orderService.cancelOrder(managingOrder);
+
+        Optional<User> consumer = userService.getUserById(managingOrder.getCustomer().getId());
+        if (consumer.isPresent()){
+            request.setAttribute("account", consumer.get().getBankAccount());
+        }else {
+            logger.error("cant find user by id: {}", managingOrder.getCustomer().getId());
+            throw new IllegalStateException("User not found");
+        }
         //todo: set name and bank account of user as attribute
+
         return "/manager/return_money.jsp";
     }
 

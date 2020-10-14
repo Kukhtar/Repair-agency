@@ -27,16 +27,22 @@ public class OrderService {
     private UserDao userDao = daoFactory.createUserDao();
     private AddressDao addressDao = daoFactory.createAddressDao();
 
-    public void createOrder(Address address, String userName){
+    public int createOrder(Address address, String userName){
         Order order = new Order();
         //todo: fix this, it must be a transaction
-        address.setId((int)addressDao.createAndReturnId(address));
+        address.setId(addressDao.create(address));
         order.setAddress(address);
-        order.setCustomer(userDao.findByLogin(userName).get());
+        Optional<User> customer = userDao.findByLogin(userName);
+        if (customer.isPresent()) {
+            order.setCustomer(customer.get());
+        }else {
+            throw new IllegalStateException("Can't find user in dataBase");
+        }
+
         order.setDate(LocalDate.now());
 
 
-        orderDao.create(order);
+        return orderDao.create(order);
     }
 
     public List<Order> getAllOrders(){

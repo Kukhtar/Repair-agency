@@ -1,16 +1,28 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kukhtar
-  Date: 12.10.20
-  Time: 23:16
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="messages"/>
+
 <html>
 <head>
-    <title>Return money</title>
+    <title>Users</title>
 </head>
 <body>
-<%--    todo: add here user information: bank account and name--%>
+<h3><fmt:message key="label.bankAccount" /></h3>
+<h4><c:out value="${requestScope.account}"/></h4>
+<br>
+<a href="${pageContext.request.contextPath}/app/manager/all_orders/"><input type="button" value="Pay back"></a>
+
+</table>
+<br>
+<li>
+    <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>
+</li>
+<br><br>
+
+<li><a href="?sessionLocale=en">English</a></li>
+<li><a href="?sessionLocale=uk">Ukrainian</a></li>
 </body>
 </html>

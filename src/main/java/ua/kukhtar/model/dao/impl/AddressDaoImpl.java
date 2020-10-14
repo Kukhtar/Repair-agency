@@ -34,20 +34,20 @@ public class AddressDaoImpl implements AddressDao {
         return address;
     }
 
-    public long createAndReturnId(Address address) {
+    @Override
+    public int create(Address address) {
         try (Connection connection = getConnection();
             PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_ADDRESS, Statement.RETURN_GENERATED_KEYS)){
 
             statement.setInt(1, address.getHouseNumber());
             statement.setInt(2, address.getFlat_number());
             statement.executeUpdate();
-            ResultSet resultSet = statement.getGeneratedKeys();
-            if (resultSet.next()){
-                logger.debug("address {} added", address);
-                return resultSet.getLong(1);
-            }
 
-            return -1;
+            ResultSet resultSet = statement.getGeneratedKeys();
+            resultSet.next();
+            logger.debug("address {} added", address);
+            return resultSet.getInt(1);
+
 
         } catch (SQLException e) {
             logger.error(e);
@@ -55,10 +55,6 @@ public class AddressDaoImpl implements AddressDao {
         }
     }
 
-    @Override
-    public void create(Address object) {
-
-    }
 
     @Override
     public Optional<Address> read(int id) {

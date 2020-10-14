@@ -76,7 +76,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public void create(Order order) {
+    public int create(Order order) {
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_ORDER)){
 
@@ -86,6 +86,10 @@ public class OrderDaoImpl implements OrderDao {
             logger.debug("order created: {}", order);
             statement.execute();
 
+            ResultSet resultSet = statement.getGeneratedKeys();
+            resultSet.next();
+            logger.debug("user {} added", order);
+            return resultSet.getInt(1);
 
         } catch (SQLException e) {
             logger.error(e);

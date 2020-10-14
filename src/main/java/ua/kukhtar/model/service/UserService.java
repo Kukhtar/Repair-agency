@@ -14,23 +14,21 @@ public class UserService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private UserDao userDao = daoFactory.createUserDao();
 
-    public Optional<User> getUser(String login){
+    public Optional<User> getUserByLogin(String login){
         Optional<User> result;
         result = userDao.findByLogin(login);
         return result;
     }
 
-    public boolean isLoginFree(String login){
-        int id = userDao.getUserID(login);
-        return id==-1;
-    }
-    public int getUserId(String login){
-        int id = userDao.getUserID(login);
-        return id;
+    public Optional<User> getUserById(int id){
+        Optional<User> result;
+        result = userDao.read(id);
+        return result;
     }
 
-    public void addUser(User user){
-        userDao.create(user);
+
+    public int addUser(User user) {
+        return userDao.create(user);
     }
 
     public List<User> getAllUsers(){

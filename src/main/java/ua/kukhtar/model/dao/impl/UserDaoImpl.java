@@ -35,46 +35,26 @@ public class UserDaoImpl implements UserDao {
         user.setPassword(resultSet.getString("password"));
         user.setPhoneNumber(resultSet.getString("phone_number"));
         user.setRole(User.ROLE.valueOf(resultSet.getString("role")));
+        user.setBankAccount(resultSet.getString("bank_account"));
         return user;
     }
 
     @Override
-    public Optional<User> findByLogin(String login) {
+    public int create(User user) {
         try(Connection connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_GET_USER_BY_LOGIN)) {
-
-            statement.setString(1, login);
-
-            try(ResultSet resultSet = statement.executeQuery()){
-
-                if (resultSet.next()){
-                    User user = extractUserFromResultSet(resultSet);
-                    logger.debug("User obtained from db {}", user);
-                    return Optional.of(user);
-                }
-            }
-
-            logger.debug("Can't find user by login");
-            return Optional.empty();
-
-        } catch (SQLException e) {
-            logger.error(e);
-            throw new IllegalStateException(e);
-        }
-
-    }
-
-    @Override
-    public void create(User user) {
-        try(Connection connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_USER)) {
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_USER, Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setString(1,user.getLogin());
             statement.setString(2,user.getPassword());
             statement.setString(3,user.getFullName());
             statement.setString(4,user.getPhoneNumber());
             statement.execute();
-            logger.debug("User successfully added");
+
+            ResultSet resultSet = statement.getGeneratedKeys();
+            resultSet.next();
+            logger.debug("user {} added", user);
+            return resultSet.getInt(1);
+
 
         } catch (SQLException e) {
             logger.error(e);
@@ -83,8 +63,44 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public Optional<User> findByLogin(String  login) {
+        try(Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_GET_USER_BY_LOGIN)) {
+            statement.setString(1, login);
+
+            return getUser(statement);
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+
+    }
+
+    @Override
     public Optional<User> read(int id) {
-        return null;
+        try(Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_GET_USER_BY_ID)) {
+            statement.setInt(1, id);
+
+            return getUser(statement);
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    private Optional<User> getUser(PreparedStatement statement) throws SQLException {
+        try(ResultSet resultSet = statement.executeQuery()){
+            if (resultSet.next()){
+                User user = extractUserFromResultSet(resultSet);
+                logger.debug("User obtained from db {}", user);
+                return Optional.of(user);
+            }
+        }
+        logger.debug("Can't find user by login");
+        return Optional.empty();
     }
 
     @Override
@@ -97,30 +113,6 @@ public class UserDaoImpl implements UserDao {
 
     }
 
-    @Override
-    public int getUserID(String name) {
-        try(Connection connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_GET_USER_ID_BY_LOGIN)) {
-
-            statement.setString(1, name);
-
-            try(ResultSet resultSet = statement.executeQuery()){
-
-                if (resultSet.next()){
-                    int id = resultSet.getInt("id");
-                    logger.debug("User id for {} = {}", name, id);
-                    return id;
-                }
-            }
-
-            logger.debug("Can't find user by login");
-            return -1;
-
-        } catch (SQLException e) {
-            logger.error(e);
-            throw new IllegalStateException(e);
-        }
-    }
 
     @Override
     public List<User> findByRole(User.ROLE role) {
@@ -168,6 +160,7 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
+    //should remove this, and add to update method
     @Override
     public void setBankAccount(String name, String bankAccount) {
         Connection connection;
@@ -187,7 +180,7 @@ public class UserDaoImpl implements UserDao {
             int id;
             try(ResultSet resultSet = getUser.executeQuery()){
                 if (resultSet.next()){
-                   id = resultSet.getInt("id");
+                    id = resultSet.getInt("id");
                 }else {
                     throw new IllegalStateException("Can't find this user");
                 }

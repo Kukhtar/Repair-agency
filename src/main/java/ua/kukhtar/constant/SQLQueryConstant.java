@@ -6,6 +6,8 @@ public class SQLQueryConstant {
     //language=SQL
     public static final String SQL_GET_USER_ID_BY_LOGIN = "SELECT users.id FROM users WHERE users.login = ? LIMIT 1";
     //language=SQL
+    public static final String SQL_GET_USER_BY_ID = "SELECT * FROM users WHERE id=?";
+    //language=SQL
     public static final String SQL_GET_USER_BY_LOGIN = "SELECT * FROM users WHERE login=?";
     //language=SQL
     public static final String SQL_INSERT_USER = "INSERT INTO public.users (login, password, full_name, phone_number, role) VALUES (?, ?, ?, ?, 'USER')";
@@ -31,5 +33,7 @@ public class SQLQueryConstant {
     public static final String SQL_UPDATE_PRICE = "UPDATE orders SET price = ?  WHERE id = ?";
     //language=SQL
     public static final String SQL_UPDATE_CONSUMER = "UPDATE public.users SET bank_account = ? WHERE id = ?";
+    //language=SQL
+    public static final String SQL_GET_USER_BANK_ACCOUNT = "SELECT bank_account FROM users WHERE id = ?";
 
 }

@@ -27,7 +27,7 @@ public class LoginCommand implements Command {
             return "/jsp/login.jsp";
         }
 
-        Optional<User> user = service.getUser(name);
+        Optional<User> user = service.getUserByLogin(name);
         //TODO: add password encrypting
         if( user.isPresent() && user.get().getPassword().equals(pass)){
             if (CommandUtility.checkUserIsLogged(request, name)){

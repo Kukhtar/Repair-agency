@@ -42,11 +42,12 @@ public class RegistrationCommand implements Command {
             return "/jsp/registration.jsp";
         }
 
-        if (!service.isLoginFree(name)){
-            logger.debug("name: {} is not available", name);
-            request.setAttribute("massage", rb.getString("message.userNameNotAvailable"));
-            return "/jsp/registration.jsp";
-        }
+        //todo: add exception handling from registration service
+//        if (!service.isLoginFree(name)){
+//            logger.debug("name: {} is not available", name);
+//            request.setAttribute("massage", rb.getString("message.userNameNotAvailable"));
+//            return "/jsp/registration.jsp";
+//        }
 
         request.getSession().setAttribute("name" , name);
         request.getSession().setAttribute("role" , User.ROLE.USER.name());
@@ -57,7 +58,9 @@ public class RegistrationCommand implements Command {
         user.setPhoneNumber(phoneNumber);
 
         service.addUser(user);
-        user.setId(service.getUserId(name));
+
+        //maybe i don't need this
+//        user.setId(service.getUserId(name));
         logger.info("created user object: {}", user);
         return "redirect:/user/index.jsp";
     }
