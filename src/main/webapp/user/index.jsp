@@ -14,8 +14,8 @@
 <li>
     <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>
 </li>
-<p><a href="${pageContext.request.contextPath}/app/createOrder"><fmt:message key="label.createOrder"/> </a></p>
-<p><a href="${pageContext.request.contextPath}/app/userOrders"><fmt:message key="header.yourOrders"/> </a></p>
+<p><a href="${pageContext.request.contextPath}/app/user/createOrder"><fmt:message key="label.createOrder"/> </a></p>
+<p><a href="${pageContext.request.contextPath}/app/user/orders"><fmt:message key="header.yourOrders"/> </a></p>
 
 <br><br>
 

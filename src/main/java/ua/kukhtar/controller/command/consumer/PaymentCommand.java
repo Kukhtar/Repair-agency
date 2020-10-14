@@ -31,7 +31,7 @@ public class PaymentCommand implements Command {
         Order order = new Order();
         order.setId(id);
         orderService.payForOrder(order);
-        return "redirect:/app/userOrders";
+        return "redirect:/app/user/orders";
     }
 
     private boolean isValid(String number){

@@ -20,7 +20,7 @@ import java.util.Optional;
 
 public class OrderDaoImpl implements OrderDao {
 
-    private static final Logger logger = LogManager.getLogger(UserDaoImpl.class);
+    private static final Logger logger = LogManager.getLogger(OrderDaoImpl.class);
 
     private final DataSource dataSource;
 
@@ -78,7 +78,7 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public int create(Order order) {
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_ORDER)){
+             PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_ORDER, Statement.RETURN_GENERATED_KEYS)){
 
             statement.setInt(1, order.getCustomer().getId());
             statement.setDate(2, Date.valueOf(order.getDate()));
@@ -88,7 +88,7 @@ public class OrderDaoImpl implements OrderDao {
 
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
-            logger.debug("user {} added", order);
+            logger.debug("order {} added", order);
             return resultSet.getInt(1);
 
         } catch (SQLException e) {

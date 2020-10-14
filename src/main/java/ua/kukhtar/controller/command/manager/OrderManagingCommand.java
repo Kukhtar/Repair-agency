@@ -30,7 +30,7 @@ public class OrderManagingCommand implements Command {
         String id = request.getParameter("order_id");
         if (id!=null) {
             initCallManaging(request, id);
-            return "/manager/order_manage.jsp";
+            return "/manager/order_manage.jsp?id=" + id;
         }
         if (managingOrder == null){
             throw new IllegalStateException("Order not founded");

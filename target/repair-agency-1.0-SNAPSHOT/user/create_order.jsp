@@ -17,7 +17,7 @@
 <div class="form-style-2">
 
     <h3><fmt:message key="header.address"/> </h3>
-    <form method="post" action="${pageContext.request.contextPath}/app/createOrder">
+    <form method="post" action="${pageContext.request.contextPath}/app/user/createOrder">
         <label for="flatNumber"><fmt:message key="label.flatNumber" />
             <input class="input-field" type="text" id="flatNumber" name="flat_number">
         </label>

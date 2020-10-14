@@ -13,7 +13,7 @@
 <h3><fmt:message key="label.bankAccount" /></h3>
 <h4><c:out value="${requestScope.account}"/></h4>
 <br>
-<a href="${pageContext.request.contextPath}/app/manager/all_orders/"><input type="button" value="Pay back"></a>
+<a href="${pageContext.request.contextPath}/app/manager/all_orders"><input type="button" value="Pay back"></a>
 
 </table>
 <br>

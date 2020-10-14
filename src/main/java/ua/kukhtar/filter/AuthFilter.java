@@ -6,6 +6,7 @@ import ua.kukhtar.model.entity.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AuthFilter implements Filter {
@@ -19,6 +20,7 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
         String path = request.getRequestURI();
         String sessionRole = (String) request.getSession().getAttribute("role");
         User.ROLE requiredRole;
@@ -40,6 +42,10 @@ public class AuthFilter implements Filter {
         }
 
         //todo: add redirect to correct login page (only for guests )
+        if (sessionRole==null || sessionRole.equals("")){
+            response.sendRedirect(request.getContextPath() + "/app/login");
+            return;
+        }
         servletResponse.getWriter().append("AccessDenied");
     }
 
