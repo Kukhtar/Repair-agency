@@ -14,6 +14,6 @@ public class ManagerOrdersCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         request.getSession().setAttribute("orders", service.getAllOrders());
-        return "redirect:/manager/orders.jsp";
+        return "/manager/orders.jsp";
     }
 }

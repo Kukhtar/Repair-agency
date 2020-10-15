@@ -48,7 +48,7 @@ public class OrderManagingCommand implements Command {
     }
 
     public String processOrder(HttpServletRequest request){
-        if (STATUS.valueOf(request.getParameter("status")) == STATUS.WAITING_FOR_RESPONSE){
+        if (managingOrder.getStatus() == STATUS.WAITING_FOR_RESPONSE){
             return confirmOrder(request);
         }
 
@@ -77,7 +77,7 @@ public class OrderManagingCommand implements Command {
         orderService.updateOrder(managingOrder);
 
         setJspAttribute(request);
-        return "/manager/order_manage.jsp";
+        return "redirect:/app/manager/manage_order?order_id=" + managingOrder.getId();
     }
 
     private String cancelOrder(HttpServletRequest request){
@@ -85,7 +85,7 @@ public class OrderManagingCommand implements Command {
 
         if (managingOrder.getStatus()==STATUS.WAITING_FOR_PAYMENT){
             orderService.cancelOrder(managingOrder);
-            return "/app/manager/all_orders";
+            return "redirect:/app/manager/all_orders";
         }
         orderService.cancelOrder(managingOrder);
 
@@ -96,9 +96,8 @@ public class OrderManagingCommand implements Command {
             logger.error("cant find user by id: {}", managingOrder.getCustomer().getId());
             throw new IllegalStateException("User not found");
         }
-        //todo: set name and bank account of user as attribute
 
-        return "/manager/return_money.jsp";
+        return "redirect:/manager/return_money.jsp";
     }
 
     private void setJspAttribute(HttpServletRequest request){

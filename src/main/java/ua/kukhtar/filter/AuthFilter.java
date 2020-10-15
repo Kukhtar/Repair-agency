@@ -41,7 +41,6 @@ public class AuthFilter implements Filter {
             return;
         }
 
-        //todo: add redirect to correct login page (only for guests )
         if (sessionRole==null || sessionRole.equals("")){
             response.sendRedirect(request.getContextPath() + "/app/login");
             return;
@@ -50,7 +49,7 @@ public class AuthFilter implements Filter {
     }
 
     private boolean isAccessible(String sessionRole, User.ROLE requiredRole){
-        if ((sessionRole != null && requiredRole.name().equals(sessionRole))) {
+        if ((requiredRole.name().equals(sessionRole))) {
             logger.info("Access confirmed");
             return true;
         }

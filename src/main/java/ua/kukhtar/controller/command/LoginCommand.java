@@ -17,7 +17,6 @@ public class LoginCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        //todo: add validation to the special method
 
         String name = request.getParameter("name");
         String pass = request.getParameter("password");
@@ -35,6 +34,8 @@ public class LoginCommand implements Command {
             }
 
             request.getSession().setAttribute("name" , name);
+            request.getSession().setAttribute("id" , user.get().getId());
+            logger.debug("logged user id {}", user.get().getId());
             request.getSession().setAttribute("role" , user.get().getRole().name());
             logger.info("user "+ name+" logged successfully.");
             return CommandUtility.getHomePageForUser(user.get().getRole());

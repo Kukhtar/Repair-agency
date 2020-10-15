@@ -4,12 +4,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.kukhtar.controller.command.Command;
 import ua.kukhtar.model.entity.Order;
+import ua.kukhtar.model.entity.User;
 import ua.kukhtar.model.entity.enums.STATUS;
 import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class UserOrdersCommand  implements Command {
     private UserService service;
@@ -24,21 +27,13 @@ public class UserOrdersCommand  implements Command {
         String userName = (String)request.getSession().getAttribute("name");
         List<Order> orders = service.getOrders(userName);
 
-        HashMap<Integer, String> buttonsDisplay = new HashMap<>();
+        Map<Integer, String> buttonsDisplay  = orders.stream().collect(Collectors.toMap(Order::getId, x -> x.getStatus()==STATUS.WAITING_FOR_PAYMENT?"table":"none"));;
         Order order;
-        for (int i = 0; i < orders.size(); i++) {
-            order = orders.get(i);
-            if (order.getStatus() == STATUS.WAITING_FOR_PAYMENT){
-                buttonsDisplay.put(order.getId(), "table");
-            }else {
-                //todo: add report feedback option
-                buttonsDisplay.put(order.getId(), "none");
-            }
-        }
+
         request.getSession().setAttribute("orderButtons", buttonsDisplay);
 
         logger.debug("Order list size: {} ", orders.size());
         request.getSession().setAttribute("orders", service.getOrders(userName));
-        return "redirect:/user/orders.jsp";
+        return "/user/orders.jsp";
     }
 }

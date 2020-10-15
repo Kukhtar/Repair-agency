@@ -64,6 +64,12 @@ public class OrderService {
         orderDao.update(order);
     }
 
+    public List<Order> getMastersOrders (int masterId){
+        List <Order> orders = orderDao.findAll().stream().filter(x -> x.getMaster().getId() == masterId).collect(Collectors.toList());
+        logger.debug("obtained list: {}", orders);
+        return orders;
+    }
+
     public void cancelOrder(Order order) {
         order.setStatus(STATUS.CANCELED);
         orderDao.updateStatus(order);

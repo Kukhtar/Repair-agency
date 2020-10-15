@@ -19,7 +19,7 @@
     </div>
     <form method="post" action="${pageContext.request.contextPath}/app/login">
         <label for="name"><fmt:message key="label.login" />
-            <input class="input-field" type="text" id="name" name="name">
+            <input class="input-field" type="text" id="name" name="name" value="${param.get("name")}">
         </label>
         <label for="password"><fmt:message key="label.password" />
             <input class="input-field" type="password" id="password" name="password">

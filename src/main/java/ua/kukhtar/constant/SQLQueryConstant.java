@@ -20,7 +20,7 @@ public class SQLQueryConstant {
     //language=SQL
     public static final String SQL_FIND_ALL_ORDERS_OF_USER = "SELECT orders.id AS order_id, customer_id AS id, users.full_name , status, date, address.id AS address_id, address.flat_number, address.house_number, price  FROM orders JOIN users ON orders.customer_id = users.id JOIN address ON orders.address_id = address.id WHERE users.login = ?";
     //language=SQL
-    public static final String SQL_FIND_ALL_ORDERS = "SELECT orders.id AS order_id, customer_id AS id, users.full_name , status, date, address.id AS address_id, address.flat_number, address.house_number, price  FROM orders JOIN users ON orders.customer_id = users.id JOIN address ON orders.address_id = address.id ";
+    public static final String SQL_FIND_ALL_ORDERS = "SELECT master_id, orders.id AS order_id, customer_id AS id, users.full_name , status, date, address.id AS address_id, address.flat_number, address.house_number, price  FROM orders JOIN users ON orders.customer_id = users.id JOIN address ON orders.address_id = address.id ";
     //language=SQL
     public static final String SQL_FIND_ORDER_BY_ID = "SELECT master_id, orders.id AS order_id, customer_id AS id, users.full_name , status," +
             " date, address.id AS address_id, address.flat_number, address.house_number, price FROM orders JOIN users ON " +

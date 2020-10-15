@@ -54,6 +54,7 @@ public class OrderDaoImpl implements OrderDao {
 
                 Order order;
                 User user;
+                User master;
                 while (resultSet.next()){
                     order = extractOrderFromResultSet(resultSet);
                     order.setAddress(AddressDaoImpl.extractAddressFromResultSet(resultSet));
@@ -62,6 +63,10 @@ public class OrderDaoImpl implements OrderDao {
                     user.setId(resultSet.getInt("id"));
                     user.setFullName(resultSet.getString("full_name"));
 
+                    master = new User();
+                    master.setId(resultSet.getInt("master_id"));
+
+                    order.setMaster(master);
                     order.setCustomer(user);
                     orders.add(order);
                 }

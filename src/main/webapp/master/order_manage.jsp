@@ -15,7 +15,7 @@
 <br>
 
 <c:out value="${requestScope.massage}"/>
-<form action="${pageContext.request.contextPath}/app/manager/manage_order" method="post">
+<form action="${pageContext.request.contextPath}/app/master/manage_order" method="post">
 <table cellspacing="2" border="1" cellpadding="5" width="600">
     <tr>
         <td>
@@ -30,7 +30,7 @@
             <h5>Order Status</h5>
         </td>
         <td>
-           <c:out value="${requestScope.order.status}"/>
+            <c:out value="${requestScope.order.status}"/>
         </td>
     </tr>
     <tr>
@@ -51,7 +51,7 @@
     </tr>
     <tr>
         <td>
-            <h5>Appartment number</h5>
+            <h5>Apartment number</h5>
         </td>
         <td>
             <c:out value='${requestScope.order.address.flat_number}'/>
@@ -59,23 +59,10 @@
     </tr>
     <tr>
         <td>
-            <h5>Master</h5>
-        </td>
-        <td>
-            <p><select  name="master" >
-                <option selected disabled>No master</option>
-                <c:forEach items='${requestScope.masters}' var='i'>
-                    <option ${i.key == requestScope.order.master.id ? 'selected="selected"' : ''} value="<c:out value='${i.key}'/>"><c:out value='${i.value}'/></option>
-    </c:forEach>
-            </select></p>
-        </td>
-    </tr>
-    <tr>
-        <td>
             Price
         </td>
         <td>
-            <input type="text" value="<c:out value='${requestScope.order.price}'/>" name="price">
+            <c:out value='${requestScope.order.price}'/>
         </td>
     </tr>
 </table>

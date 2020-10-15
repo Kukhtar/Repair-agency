@@ -9,6 +9,8 @@ import ua.kukhtar.controller.command.consumer.UserOrdersCommand;
 import ua.kukhtar.controller.command.manager.ManagerOrdersCommand;
 import ua.kukhtar.controller.command.manager.OrderManagingCommand;
 import ua.kukhtar.controller.command.manager.UserListCommand;
+import ua.kukhtar.controller.command.master.MasterOrdersCommand;
+import ua.kukhtar.controller.command.master.MastersOrderManagingCommand;
 import ua.kukhtar.model.service.OrderService;
 import ua.kukhtar.model.service.UserService;
 
@@ -42,6 +44,8 @@ public class ControllerServlet extends HttpServlet {
         commands.put("user/createOrder", new CreateOrderCommand(new OrderService()));
         commands.put("user/orders", new UserOrdersCommand(new UserService()));
         commands.put("user/payment", new PaymentCommand(new OrderService(), new UserService()));
+        commands.put("master/orders", new MasterOrdersCommand(new OrderService()));
+        commands.put("master/manage_order", new MastersOrderManagingCommand(new OrderService(), new UserService()));
 
     }
 

@@ -25,7 +25,7 @@ public class CreateOrderCommand implements Command {
         String houseNumber = request.getParameter("house_number");
 
         if (!isValid(flatNumber, houseNumber)){
-            return "redirect:/user/create_order.jsp";
+            return "/user/create_order.jsp";
         }
 
         Address address = new Address();

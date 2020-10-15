@@ -42,7 +42,10 @@ public class CommandUtility {
             return "redirect:/user/index.jsp";
         }else if (role == User.ROLE.MANAGER){
             return "redirect:/manager/index.jsp";
+        }else if (role == User.ROLE.MASTER){
+            return "redirect:/master/index.jsp";
         }
-        return "redirect:/master/masterPage.jsp";
+
+        return "app/login";
     }
 }
