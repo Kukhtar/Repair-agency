@@ -11,7 +11,8 @@ import java.util.ResourceBundle;
 
 public class RegistrationCommand implements Command {
     private static final Logger logger = LogManager.getLogger(LoginCommand.class);
-    private UserService service ;
+    private UserService service;
+
     public RegistrationCommand(UserService service) {
         this.service = service;
     }
@@ -20,11 +21,11 @@ public class RegistrationCommand implements Command {
     public String execute(HttpServletRequest request) {
         //todo: make special method for getting locale
         Object lang = request.getSession().getAttribute("lang");
-        Locale locale = lang==null?Locale.getDefault():new Locale((String)lang);
+        Locale locale = lang == null ? Locale.getDefault() : new Locale((String) lang);
 
         ResourceBundle rb = ResourceBundle.getBundle("messages", locale);
 
-        if (request.getSession().getAttribute("name") != null){
+        if (request.getSession().getAttribute("name") != null) {
             logger.debug("logged user trying to access logIn page");
             CommandUtility.logOut(request);
             //todo: print correct error massage
@@ -36,7 +37,7 @@ public class RegistrationCommand implements Command {
         String phoneNumber = request.getParameter("phone-number");
 
 
-        if( name == null ||name.equals("") ||  pass == null ||pass.equals("")  || phoneNumber == null ||phoneNumber.equals("") ){
+        if (name == null || name.equals("") || pass == null || pass.equals("") || phoneNumber == null || phoneNumber.equals("")) {
             logger.debug("some field is not filled");
 //            request.setAttribute("massage", "Please enter required data");
             return "/jsp/registration.jsp";
@@ -49,15 +50,21 @@ public class RegistrationCommand implements Command {
 //            return "/jsp/registration.jsp";
 //        }
 
-        request.getSession().setAttribute("name" , name);
-        request.getSession().setAttribute("role" , User.ROLE.USER.name());
+        request.getSession().setAttribute("name", name);
+        request.getSession().setAttribute("role", User.ROLE.USER.name());
         User user = new User();
         user.setLogin(name);
         user.setPassword(pass);
         user.setFullName(fullName);
         user.setPhoneNumber(phoneNumber);
 
-        service.addUser(user);
+        try {
+            service.addUser(user);
+        } catch (Exception e) {
+            logger.error(e);
+            request.setAttribute("massage", rb.getString("message.userNameNotAvailable"));
+            return "/jsp/registration.jsp";
+        }
 
         //maybe i don't need this
 //        user.setId(service.getUserId(name));

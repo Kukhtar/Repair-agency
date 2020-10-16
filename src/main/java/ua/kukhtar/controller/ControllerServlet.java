@@ -39,7 +39,7 @@ public class ControllerServlet extends HttpServlet {
         commands.put("login", new LoginCommand(new UserService()));
         commands.put("registration", new RegistrationCommand(new UserService()));
         commands.put("manager/consumers", new UserListCommand(new UserService()));
-        commands.put("manager/all_orders", new ManagerOrdersCommand(new OrderService()));
+        commands.put("manager/all_orders", new ManagerOrdersCommand(new OrderService(), new UserService()));
         commands.put("manager/manage_order", new OrderManagingCommand(new OrderService(), new UserService()));
         commands.put("user/createOrder", new CreateOrderCommand(new OrderService()));
         commands.put("user/orders", new UserOrdersCommand(new UserService()));

@@ -1,15 +1,15 @@
 
-K	Web:S1827"/Remove this deprecated "cellpadding" attribute.(Ë²ä8›„êÄĞ.
-s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ô€•Ùøÿÿÿÿ8ØÔ›ˆÒ.
-t%Web:ItemTagNotWithinContainerTagCheck4"<Surround this <li> item tag by a <ul> or <ol> container one.(îÿñœ8²ÓÄĞ.
 m Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(‹ÚØT8ÖØ—ÄĞ.
+K	Web:S1827"/Remove this deprecated "cellspacing" attribute.(Ë²ä8›„êÄĞ.
+t%Web:ItemTagNotWithinContainerTagCheck6"<Surround this <li> item tag by a <ul> or <ol> container one.(îÿñœ8²ÓÄĞ.
+OWeb:TableWithoutCaptionCheck" Add a description to this table.(Ë²ä8ÖØ—ÄĞ.
+jWeb:DoctypePresenceCheck":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ8ÖØ—ÄĞ.
+E	Web:S1827")Remove this deprecated "width" attribute.(Ë²ä8›„êÄĞ.
+y%Web:ItemTagNotWithinContainerTagCheck0"<Surround this <li> item tag by a <ul> or <ol> container one.(ÀŞí÷ıÿÿÿÿ8²ÓÄĞ.
+t%Web:ItemTagNotWithinContainerTagCheck5"<Surround this <li> item tag by a <ul> or <ol> container one.(ÒßÚ8²ÓÄĞ.
 a	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ8ÖØ—ÄĞ.
 s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(ØÁú®ÿÿÿÿÿ8ØÔ›ˆÒ.
-y%Web:ItemTagNotWithinContainerTagCheck."<Surround this <li> item tag by a <ul> or <ol> container one.(ÀŞí÷ıÿÿÿÿ8²ÓÄĞ.
-jWeb:DoctypePresenceCheck":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ8ÖØ—ÄĞ.
 s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¤¨¼îıÿÿÿÿ8ÖØ—ÄĞ.
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ô€•Ùøÿÿÿÿ8ØÔ›ˆÒ.
+K	Web:S1827"/Remove this deprecated "cellpadding" attribute.(Ë²ä8›„êÄĞ.
 n Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¶õÛ—8ğòıÄĞ.
-E	Web:S1827")Remove this deprecated "width" attribute.(Ë²ä8›„êÄĞ.
-t%Web:ItemTagNotWithinContainerTagCheck3"<Surround this <li> item tag by a <ul> or <ol> container one.(ÒßÚ8²ÓÄĞ.
-OWeb:TableWithoutCaptionCheck" Add a description to this table.(Ë²ä8ÖØ—ÄĞ.
-K	Web:S1827"/Remove this deprecated "cellspacing" attribute.(Ë²ä8›„êÄĞ.

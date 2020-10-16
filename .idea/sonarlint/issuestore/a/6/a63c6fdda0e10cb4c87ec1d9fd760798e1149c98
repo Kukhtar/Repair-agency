@@ -1,15 +1,9 @@
 
-Y
-java:S3655#"7Call "Optional#isPresent()" before accessing the value.(ŒóŠøÿÿÿÿ8¶­Ñ½Ğ.
 P
 java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8œ¸ŒÈÑ.
-[
-java:S1128"9Remove this unused import 'ua.kukhtar.model.entity.User'.(¶äŸµúÿÿÿÿ8œ¸ŒÈÑ.
-d
-java:S1128	"BRemove this unused import 'ua.kukhtar.model.dao.impl.UserDaoImpl'.(§úŒŒıÿÿÿÿ8œ¸ŒÈÑ.
 O
 java:S1135 "2Complete the task associated to this TODO comment.(ÏøŸ‘8œ¸ŒÈÑ.
-Z
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8œ¸ŒÈÑ.
+d
+java:S1128	"BRemove this unused import 'ua.kukhtar.model.dao.impl.UserDaoImpl'.(§úŒŒıÿÿÿÿ8œ¸ŒÈÑ.
 L
 java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8œ¸ŒÈÑ.

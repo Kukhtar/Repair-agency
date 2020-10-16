@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.kukhtar.constant.SQLQueryConstant;
 import ua.kukhtar.model.dao.OrderDao;
+import ua.kukhtar.model.entity.ActiveOrder;
 import ua.kukhtar.model.entity.Address;
 import ua.kukhtar.model.entity.Order;
 import ua.kukhtar.model.entity.User;
@@ -32,8 +33,8 @@ public class OrderDaoImpl implements OrderDao {
         return dataSource.getConnection();
     }
 
-    public static Order extractOrderFromResultSet(ResultSet resultSet) throws SQLException {
-        Order order = new Order();
+    public static ActiveOrder extractOrderFromResultSet(ResultSet resultSet) throws SQLException {
+        ActiveOrder order = new ActiveOrder();
         order.setStatus(STATUS.valueOf(resultSet.getString("status")));
         order.setId(resultSet.getInt("order_id"));
         order.setPrice(resultSet.getInt("price"));

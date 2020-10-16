@@ -1,0 +1,11 @@
+
+t%Web:ItemTagNotWithinContainerTagCheckO"<Surround this <li> item tag by a <ul> or <ol> container one.(îÿñœ8ú”áÛÒ.
+:	Web:S5256"%Add "<th>" headers to this "<table>".(Ë²ä
+y%Web:ItemTagNotWithinContainerTagCheckI"<Surround this <li> item tag by a <ul> or <ol> container one.(ÀŞí÷ıÿÿÿÿ8ú”áÛÒ.
+D	Web:S1827"/Remove this deprecated "cellpadding" attribute.(Ë²ä
+cWeb:DoctypePresenceCheck	":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ
+HWeb:TableWithoutCaptionCheck" Add a description to this table.(Ë²ä
+D	Web:S1827"/Remove this deprecated "cellspacing" attribute.(Ë²ä
+>	Web:S1827")Remove this deprecated "width" attribute.(Ë²ä
+t%Web:ItemTagNotWithinContainerTagCheckN"<Surround this <li> item tag by a <ul> or <ol> container one.(ÒßÚ8ú”áÛÒ.
+Z	Web:S5254	"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ

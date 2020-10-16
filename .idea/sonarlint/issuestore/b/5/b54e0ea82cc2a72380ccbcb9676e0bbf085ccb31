@@ -1,5 +1,5 @@
 
-h
-java:S2441"MMake "List" and its parameters serializable or don't store it in the session.(ÃØ­öıÿÿÿÿ
-W
-java:S1128"ARemove this unused import 'ua.kukhtar.model.service.UserService'.(úÄ‚Ÿ
+>
+java:S1116@"Remove this empty statement.(ôŸìúÿÿÿÿ8¢ÖÔïÒ.
+O
+java:S11993"-Extract this nested code block into a method.(Î—­Šşÿÿÿÿ8îìÑåÒ.

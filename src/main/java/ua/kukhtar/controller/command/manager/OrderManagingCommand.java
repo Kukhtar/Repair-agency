@@ -10,6 +10,7 @@ import ua.kukhtar.model.service.OrderService;
 import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 import java.util.Optional;
 
@@ -33,6 +34,7 @@ public class OrderManagingCommand implements Command {
             return "/manager/order_manage.jsp?id=" + id;
         }
         if (managingOrder == null){
+            logger.debug("didn't choose order before managing");
             throw new IllegalStateException("Order not founded");
         }
 
@@ -109,4 +111,5 @@ public class OrderManagingCommand implements Command {
             request.setAttribute("formAction", "Cancel order");
         }
     }
+
 }

@@ -1,5 +1,11 @@
 
-T
-java:S1135!"2Complete the task associated to this TODO comment.(—ü‰‰ıÿÿÿÿ8ÑÌÔˆÒ.
 o
-java:S2441("MMake "List" and its parameters serializable or don't store it in the session.(ßæû­üÿÿÿÿ8î–ÇÄĞ.
+java:S2441$"MMake "List" and its parameters serializable or don't store it in the session.(ßæû­üÿÿÿÿ8î–ÇÄĞ.
+F
+java:S1481"*Remove this unused "order" local variable.(±ÆŠ{8ç×Ò.
+>
+java:S1116"Remove this empty statement.(åŠƒûøÿÿÿÿ8¡À××Ò.
+P
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8¾õå×Ò.
+[
+java:S1128"9Remove this unused import 'ua.kukhtar.model.entity.User'.(¶äŸµúÿÿÿÿ8Œ¿Ù×Ò.

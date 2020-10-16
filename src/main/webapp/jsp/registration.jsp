@@ -19,16 +19,16 @@
     </div>
     <form method="post" action="${pageContext.request.contextPath}/app/registration" accept-charset="UTF-8">
         <label for="name"><fmt:message key="label.login" />
-            <input class="input-field" type="text" id="name" name="name">
+            <input class="input-field" type="text" id="name" name="name" value="${param.get("name")}">
         </label>
         <label for="password"><fmt:message key="label.password" />
             <input class="input-field" type="password" id="password" name="password">
         </label>
         <label for="full-name"><fmt:message key="label.full-name" />
-            <input class="input-field" type="text" id="full-name" name="full-name">
+            <input class="input-field" type="text" id="full-name" name="full-name" value="${param.get("full-name")}">
         </label>
         <label for="phone-number"><fmt:message key="label.phone-number" />
-            <input class="input-field" type="text" id="phone-number" name="phone-number">
+            <input class="input-field" type="text" id="phone-number" name="phone-number" value="${param.get("phone-number")}">
         </label>
         <input type="submit" value="Sign Up">
     </form>

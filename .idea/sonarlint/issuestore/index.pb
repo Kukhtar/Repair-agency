@@ -129,3 +129,19 @@ U
 %src/main/webapp/user/payment_page.jsp,0/9/099ebb89e8d092391d987e0d3d21bf8788d8d459
 e
 5src/main/java/ua/kukhtar/filter/GuestPagesFilter.java,7/2/726634166829b230fe2e58b0f36061753b8a1bad
+j
+:target/repair-agency-1.0-SNAPSHOT/manager/return_money.jsp,4/a/4a5617482b69b994619e91fb4b31cc16af525f31
+M
+src/main/webapp/jsp/index.jsp,c/5/c55358a0957c6dbd3212b12ae802468a12c1b4e6
+X
+(src/main/webapp/manager/return_money.jsp,4/7/47285ce8fb4355b9dfd2588a3c6704ebee6a30f8
+P
+ src/main/webapp/master/index.jsp,1/c/1cb7e0e38d85cbca73cf37bb977ffdc3e3a07cd6
+{
+Ksrc/main/java/ua/kukhtar/controller/command/master/MasterOrdersCommand.java,8/3/83891b09fdca2c0f72129f1bd03313963aefac21
+ƒ
+Ssrc/main/java/ua/kukhtar/controller/command/master/MastersOrderManagingCommand.java,0/e/0e755b74ebc88013f8bfad104630ac145e1f1404
+W
+'src/main/webapp/master/order_manage.jsp,c/8/c836023f152b9b3508c3f375989bec9c50149bb2
+Q
+!src/main/webapp/master/orders.jsp,6/8/68ba9c07b2599132f77f2623d5741b7cf594d36c

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 //todo: add builder instead of setters
 
-public class Order {
+public abstract class Order {
     private int id;
     private User customer;
     private User master;

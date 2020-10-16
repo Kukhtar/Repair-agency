@@ -1,15 +1,17 @@
 
-r%Web:ItemTagNotWithinContainerTagCheck2"<Surround this <li> item tag by a <ul> or <ol> container one.(ÀŞí÷ıÿÿÿÿ
-m%Web:ItemTagNotWithinContainerTagCheck7"<Surround this <li> item tag by a <ul> or <ol> container one.(ÒßÚ
-l Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(ØÁú®ÿÿÿÿÿ
-g Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¶õÛ—
-D	Web:S1827"/Remove this deprecated "cellpadding" attribute.(Ë²ä
-m%Web:ItemTagNotWithinContainerTagCheck8"<Surround this <li> item tag by a <ul> or <ol> container one.(îÿñœ
-HWeb:TableWithoutCaptionCheck" Add a description to this table.(Ë²ä
-l Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ô€•Ùøÿÿÿÿ
-l Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¤¨¼îıÿÿÿÿ
-Z	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ
->	Web:S1827")Remove this deprecated "width" attribute.(Ë²ä
-f Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(‹ÚØT
-cWeb:DoctypePresenceCheck":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ
-D	Web:S1827"/Remove this deprecated "cellspacing" attribute.(Ë²ä
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ô€•Ùøÿÿÿÿ8¿’ĞìÒ.
+m Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(‹ÚØT8¿’ĞìÒ.
+n Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(à”÷8¿’ĞìÒ.
+E	Web:S1827")Remove this deprecated "width" attribute.(Ë²ä8¿’ĞìÒ.
+OWeb:TableWithoutCaptionCheck" Add a description to this table.(Ë²ä8¿’ĞìÒ.
+K	Web:S1827"/Remove this deprecated "cellpadding" attribute.(Ë²ä8¿’ĞìÒ.
+t%Web:ItemTagNotWithinContainerTagCheck]"<Surround this <li> item tag by a <ul> or <ol> container one.(îÿñœ8¿’ĞìÒ.
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(ØÁú®ÿÿÿÿÿ8¿’ĞìÒ.
+y%Web:ItemTagNotWithinContainerTagCheck7"<Surround this <li> item tag by a <ul> or <ol> container one.(ÀŞí÷ıÿÿÿÿ8¿’ĞìÒ.
+n Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¶õÛ—8¿’ĞìÒ.
+P	Web:S1135="4Complete the task associated to this "TODO" comment.(ÛÁĞş8¿’ĞìÒ.
+a	Web:S5254	"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ8¿’ĞìÒ.
+t%Web:ItemTagNotWithinContainerTagCheck\"<Surround this <li> item tag by a <ul> or <ol> container one.(ÒßÚ8¿’ĞìÒ.
+K	Web:S1827"/Remove this deprecated "cellspacing" attribute.(Ë²ä8¿’ĞìÒ.
+s Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¤¨¼îıÿÿÿÿ8¿’ĞìÒ.
+jWeb:DoctypePresenceCheck	":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ8¿’ĞìÒ.

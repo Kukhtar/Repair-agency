@@ -14,7 +14,6 @@
 <h3><fmt:message key="label.usersList" /></h3>
 <br>
 
-<c:set var="enumValues" value="<%=STATUS.values()%>"/>
 <c:out value="${requestScope.massage}"/>
 <form action="${pageContext.request.contextPath}/app/manager/manage_order" method="post">
 <table cellspacing="2" border="1" cellpadding="5" width="600">
@@ -31,12 +30,7 @@
             <h5>Order Status</h5>
         </td>
         <td>
-            <select name="status">
-                <option selected disabled>No Status</option>
-            <c:forEach items='${enumValues}' var='i'>
-                <option ${i == requestScope.order.status ? 'selected="selected"' : ''} value="<c:out value='${i}'/>"><c:out value='${i}'/></option>
-            </c:forEach>
-            </select>
+           <c:out value="${requestScope.order.status}"/>
         </td>
     </tr>
     <tr>
