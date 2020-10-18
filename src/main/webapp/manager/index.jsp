@@ -15,6 +15,12 @@
     <a href="${pageContext.request.contextPath}/app/manager/consumers"><fmt:message key="label.usersList"/> </a>
 </li>
 <li>
+    <a href="${pageContext.request.contextPath}/app/manager/active_orders"><fmt:message key="label.activeOrders"/> </a>
+</li>
+<li>
+    <a href="${pageContext.request.contextPath}/app/manager/closed_orders"><fmt:message key="label.closedOrders"/> </a>
+</li>
+<li>
     <a href="${pageContext.request.contextPath}/app/manager/all_orders"><fmt:message key="label.allOrders"/> </a>
 </li>
 <li>

@@ -1,9 +1,5 @@
 
-`
-java:S1163Ñ"=Refactor this code to not throw exceptions in finally blocks.(ª¢ùÅıÿÿÿÿ8¸ÂÒ.
-W
-java:S1143Ñ"4Remove this throw statement from this finally block.(ª¢ùÅıÿÿÿÿ8¸ÂÒ.
 –
-java:S1186p"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(æôò7
-£
-java:S1186k"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(óç„¶ûÿÿÿÿ8öÊ•Ò.
+java:S1186|"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(æôò7
+g
+java:S1192 "JDefine a constant instead of duplicating this literal "full_name" 3 times.(Í€œß8Í–ñ±Ó.

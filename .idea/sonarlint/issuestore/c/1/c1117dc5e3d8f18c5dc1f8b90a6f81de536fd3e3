@@ -1,0 +1,7 @@
+
+^
+java:S1128"ARemove this unused import 'ua.kukhtar.model.service.UserService'.(úÄ‚Ÿ8®‹ç¯Ó.
+[
+java:S1128"9Remove this unused import 'ua.kukhtar.model.entity.User'.(¶äŸµúÿÿÿÿ8®‹ç¯Ó.
+c
+java:S1128"ARemove this unused import 'ua.kukhtar.model.entity.enums.STATUS'.(¶‘¼Ìøÿÿÿÿ8®‹ç¯Ó.

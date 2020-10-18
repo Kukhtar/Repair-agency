@@ -4,17 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.kukhtar.constant.SQLQueryConstant;
 import ua.kukhtar.model.dao.OrderDao;
-import ua.kukhtar.model.entity.ActiveOrder;
 import ua.kukhtar.model.entity.Address;
 import ua.kukhtar.model.entity.Order;
 import ua.kukhtar.model.entity.User;
 import ua.kukhtar.model.entity.enums.STATUS;
 
 import javax.sql.DataSource;
-import java.lang.reflect.Type;
 import java.sql.*;
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,8 +29,8 @@ public class OrderDaoImpl implements OrderDao {
         return dataSource.getConnection();
     }
 
-    public static ActiveOrder extractOrderFromResultSet(ResultSet resultSet) throws SQLException {
-        ActiveOrder order = new ActiveOrder();
+    public static Order extractOrderFromResultSet(ResultSet resultSet) throws SQLException {
+        Order order = new Order();
         order.setStatus(STATUS.valueOf(resultSet.getString("status")));
         order.setId(resultSet.getInt("order_id"));
         order.setPrice(resultSet.getInt("price"));
@@ -45,30 +41,18 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public List<Order> findAll() {
+    public List<Order> findActive(int start, int count) {
         List<Order> orders = new ArrayList<>();
 
         try(Connection connection = getConnection();
-            Statement statement = connection.createStatement()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SQL_FIND_ACTIVE_ORDERS)) {
+            preparedStatement.setInt(1, start);
+            preparedStatement.setInt(2, count);
 
-            try(ResultSet resultSet = statement.executeQuery(SQLQueryConstant.SQL_FIND_ALL_ORDERS)){
-
+            try(ResultSet resultSet = preparedStatement.executeQuery()){
                 Order order;
-                User user;
-                User master;
                 while (resultSet.next()){
-                    order = extractOrderFromResultSet(resultSet);
-                    order.setAddress(AddressDaoImpl.extractAddressFromResultSet(resultSet));
-
-                    user = new User();
-                    user.setId(resultSet.getInt("id"));
-                    user.setFullName(resultSet.getString("full_name"));
-
-                    master = new User();
-                    master.setId(resultSet.getInt("master_id"));
-
-                    order.setMaster(master);
-                    order.setCustomer(user);
+                    order = getOrder(resultSet);
                     orders.add(order);
                 }
             }
@@ -82,9 +66,55 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
+    public List<Order> findClosed(int start, int count) {
+        List<Order> orders = new ArrayList<>();
+
+        try(Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SQL_FIND_CLOSED_ORDERS)) {
+            preparedStatement.setInt(1, start);
+            preparedStatement.setInt(2, count);
+
+            try(ResultSet resultSet = preparedStatement.executeQuery()){
+
+                Order order;
+                while (resultSet.next()){
+                    order = getOrder(resultSet);
+                    order.setFeedBack(resultSet.getString("feedback"));
+                    orders.add(order);
+                }
+            }
+
+            return orders;
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    private Order getOrder(ResultSet resultSet) throws SQLException {
+        Order order;
+        User user;
+        User master;
+        order = extractOrderFromResultSet(resultSet);
+        order.setAddress(AddressDaoImpl.extractAddressFromResultSet(resultSet));
+
+        user = new User();
+        user.setId(resultSet.getInt("id"));
+        user.setFullName(resultSet.getString("full_name"));
+
+        master = new User();
+        master.setId(resultSet.getInt("master_id"));
+
+        order.setMaster(master);
+        order.setCustomer(user);
+        return order;
+    }
+
+    @Override
     public int create(Order order) {
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_ORDER, Statement.RETURN_GENERATED_KEYS)){
+             PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_INITIAL_ORDER, Statement.RETURN_GENERATED_KEYS)){
 
             statement.setInt(1, order.getCustomer().getId());
             statement.setDate(2, Date.valueOf(order.getDate()));
@@ -143,36 +173,64 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public void update(Order order) {
-        Connection connection = null;
+        try(Connection connection = getConnection();
+            PreparedStatement updateMaster = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_ORDER)) {
+            updateMaster.setInt(1, order.getMaster().getId());
+            updateMaster.setObject(2, order.getStatus(), Types.OTHER);
+            updateMaster.setInt(3, order.getPrice());
+            updateMaster.setInt(4, order.getId());
+
+            updateMaster.execute();
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void updateFeedback(Order order) {
+        try(Connection connection = getConnection();
+            PreparedStatement updateFeedback = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_FEEDBACK)) {
+            updateFeedback.setString(1, order.getFeedBack());
+            updateFeedback.setInt(2, order.getId());
+
+            updateFeedback.execute();
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void delete( Order object) {
+    }
+
+    @Override
+    public void updateStatus(Order order) {
+        Connection connection;
         try {
             connection = getConnection();
+            connection.setAutoCommit(false);
         } catch (SQLException e) {
             logger.error(e);
             throw new IllegalStateException(e);
         }
 
-        try(PreparedStatement updateMaster = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_MASTER_ID);
-            PreparedStatement updateStatus = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_STATUS);
-            PreparedStatement updatePrice = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_PRICE)) {
+        try (PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_STATUS)){
 
-            connection.setAutoCommit(false);
+            statement.setObject(1, order.getStatus(), Types.OTHER);
+            statement.setInt(2, order.getId());
 
-            updateMaster.setInt(1, order.getMaster().getId());
-            updateMaster.setInt(2, order.getId());
+            statement.executeUpdate();
 
-            updateStatus.setObject(1, order.getStatus().name(), Types.OTHER);
-            updateStatus.setInt(2, order.getId());
-
-            updatePrice.setInt(1, order.getPrice());
-            updatePrice.setInt(2, order.getId());
-
-            updateMaster.executeUpdate();
-            updateStatus.executeUpdate();
-            updatePrice.executeUpdate();
+            if (order.getStatus()== STATUS.CANCELED || order.getStatus()== STATUS.DONE){
+                closeOrder(connection, order);
+            }
 
             connection.commit();
             logger.debug("Transaction was successful");
-
         } catch (SQLException e) {
             logger.error(e);
             try {
@@ -180,30 +238,73 @@ public class OrderDaoImpl implements OrderDao {
                 connection.rollback();
             } catch (SQLException excep) {
                 logger.error(excep);
+                throw new IllegalStateException(excep);
             }
         }finally {
             try {
                 connection.close();
             } catch (SQLException e) {
                 logger.error(e);
-                throw new IllegalStateException(e);
             }
         }
     }
 
-    @Override
-    public void delete(Order object) {
 
+    private void closeOrder(Connection connection, Order order) throws SQLException {
+        try(PreparedStatement deleteOrder = connection.prepareStatement(SQLQueryConstant.SQL_DELETE_ORDER_BY_ID);
+            PreparedStatement insertOrder = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_CLOSED_ORDER)) {
+
+            connection.setAutoCommit(false);
+
+            deleteOrder.setInt(1, order.getId());
+
+            insertOrder.setInt(1,order.getCustomer().getId());
+            insertOrder.setInt(2,order.getMaster().getId());
+            insertOrder.setObject(3,order.getStatus(), Types.OTHER);
+            insertOrder.setDate(4, Date.valueOf(order.getDate()));
+            insertOrder.setInt(5,order.getAddress().getId());
+            insertOrder.setInt(6,order.getPrice());
+
+            deleteOrder.executeUpdate();
+            insertOrder.executeUpdate();
+
+        }
     }
 
     @Override
-    public void updateStatus(Order order) {
+    public int countOfActiveOrders(){
         try (Connection connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_STATUS)){
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SQL_GET_COUNT_OF_ACTIVE_ORDERS)){
 
-            statement.setObject(1, order.getStatus(), Types.OTHER);
-            statement.setInt(2, order.getId());
-            statement.execute();
+            try(ResultSet resultSet = preparedStatement.executeQuery()){
+                if (resultSet.next()){
+                    return resultSet.getInt("count");
+                }else{
+                    logger.error("can't get count of active orders");
+                    throw new IllegalStateException("Can't get count of active orders");
+                }
+            }
+
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public int countOfClosedOrders(){
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQLQueryConstant.SQL_GET_COUNT_OF_CLOSED_ORDERS)){
+
+            try(ResultSet resultSet = preparedStatement.executeQuery()){
+                if (resultSet.next()){
+                    return resultSet.getInt("count");
+                }else{
+                    logger.error("can't get count of active orders");
+                    throw new IllegalStateException("Can't get count of active orders");
+                }
+            }
+
         } catch (SQLException e) {
             logger.error(e);
             throw new IllegalStateException(e);

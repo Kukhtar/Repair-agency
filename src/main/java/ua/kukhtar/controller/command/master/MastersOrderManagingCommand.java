@@ -54,13 +54,13 @@ public class MastersOrderManagingCommand implements Command {
         }else if (managingOrder.getStatus() == STATUS.IN_PROCESS){
             managingOrder.setStatus(STATUS.DONE);
         }else {
-            logger.debug("master cant handle this order {}", managingOrder);
+            logger.error("master cant handle this order {}", managingOrder);
             throw new IllegalStateException("Wrong status for this action");
         }
 
 
-        orderService.updateOrder(managingOrder);
-        return "redirect:/app/master/manage_order?order_id=" + managingOrder.getId();
+        orderService.updateStatus(managingOrder);
+        return "redirect:/app/master/orders";
     }
 
 

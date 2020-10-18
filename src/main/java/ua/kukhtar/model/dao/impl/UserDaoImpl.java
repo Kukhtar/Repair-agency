@@ -105,7 +105,19 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void update(User user) {
+        try (Connection connection = getConnection();
+             PreparedStatement updateUser = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_CONSUMER)){
+            logger.debug("inserting bank account ");
 
+            updateUser.setString(1, user.getBankAccount());
+            updateUser.setInt(2, user.getId());
+            updateUser.executeUpdate();
+
+            logger.debug("end of inserting account");
+        }  catch (SQLException e) {
+            logger.error(e);
+            throw new IllegalStateException(e);
+        }
     }
 
     @Override
@@ -133,16 +145,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<Order> getOrders(String name) {
+    public List<Order> getActiveOrders(String name) {
         List<Order> orders = new ArrayList<>();
 
         try(Connection connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_FIND_ALL_ORDERS_OF_USER)) {
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_FIND_USER_ACTIVE_ORDERS)) {
             statement.setString(1, name);
-            try(ResultSet resultSet = statement.executeQuery()){
+            try(ResultSet resultSet = statement.executeQuery()) {
 
                 Order order;
-                while (resultSet.next()){
+                while (resultSet.next()) {
                     order = OrderDaoImpl.extractOrderFromResultSet(resultSet);
                     User user = new User();
                     user.setFullName(resultSet.getString("full_name"));
@@ -153,61 +165,40 @@ public class UserDaoImpl implements UserDao {
             }
 
             return orders;
-
         } catch (SQLException e) {
             logger.error(e);
             throw new IllegalStateException(e);
         }
     }
 
-    //should remove this, and add to update method
     @Override
-    public void setBankAccount(String name, String bankAccount) {
-        Connection connection;
-        try {
-            connection = getConnection();
-        } catch (SQLException e) {
-            logger.error(e);
-            throw new IllegalStateException(e);
-        }
+    public List<Order> getClosedOrders(String name) {
+        List<Order> orders = new ArrayList<>();
 
-        try (PreparedStatement getUser = connection.prepareStatement(SQLQueryConstant.SQL_GET_USER_ID_BY_LOGIN);
-             PreparedStatement updateUser = connection.prepareStatement(SQLQueryConstant.SQL_UPDATE_CONSUMER)){
-            logger.debug("inserting bank account ");
-            connection.setAutoCommit(false);
-            getUser.setString(1, name);
+        try(Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement(SQLQueryConstant.SQL_FIND_USER_CLOSED_ORDERS)) {
+            statement.setString(1, name);
+            try(ResultSet resultSet = statement.executeQuery()) {
 
-            int id;
-            try(ResultSet resultSet = getUser.executeQuery()){
-                if (resultSet.next()){
-                    id = resultSet.getInt("id");
-                }else {
-                    throw new IllegalStateException("Can't find this user");
+                Order order;
+                while (resultSet.next()) {
+                    order = OrderDaoImpl.extractOrderFromResultSet(resultSet);
+                    User user = new User();
+                    user.setFullName(resultSet.getString("full_name"));
+                    order.setCustomer(user);
+                    order.setAddress(AddressDaoImpl.extractAddressFromResultSet(resultSet));
+                    order.setFeedBack(resultSet.getString("feedback"));
+                    orders.add(order);
                 }
             }
-            logger.debug("inserting bank account ID = {}", id);
 
-            updateUser.setString(1, bankAccount);
-            updateUser.setInt(2, id);
-            updateUser.executeUpdate();
-
-            logger.debug("end of inserting account");
-            connection.commit();
-        }  catch (SQLException e) {
+            return orders;
+        } catch (SQLException e) {
             logger.error(e);
-            try {
-                logger.debug("Transaction is being rolled back");
-                connection.rollback();
-            } catch (SQLException excep) {
-                logger.error(excep);
-            }
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                logger.error(e);
-                throw new IllegalStateException(e);
-            }
+            throw new IllegalStateException(e);
         }
     }
+
+
+
 }

@@ -25,7 +25,7 @@ public class UserOrdersCommand  implements Command {
     public String execute(HttpServletRequest request) {
 
         String userName = (String)request.getSession().getAttribute("name");
-        List<Order> orders = service.getOrders(userName);
+        List<Order> orders = service.getActiveOrders(userName);
 
         Map<Integer, String> buttonsDisplay  = orders.stream().collect(Collectors.toMap(Order::getId, x -> x.getStatus()==STATUS.WAITING_FOR_PAYMENT?"table":"none"));;
         Order order;
@@ -33,7 +33,7 @@ public class UserOrdersCommand  implements Command {
         request.getSession().setAttribute("orderButtons", buttonsDisplay);
 
         logger.debug("Order list size: {} ", orders.size());
-        request.getSession().setAttribute("orders", service.getOrders(userName));
+        request.getSession().setAttribute("orders", service.getActiveOrders(userName));
         return "/user/orders.jsp";
     }
 }

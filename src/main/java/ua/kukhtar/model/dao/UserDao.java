@@ -11,7 +11,8 @@ public interface UserDao extends CrudDao<User> {
 
    List<User> findByRole(User.ROLE role);
 
-   List<Order> getOrders(String name);
+   List<Order> getActiveOrders(String name);
 
-   void setBankAccount(String name, String account);
+   List<Order> getClosedOrders(String name);
+
 }

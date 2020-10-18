@@ -35,8 +35,12 @@ public class UserService {
         return userDao.findByRole(User.ROLE.USER);
     }
 
-    public List<Order> getOrders(String name){
-        return userDao.getOrders(name);
+    public List<Order> getActiveOrders(String name){
+        return userDao.getActiveOrders(name);
+    }
+
+    public List<Order> getClosedOrders(String name){
+        return userDao.getClosedOrders(name);
     }
 
     public Map<Integer, String> getMapOfMasters(){
@@ -46,7 +50,7 @@ public class UserService {
         return mastersMap;
     }
 
-    public void setBankAccount(String name, String account){
-        userDao.setBankAccount(name, account);
+    public void updateUser(User user){
+        userDao.update(user);
     }
 }

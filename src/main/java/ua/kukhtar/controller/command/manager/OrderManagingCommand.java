@@ -10,7 +10,6 @@ import ua.kukhtar.model.service.OrderService;
 import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 import java.util.Optional;
 
@@ -85,11 +84,12 @@ public class OrderManagingCommand implements Command {
     private String cancelOrder(HttpServletRequest request){
         setJspAttribute(request);
 
+        managingOrder.setStatus(STATUS.CANCELED);
+        orderService.updateStatus(managingOrder);
+
         if (managingOrder.getStatus()==STATUS.WAITING_FOR_PAYMENT){
-            orderService.cancelOrder(managingOrder);
-            return "redirect:/app/manager/all_orders";
+            return "redirect:/app/manager/active_orders";
         }
-        orderService.cancelOrder(managingOrder);
 
         Optional<User> consumer = userService.getUserById(managingOrder.getCustomer().getId());
         if (consumer.isPresent()){
@@ -99,7 +99,7 @@ public class OrderManagingCommand implements Command {
             throw new IllegalStateException("User not found");
         }
 
-        return "redirect:/manager/return_money.jsp";
+        return "/manager/return_money.jsp";
     }
 
     private void setJspAttribute(HttpServletRequest request){

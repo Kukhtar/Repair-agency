@@ -72,8 +72,6 @@ _
 h
 8src/main/java/ua/kukhtar/model/dao/impl/UserDaoImpl.java,2/a/2a934c23b856ab164a96e539b7308f8d44b71229
 N
-src/main/webapp/user/order.jsp,6/2/62594d8f0d974a680db4d97f86a20bb15ff6d0de
-N
 src/main/webapp/user/index.jsp,a/3/a38b52a66006d59de88d376f76769726798da7ef
 U
 %src/main/webapp/user/create_order.jsp,7/f/7f2d2800b43db6c89957b480daf6c36356042e2d
@@ -109,8 +107,6 @@ g
 7src/main/java/ua/kukhtar/filter/CacheControlFilter.java,5/d/5d725a9d8321961ba4e386e50e28c7436a977092
 f
 6src/main/java/ua/kukhtar/listener/SessionListener.java,3/a/3a971d5439bc6973b0d57e7885a9ff5858aa406f
-R
-"src/main/webapp/manager/orders.jsp,3/4/34e4b038e076c0cbb33faffc47f3bca61baa2223
 X
 (src/main/webapp/manager/order_manage.jsp,e/3/e3e686021770579fcc695415932cd7d116538466
 |
@@ -145,3 +141,21 @@ W
 'src/main/webapp/master/order_manage.jsp,c/8/c836023f152b9b3508c3f375989bec9c50149bb2
 Q
 !src/main/webapp/master/orders.jsp,6/8/68ba9c07b2599132f77f2623d5741b7cf594d36c
+m
+=src/main/java/ua/kukhtar/model/dao/DBCPDataSourceBuilder.java,a/8/a82abd3034d793119b0b0b5ccd69f5e7ea7fba58
+}
+Msrc/main/java/ua/kukhtar/controller/command/consumer/ClosedOrdersCommand.java,9/b/9bad2a5bae26e4cd5d97d76146751b57f2908111
+Q
+!src/main/webapp/user/feedback.jsp,2/8/28d1b746f831a8c0704f724b57930b2081ebeee1
+V
+&src/main/webapp/user/closed_orders.jsp,f/7/f77009d3ba88b6d9334689b261636e99692a8468
+y
+Isrc/main/java/ua/kukhtar/controller/command/consumer/FeedbackCommand.java,c/1/c1117dc5e3d8f18c5dc1f8b90a6f81de536fd3e3
+Y
+)src/main/webapp/manager/closed_orders.jsp,8/a/8ae7a0aa87e55c303ea0bddcfed6ada1b9ea6575
+y
+Isrc/main/java/ua/kukhtar/controller/command/manager/AllOrdersCommand.java,d/d/dd3f69035fbce9206c7f873f58a5340e1547e0e5
+V
+&src/main/webapp/manager/all_orders.jsp,9/d/9d47b60fa1686d484a7eea556cdb12d9774344aa
+Y
+)src/main/webapp/manager/active_orders.jsp,0/1/01732e2608c482bbcd71cde07d93bfe88443d7d3

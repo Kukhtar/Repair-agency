@@ -17,6 +17,7 @@ public class User {
                 ", fullName='" + fullName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role=" + role +
+                ", bankAccount=" + bankAccount +
                 '}';
     }
 

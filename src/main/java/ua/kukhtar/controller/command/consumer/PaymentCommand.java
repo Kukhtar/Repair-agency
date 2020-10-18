@@ -2,6 +2,8 @@ package ua.kukhtar.controller.command.consumer;
 
 import ua.kukhtar.controller.command.Command;
 import ua.kukhtar.model.entity.Order;
+import ua.kukhtar.model.entity.User;
+import ua.kukhtar.model.entity.enums.STATUS;
 import ua.kukhtar.model.service.OrderService;
 import ua.kukhtar.model.service.UserService;
 
@@ -23,14 +25,17 @@ public class PaymentCommand implements Command {
             return "/user/payment_page.jsp";
         }
 
-        String name = (String)request.getSession().getAttribute("name");
-        userService.setBankAccount(name, bankAccount);
+        User user = new User();
+        user.setId((Integer)request.getSession().getAttribute("id"));
+        user.setBankAccount(bankAccount);
+        userService.updateUser(user);
 
         int id = Integer.parseInt(request.getParameter("id"));
 
         Order order = new Order();
         order.setId(id);
-        orderService.payForOrder(order);
+        order.setStatus(STATUS.PAID);
+        orderService.updateStatus(order);
         return "redirect:/app/user/orders";
     }
 

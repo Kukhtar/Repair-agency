@@ -1,5 +1,9 @@
 
->
-java:S1116@"Remove this empty statement.(ôŸìúÿÿÿÿ8¢ÖÔïÒ.
-O
-java:S11993"-Extract this nested code block into a method.(Î—­Šşÿÿÿÿ8îìÑåÒ.
+[
+java:S49730"9Use the "equals" method if value comparison was intended.(Àà ˆıÿÿÿÿ8íÓ•¸Ó.
+N
+java:S1128"1Remove this unused import 'java.util.Comparator'.(î¹ó¹8¬Æ£ÁÓ.
+c
+java:S1128"ARemove this unused import 'ua.kukhtar.model.entity.enums.STATUS'.(¶‘¼Ìøÿÿÿÿ8¬Æ£ÁÓ.
+Z
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8¬Æ£ÁÓ.

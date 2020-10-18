@@ -17,62 +17,39 @@ public class ManagerOrdersCommand implements Command {
     private final OrderService orderService;
     private final UserService userService;
     private Logger logger = LogManager.getLogger(ManagerOrdersCommand.class);
-    public ManagerOrdersCommand(OrderService orderService, UserService userService){
+    private static final int RECORDS_ON_ONE_PAGE = 8;
+    private final boolean activeOrders;
+    public ManagerOrdersCommand(OrderService orderService, UserService userService, boolean activeOrders){
         this.orderService = orderService;
         this.userService = userService;
+        this.activeOrders = activeOrders;
     }
     @Override
     public String execute(HttpServletRequest request) {
-        List<Order> orders = orderService.getAllOrders();
-        orders = filterOrders(request, orders);
+        List<Order> orders;
+        int start = getStartOfOrders(request.getParameter("page"));
+        int ordersCount;
+        if (activeOrders) {
+            orders = orderService.getActiveOrders(start, RECORDS_ON_ONE_PAGE);
+            ordersCount = orderService.countOfActiveOrders();
+        }else {
+            orders = orderService.getClosedOrders(start, RECORDS_ON_ONE_PAGE);
+            ordersCount = orderService.countOfClosedOrders();
+        }
+        logger.debug("Orders list size: {}", orders.size());
 
-        String sortBy = request.getParameter("sortBy");
-        orders.sort(getComparatorFromJspPage(sortBy));
-
+        request.setAttribute("countOfPages", Math.ceil(ordersCount * 1.0/RECORDS_ON_ONE_PAGE));
         request.setAttribute("orders", orders);
         request.setAttribute("masters",userService.getMapOfMasters() );
-        return "/manager/orders.jsp";
+
+        return activeOrders?"/manager/active_orders.jsp":"/manager/closed_orders.jsp";
     }
 
-    private Comparator<Order> getComparatorFromJspPage(String sortBy){
-        if (sortBy == null){
-            logger.debug("sort by value not founded");
-            return (o1, o2) -> o1.getDate().compareTo(o2.getDate());
+    private int getStartOfOrders(String page) {
+        if (page == null || page == "") {
+            return 0;
+        } else {
+            return (Integer.parseInt(page) - 1) * RECORDS_ON_ONE_PAGE;
         }
-        logger.debug("sortBy value: {}", sortBy);
-        switch (sortBy){
-            case "date":
-                return Comparator.comparing(Order::getDate);
-            case "price":
-                return Comparator.comparing(Order::getPrice);
-            case "status":
-                return Comparator.comparing(Order::getStatus);
-            default: {
-                logger.debug("default statement worked");
-                return Comparator.comparing(Order::getDate);
-            }
-        }
-    }
-
-    private List<Order> filterOrders(HttpServletRequest request,List<Order> orders){
-        String statusParam = request.getParameter("statusFilter");
-        String masterParam = request.getParameter("masterFilter");
-        if (statusParam!=null && !statusParam.equals("none")){
-            logger.debug("default value of filter = none? {}", statusParam.equals("none"));
-            STATUS status = STATUS.valueOf(statusParam);
-            orders = orders.stream().filter(a -> a.getStatus()==status).collect(Collectors.toList());
-        }
-
-        if (masterParam!=null){
-            logger.debug("default value of filter  {}", masterParam);
-
-            int masterId = Integer.parseInt(masterParam);
-            if (masterId < 0){
-                return orders;
-            }
-            orders = orders.stream().filter(a -> a.getMaster().getId()==masterId).collect(Collectors.toList());
-        }
-
-        return orders;
     }
 }

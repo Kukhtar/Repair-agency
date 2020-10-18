@@ -16,6 +16,7 @@
 </li>
 <p><a href="${pageContext.request.contextPath}/app/user/createOrder"><fmt:message key="label.createOrder"/> </a></p>
 <p><a href="${pageContext.request.contextPath}/app/user/orders"><fmt:message key="header.yourOrders"/> </a></p>
+<p><a href="${pageContext.request.contextPath}/app/user/closed_orders"><fmt:message key="header.closedOrders"/> </a></p>
 
 <br><br>
 
