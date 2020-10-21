@@ -7,56 +7,75 @@
 
 <html>
 <head>
-    <title>Closed Orders</title>
+    <title><fmt:message key="label.closedOrders"/> </title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css"/>
+
 </head>
 <body>
-<h3><fmt:message key="header.closedOrders" /></h3>
-<br>
-<table cellspacing="2" border="1" cellpadding="5" width="600">
-    <tr>
-        <th>Consumer name</th>
-        <th>Status</th>
-        <th>Date</th>
-        <th>House number</th>
-        <th>Apartment number</th>
-        <th>Feedback</th>
-    </tr>
-    <c:forEach items='${sessionScope.orders}' var='i'>
+
+<div class="header">
+    <h1><fmt:message key="header.mainPage"/></h1>
+    <p><fmt:message key="label.closedOrders"/></p>
+    <div class="lang">
+        <a href="?sessionLocale=en"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/Flag-United-Kingdom.jpg"></a>
+        <a href="?sessionLocale=ua"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/UkraineFlag.png"></a>
+    </div>
+</div>
+
+<div class="navbar">
+    <a href="${pageContext.request.contextPath}/app/index"><fmt:message key="label.mainPage"/> </a>
+    <a href="${pageContext.request.contextPath}/app/user/createOrder"><fmt:message key="label.createOrder"/> </a>
+    <a href="${pageContext.request.contextPath}/app/user/orders"><fmt:message key="header.yourOrders"/> </a>
+    <a href="#" class="active"><fmt:message key="label.closedOrders"/> </a>
+    <a href="${pageContext.request.contextPath}/app/logout" class="right"><fmt:message key="label.logOut"/> </a>
+</div>
+
+<div class="main" style="background-image: url('${pageContext.request.contextPath}/images/a.webp'); height: 80%;">
+    <table id="orders">
         <tr>
-            <td>
-                <c:out value='${i.customer.fullName}'/>
-            </td>
-            <td>
-                <c:out value='${i.status}'/>
-            </td>
-            <td>
-                <c:out value='${i.date}'/>
-            </td>
-            <td>
-                <c:out value='${i.address.houseNumber}'/>
-            </td>
-            <td>
-                <c:out value='${i.address.flat_number}'/>
-            </td>
-            <td>
-                <i>
-                <c:out value='${i.feedBack}'/>
-            </td>
-            <td style="border: 0px; display: ${sessionScope.orderButtons.get(i.id)}"><a href="${pageContext.request.contextPath}/user/feedback.jsp?id=${i.id}">
-                <input type="button" value="<fmt:message key="buttons.giveFeedback" />">
-            </a></td>
+            <th><fmt:message key="label.consumerName"/> </th>
+            <th><fmt:message key="label.status"/> </th>
+            <th><fmt:message key="label.date"/> </th>
+            <th><fmt:message key="label.houseNumber"/> </th>
+            <th><fmt:message key="label.flatNumber"/> </th>
+            <th><fmt:message key="label.feedback"/> </th>
+            <th> <fmt:message key="button.giveFeedback"/></th>
         </tr>
+        <c:forEach items='${sessionScope.orders}' var='i'>
+            <tr>
+                <td>
+                    <c:out value='${i.customer.fullName}'/>
+                </td>
+                <td>
+                    <c:out value='${i.status}'/>
+                </td>
+                <td>
+                    <c:out value='${i.date}'/>
+                </td>
+                <td>
+                    <c:out value='${i.address.houseNumber}'/>
+                </td>
+                <td>
+                    <c:out value='${i.address.flat_number}'/>
+                </td>
+                <td>
+                    <i>
+                            <c:out value='${i.feedBack}'/>
+                </td>
+                <td style="border: 0px; display: ${sessionScope.orderButtons.get(i.id)}"><a href="${pageContext.request.contextPath}/user/feedback.jsp?id=${i.id}">
+                    <input type="button" value="<fmt:message key="button.giveFeedback" />">
+                </a></td>
+            </tr>
 
-    </c:forEach>
-</table>
-</body>
-<br>
-<li>
-    <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>
-</li>
-<br><br>
+        </c:forEach>
+    </table>
+</div>
 
-<li><a href="?sessionLocale=en">English</a></li>
-<li><a href="?sessionLocale=uk">Ukrainian</a></li>
+<div class="footer">
+    <p><fmt:message key="label.phone-number"/> 380XXXXXXX</p>
+</div>
+
 </body>
 </html>

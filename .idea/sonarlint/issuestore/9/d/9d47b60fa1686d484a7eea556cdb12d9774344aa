@@ -1,21 +1,12 @@
 
->	Web:S18277")Remove this deprecated "width" attribute.(Ë²ä
-Z	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ
-l Web:TableHeaderHasIdOrScopeCheck<";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ô€•Ùøÿÿÿÿ
-l Web:TableHeaderHasIdOrScopeCheck=";Add either an 'id' or a 'scope' attribute to this <th> tag.(ØÁú®ÿÿÿÿÿ
-SWeb:BoldAndItalicTagsCheck""!Replace this <b> tag by <strong>.(²í·Üüÿÿÿÿ8Û°…ÁÓ.
 cWeb:DoctypePresenceCheck":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ
-NWeb:BoldAndItalicTagsCheck"!Replace this <b> tag by <strong>.(½™·®8ŠŒÁÓ.
-HWeb:TableWithoutCaptionCheck7" Add a description to this table.(Ë²ä
-l Web:TableHeaderHasIdOrScopeCheck?";Add either an 'id' or a 'scope' attribute to this <th> tag.(éÂáİùÿÿÿÿ
-m%Web:ItemTagNotWithinContainerTagChecki"<Surround this <li> item tag by a <ul> or <ol> container one.(ÒßÚ
-D	Web:S18277"/Remove this deprecated "cellspacing" attribute.(Ë²ä
-m%Web:ItemTagNotWithinContainerTagCheckj"<Surround this <li> item tag by a <ul> or <ol> container one.(îÿñœ
-f Web:TableHeaderHasIdOrScopeCheck;";Add either an 'id' or a 'scope' attribute to this <th> tag.(‹ÚØT
-l Web:TableHeaderHasIdOrScopeCheck9";Add either an 'id' or a 'scope' attribute to this <th> tag.(¤¨¼îıÿÿÿÿ
-r%Web:ItemTagNotWithinContainerTagCheckb"<Surround this <li> item tag by a <ul> or <ol> container one.(ÀŞí÷ıÿÿÿÿ
-SWeb:BoldAndItalicTagsCheck+"!Replace this <b> tag by <strong>.(§ááÊùÿÿÿÿ8Ôœ†ÁÓ.
-g Web:TableHeaderHasIdOrScopeCheck:";Add either an 'id' or a 'scope' attribute to this <th> tag.(¶õÛ—
-g Web:TableHeaderHasIdOrScopeCheck@";Add either an 'id' or a 'scope' attribute to this <th> tag.(çåßÙ
-g Web:TableHeaderHasIdOrScopeCheck>";Add either an 'id' or a 'scope' attribute to this <th> tag.(à”÷
-D	Web:S18277"/Remove this deprecated "cellpadding" attribute.(Ë²ä
+s Web:TableHeaderHasIdOrScopeCheckV";Add either an 'id' or a 'scope' attribute to this <th> tag.(‡çåâıÿÿÿÿ8¾ï„ßÓ.
+n Web:TableHeaderHasIdOrScopeCheckW";Add either an 'id' or a 'scope' attribute to this <th> tag.(ş¿ú±8«Å²áÓ.
+n Web:TableHeaderHasIdOrScopeCheckY";Add either an 'id' or a 'scope' attribute to this <th> tag.(˜ÂŞ‰8«Å²áÓ.
+s Web:TableHeaderHasIdOrScopeCheckX";Add either an 'id' or a 'scope' attribute to this <th> tag.(ú¥øÿÿÿÿ8«Å²áÓ.
+s Web:TableHeaderHasIdOrScopeCheckZ";Add either an 'id' or a 'scope' attribute to this <th> tag.(êÑ´ßüÿÿÿÿ8«Å²áÓ.
+s Web:TableHeaderHasIdOrScopeCheck\";Add either an 'id' or a 'scope' attribute to this <th> tag.(´˜ëÂøÿÿÿÿ8«Å²áÓ.
+Z	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ
+s Web:TableHeaderHasIdOrScopeCheck[";Add either an 'id' or a 'scope' attribute to this <th> tag.(¥½“ºùÿÿÿÿ8«Å²áÓ.
+s Web:TableHeaderHasIdOrScopeCheck]";Add either an 'id' or a 'scope' attribute to this <th> tag.(¹êúÚıÿÿÿÿ8«Å²áÓ.
+OWeb:TableWithoutCaptionCheckT" Add a description to this table.(ï©¸Ã8Éï¦Ô.

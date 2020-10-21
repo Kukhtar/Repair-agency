@@ -159,3 +159,15 @@ V
 &src/main/webapp/manager/all_orders.jsp,9/d/9d47b60fa1686d484a7eea556cdb12d9774344aa
 Y
 )src/main/webapp/manager/active_orders.jsp,0/1/01732e2608c482bbcd71cde07d93bfe88443d7d3
+k
+;target/repair-agency-1.0-SNAPSHOT/manager/active_orders.jsp,8/2/82f02eb0cbec93cfe41469d8fcc1d4de55d57ccc
+h
+8target/repair-agency-1.0-SNAPSHOT/manager/all_orders.jsp,9/f/9fc78a9aa1175fe5749d1422b95a2ba57e35b7f5
+k
+;target/repair-agency-1.0-SNAPSHOT/manager/closed_orders.jsp,5/8/58aff3580c9090be13a09e24b49e930b53227709
+h
+8target/repair-agency-1.0-SNAPSHOT/user/closed_orders.jsp,6/3/633e42e1b665d1c8a6d5bb1e37f910190d93f1a0
+c
+3target/repair-agency-1.0-SNAPSHOT/user/feedback.jsp,8/1/81bd0b6c8fe9b5b9e12431b9921ec52623d99d16
+h
+8src/main/java/ua/kukhtar/controller/command/Command.java,2/b/2b1fb41e079b70378103482d5f6e70c0c62e8d1a

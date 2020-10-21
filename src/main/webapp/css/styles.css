@@ -1,7 +1,70 @@
+body{
+    margin: 0;
+}
+.header {
+    padding: 1px; /* some padding */
+    text-align: center; /* center the text */
+    background: #1abc9c; /* green background */
+    color: white; /* white text color */
+}
 
+/* Increase the font size of the <h1> element */
+.header h1 {
+    font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.right {
+    float: right; /* Float a link to the right */
+}
+
+a.active{
+    background-color: #ddd;
+    color: #000;
+}
+
+
+.lang{
+    margin-left: 85%;
+}
+img.lang-pic{
+    height: 4%;
+    width: 18%;
+}
+
+.main{
+    background-color: white; /* White background color */
+    padding: 0px; /* Some padding */
+}
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
 .form-style-2 {
     max-width: 500px;
-    padding: 20px 12px 10px 20px;
+    padding: 50px 12px 10px 50px;
     font: 13px Arial, Helvetica, sans-serif;
 }
 
@@ -16,6 +79,9 @@
 
 .form-style-2 label {
     display: grid;
+    font-size: 21px;
+    font-weight: bold;
+    color: #303;
     margin: 0px 0px 15px 0px;
 }
 
@@ -27,8 +93,45 @@
     padding-right: 5px;
 }
 
-.form-style-2 span.required {
-    color: red;
+.error-massage {
+    color: #FF0500;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#orders {
+    opacity: 0.9;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#orders td, #orders th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#orders tr:nth-child(even){background-color: #f2f2f2;}
+#orders tr:nth-child(odd){background-color: #c2c2c2;}
+
+#orders tr:hover {background-color: #ddd;}
+
+#orders th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.sort{
+    padding-top: 50px;
+    display: block ruby;
+}
+.sort *{
+    display: block ruby;
+    width: 65%;
+    padding: 4px;
 }
 
 .form-style-2 .tel-number-field {
@@ -55,6 +158,7 @@
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     padding: 7px;
+    height: 40px;
     outline: none;
 }
 

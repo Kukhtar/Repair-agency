@@ -10,99 +10,123 @@
 
 <html>
 <head>
-    <title>Users</title>
+    <title><fmt:message key="label.allOrders"/></title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css"/>
 </head>
 <body>
-<h3><fmt:message key="label.usersList"/></h3>
-<br>
+<div class="header">
+    <h1><fmt:message key="header.mainPage"/></h1>
+    <p><fmt:message key="label.allOrders"/></p>
+    <div class="lang">
+        <a href="?sessionLocale=en"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/Flag-United-Kingdom.jpg"></a>
+        <a href="?sessionLocale=ua"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/UkraineFlag.png"></a>
+    </div>
+</div>
 
-<c:set var="sortBy" value="${param.get('sortBy')}"/>
-<c:set var="statusFilter" value="${param.get('statusFilter')}"/>
-<c:set var="masterFilter" value="${param.get('masterFilter')}"/>
+<div class="navbar">
+    <a href="${pageContext.request.contextPath}/app/index"><fmt:message key="label.mainPage"/></a>
+    <a href="${pageContext.request.contextPath}/app/manager/active_orders"><fmt:message key="label.activeOrders"/></a>
+    <a href="${pageContext.request.contextPath}/app/manager/closed_orders"><fmt:message key="label.closedOrders"/></a>
+        <a href="#" class="active"><fmt:message key="label.allOrders"/> </a>
+        <a href="${pageContext.request.contextPath}/app/logout" class="right"><fmt:message key="label.logOut"/> </a>
+</div>
 
-<form action="${pageContext.request.contextPath}/app/manager/all_orders" method="get">
-    <b>Choose sorting</b>
-    <select name="sortBy">
-        <option value="date" ${"date" == sortBy ? 'selected' : ''}>Sort by date</option>
-        <option value="status" ${"status" == sortBy ? 'selected' : ''}>Sort by status</option>
-        <option value="price" ${"price" == sortBy ? 'selected' : ''} >Sort by price</option>
-    </select>
-    <br>
+<div class="main" style="background-image: url('${pageContext.request.contextPath}/images/a.webp'); height: 80%;">
+
+    <c:set var="sortBy" value="${param.get('sortBy')}"/>
+    <c:set var="statusFilter" value="${param.get('statusFilter')}"/>
+    <c:set var="masterFilter" value="${param.get('masterFilter')}"/>
 
 
-    <c:set var="enumValues" value="<%=STATUS.values()%>"/>
-    <b>Filter by status</b>
-    <select name="statusFilter">
-        <option selected value="none">All Statuses</option>
-        <c:forEach items='${enumValues}' var='i'>
-            <option ${(statusFilter!='none'?((i == statusFilter)  ? 'selected="selected"' : ''):"")}
-                    value="<c:out value='${i}'/>"><c:out value='${i}'/></option>
-        </c:forEach>
-    </select>
-    <br>
-    <b>Filter by master</b>
-    <select name="masterFilter">
-        <option selected value="-1">All Masters</option>
-        <c:forEach items='${requestScope.masters}' var='i'>
-            <option ${i.key == masterFilter ? 'selected="selected"' : ''} value="<c:out value='${i.key}'/>"><c:out
-                    value='${i.value}'/></option>
-        </c:forEach>
-    </select>
-    <br>
-    <input type="submit" value="Sort & Filter">
-</form>
+    <form class="form-style-2" action="${pageContext.request.contextPath}/app/manager/all_orders" method="get">
+        <div class="sort">
+            <label for="sortBy"><fmt:message key="label.orderBy"/>
+                <select name="sortBy" id="sortBy">
+                    <option value="date" ${"date" == sortBy ? 'selected' : ''}><fmt:message
+                            key="label.byDate"/></option>
+                    <option value="status" ${"status" == sortBy ? 'selected' : ''}><fmt:message
+                            key="label.byStatus"/></option>
+                    <option value="price" ${"price" == sortBy ? 'selected' : ''} ><fmt:message
+                            key="label.byPrice"/></option>
+                </select>
+            </label>
 
-<table cellspacing="2" border="1" cellpadding="5" width="600">
-    <tr>
-        <th>Consumer name</th>
-        <th>Status</th>
-        <th>Date</th>
-        <th>House number</th>
-        <th>Apartment number</th>
-        <th>Price</th>
-        <th>Master</th>
-        <th>Feedback</th>
-    </tr>
-    <c:forEach items='${requestScope.orders}' var='i'>
+            <c:set var="enumValues" value="<%=STATUS.values()%>"/>
+            <label for="status"><fmt:message key="label.filterByStatus"/>
+                <select name="statusFilter" id="status">
+                    <option selected value="none"><fmt:message key="label.all"/></option>
+                    <c:forEach items='${enumValues}' var='i'>
+                        <option ${(statusFilter!='none'?((i == statusFilter)  ? 'selected="selected"' : ''):"")}
+                                value="<c:out value='${i}'/>"><c:out value='${i}'/></option>
+                    </c:forEach>
+                </select>
+            </label>
+
+            <label for="master"><fmt:message key="label.filterByMaster"/>
+                <select name="masterFilter" id="master">
+                    <option selected value="-1"><fmt:message key="label.all"/></option>
+                    <c:forEach items='${requestScope.masters}' var='i'>
+                        <option ${i.key == masterFilter ? 'selected="selected"' : ''} value="<c:out value='${i.key}'/>">
+                            <c:out
+                                    value='${i.value}'/></option>
+                    </c:forEach>
+                </select>
+            </label>
+
+            <fmt:message key="button.apply" var="apply"/>
+            <br>
+        </div>
+        <input id="sub" type="submit" value="${apply}">
+    </form>
+
+    <table id="orders">
         <tr>
-            <td>
-                <c:out value='${i.customer.fullName}'/>
-            </td>
-            <td>
-                <c:out value='${i.status}'/>
-            </td>
-            <td>
-                <c:out value='${i.date}'/>
-            </td>
-            <td>
-                <c:out value='${i.address.houseNumber}'/>
-            </td>
-            <td>
-                <c:out value='${i.address.flat_number}'/>
-            </td>
-            <td>
-                <c:out value='${i.price}'/>
-            </td>
-            <td>
-                <c:out value='${requestScope.masters.get(i.master.id)}'/>
-            </td><td>
-                <c:out value='${i.feedBack}'/>
-            </td>
-
+            <th><fmt:message key="label.consumerName"/></th>
+            <th><fmt:message key="label.status"/></th>
+            <th><fmt:message key="label.date"/></th>
+            <th><fmt:message key="label.houseNumber"/></th>
+            <th><fmt:message key="label.flatNumber"/></th>
+            <th><fmt:message key="label.price"/></th>
+            <th><fmt:message key="label.masterName"/></th>
+            <th><fmt:message key="label.feedback"/></th>
         </tr>
-    </c:forEach>
+        <c:forEach items='${requestScope.orders}' var='i'>
+            <tr>
+                <td>
+                    <c:out value='${i.customer.fullName}'/>
+                </td>
+                <td>
+                    <c:out value='${i.status}'/>
+                </td>
+                <td>
+                    <c:out value='${i.date}'/>
+                </td>
+                <td>
+                    <c:out value='${i.address.houseNumber}'/>
+                </td>
+                <td>
+                    <c:out value='${i.address.flat_number}'/>
+                </td>
+                <td>
+                    <c:out value='${i.price}'/>
+                </td>
+                <td>
+                    <c:out value='${requestScope.masters.get(i.master.id)}'/>
+                </td>
+                <td>
+                    <c:out value='${i.feedBack}'/>
+                </td>
 
-</table>
+            </tr>
+        </c:forEach>
 
-<br>
-<li>
-    <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>
-</li>
-<br><br>
-<br>
-<br>
+    </table>
+</div>
 
-<li><a href="?sessionLocale=en">English</a></li>
-<li><a href="?sessionLocale=uk">Ukrainian</a></li>
+<div class="footer">
+    <p><fmt:message key="label.phone-number"/> 380XXXXXXX</p>
+</div>
 </body>
 </html>

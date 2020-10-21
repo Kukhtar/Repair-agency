@@ -12,8 +12,10 @@ import java.util.IllegalFormatException;
 
 public class CreateOrderCommand implements Command {
 
-    private static final Logger logger = LogManager.getLogger(LoginCommand.class);
+    private static final Logger logger = LogManager.getLogger(CreateOrderCommand.class);
     private OrderService service ;
+    private String massage;
+    private static final String WRONG_ADDRESS_FORMAT = "massage.wrongAddressFormat";
     public CreateOrderCommand(OrderService service) {
         this.service = service;
     }
@@ -25,6 +27,7 @@ public class CreateOrderCommand implements Command {
         String houseNumber = request.getParameter("house_number");
 
         if (!isValid(flatNumber, houseNumber)){
+            request.setAttribute("massage", massage);
             return "/user/create_order.jsp";
         }
 
@@ -49,11 +52,12 @@ public class CreateOrderCommand implements Command {
             house = Integer.parseInt(houseNumber);
         }catch (NumberFormatException e){
             logger.error(e);
-            //todo: send massage to client that date is invalid
+            massage = WRONG_ADDRESS_FORMAT;
             return false;
         }
 
         if (flat <=0 || house <=0 ){
+            massage = WRONG_ADDRESS_FORMAT;
             return false;
         }
 

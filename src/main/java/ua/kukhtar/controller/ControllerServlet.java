@@ -7,7 +7,6 @@ import ua.kukhtar.controller.command.consumer.*;
 import ua.kukhtar.controller.command.manager.AllOrdersCommand;
 import ua.kukhtar.controller.command.manager.ManagerOrdersCommand;
 import ua.kukhtar.controller.command.manager.OrderManagingCommand;
-import ua.kukhtar.controller.command.manager.UserListCommand;
 import ua.kukhtar.controller.command.master.MasterOrdersCommand;
 import ua.kukhtar.controller.command.master.MastersOrderManagingCommand;
 import ua.kukhtar.model.service.OrderService;
@@ -33,11 +32,10 @@ public class ControllerServlet extends HttpServlet {
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
         //todo: logged users shouldn't have access to index page
-        //todo: anybody can execute privileged command, fix this, maybe add user role to URL
+        commands.put("index", new IndexCommand());
         commands.put("logout", new LogoutCommand());
         commands.put("login", new LoginCommand(new UserService()));
         commands.put("registration", new RegistrationCommand(new UserService()));
-        commands.put("manager/consumers", new UserListCommand(new UserService()));
         commands.put("manager/active_orders", new ManagerOrdersCommand(new OrderService(), new UserService(), true));
         commands.put("manager/closed_orders", new ManagerOrdersCommand(new OrderService(), new UserService(), false));
         commands.put("manager/all_orders", new AllOrdersCommand(new OrderService(), new UserService()));
@@ -67,9 +65,8 @@ public class ControllerServlet extends HttpServlet {
         String path = request.getRequestURI();
         path = path.replaceAll(".*/app/" , "");
 
-        //todo: maybe remove this default value
         Command command = commands.getOrDefault(path ,
-                (r)->"/jsp/index.jsp");
+                commands.get("index"));
         String page = command.execute(request);
         if(page.contains("redirect:")){
             response.sendRedirect(page.replace("redirect:", "/repair_agency"));

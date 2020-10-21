@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 public class PaymentCommand implements Command {
     private final OrderService orderService;
     private final UserService userService;
+    private String massage = "massage.";
+    private static final String WRONG_BANK_ACCOUNT = "massage.wrongBankAccountFormat";
     public PaymentCommand(OrderService orderService, UserService userService){
         this.orderService = orderService;
         this.userService = userService;
@@ -21,7 +23,7 @@ public class PaymentCommand implements Command {
 
         String bankAccount = request.getParameter("bankAccount");
         if (!isValid(bankAccount)){
-            request.setAttribute("massage", "wrong account format");
+            request.setAttribute("massage", massage);
             return "/user/payment_page.jsp";
         }
 
@@ -40,7 +42,11 @@ public class PaymentCommand implements Command {
     }
 
     private boolean isValid(String number){
+        if (number==null){
+            return false;
+        }
         if (number.contains("[^0-9]") || number.length()!=12){
+            massage = WRONG_BANK_ACCOUNT;
             return false;
         }
 

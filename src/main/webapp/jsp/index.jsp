@@ -1,30 +1,39 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="messages"/>
 
 <html>
 <head>
-    <link rel="stylesheet"  href="${pageContext.request.contextPath}/css/styles.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css"/>
+    <title><fmt:message key="header.mainPage"/> </title>
 </head>
 <body>
-<h2>
-    <fmt:message key="header.mainPage"/>
-</h2>
+<div class="header">
+    <h1><fmt:message key="header.mainPage"/></h1>
+    <p><fmt:message key="massage.mainPageMassage"/></p>
+    <div class="lang">
+        <a href="?sessionLocale=en"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/Flag-United-Kingdom.jpg"></a>
+        <a href="?sessionLocale=ua"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/UkraineFlag.png"></a>
+    </div>
+</div>
 
-<br/>
+<div class="navbar">
+    <a href="#" class="active"><fmt:message key="label.mainPage"/></a>
+    <a href="${pageContext.request.contextPath}/app/login"><fmt:message key="label.logInPage"/></a>
+    <a href="${pageContext.request.contextPath}/app/registration"><fmt:message key="label.signUpPage"/></a>
+</div>
 
-<a href="${pageContext.request.contextPath}/app/login"><fmt:message key="label.logInPage"/> </a>
-<br/>
-<a href="${pageContext.request.contextPath}/app/registration"><fmt:message key="label.signUpPage"/></a>
-<br>
-<%--<a href="${pageContext.request.contextPath}/app/exception">Exception</a>--%>
+<div class="main" style="background-image: url('${pageContext.request.contextPath}/images/a.webp'); height: 80%;">
 
-<br><br>
-<li><a href="?sessionLocale=en">English</a></li>
-<li><a href="?sessionLocale=uk">Ukrainian</a></li>
+</div>
 
+<div class="footer">
+    <p><fmt:message key="label.phone-number"/> 380XXXXXXX</p>
+</div>
 </body>
 </html>

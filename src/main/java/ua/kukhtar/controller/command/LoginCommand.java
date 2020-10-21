@@ -11,6 +11,11 @@ import java.util.Optional;
 public class LoginCommand implements Command {
     private static final Logger logger = LogManager.getLogger(LoginCommand.class);
     private UserService service ;
+    private String massage ;
+    private static final String ENTER_ALL_DATA = "message.enterAllData";
+    private static final String WRONG_LOGIN_OR_PASSWORD = "message.wrongLogin";
+
+
     public LoginCommand(UserService service) {
         this.service = service;
     }
@@ -22,7 +27,8 @@ public class LoginCommand implements Command {
         String pass = request.getParameter("password");
 
 
-        if (!isValid(name, pass, request)){
+        if (!isValid(name, pass)){
+            request.setAttribute("massage", massage);
             return "/jsp/login.jsp";
         }
 
@@ -42,14 +48,16 @@ public class LoginCommand implements Command {
 
         }
         logger.info("Invalid attempt of login user:{}", name);
+        request.setAttribute("massage", WRONG_LOGIN_OR_PASSWORD);
         return "/jsp/login.jsp";
     }
 
-    private boolean isValid(String name, String pass, HttpServletRequest request){
+    private boolean isValid(String name, String pass){
         if (name == null)
             return false;
         else if (name.isEmpty() || pass.isEmpty()){
-            request.setAttribute("massage", "Please enter required data");
+            massage = ENTER_ALL_DATA;
+            return false;
         }
 
         return true;

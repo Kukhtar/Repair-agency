@@ -1,7 +1,7 @@
 
-c
-java:S1128"ARemove this unused import 'ua.kukhtar.model.entity.enums.STATUS'.(¶‘¼Ìøÿÿÿÿ8ÕœÏŒÒ.
 o
 java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(§ÉÁ¾ûÿÿÿÿ
 M
 java:S1128"0Remove this unused import 'java.sql.Connection'.(¥ËôÖ8Êä‘‘Ó.
+c
+java:S1128"ARemove this unused import 'ua.kukhtar.model.entity.enums.STATUS'.(¶‘¼Ìøÿÿÿÿ8ÕœÏŒÒ.

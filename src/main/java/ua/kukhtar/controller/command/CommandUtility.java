@@ -14,8 +14,8 @@ public class CommandUtility {
 
         request.getSession().setAttribute("name", null);
         request.getSession().setAttribute("role", null);
+        request.getSession().setAttribute("id", null);
 
-        //todo: should be in servlet context
         HashSet<String> loggedUsers = (HashSet<String>) request.getServletContext()
                 .getAttribute("loggedUsers");
 

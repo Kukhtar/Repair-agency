@@ -22,7 +22,6 @@ public class GuestPagesFilter implements Filter {
         if (request.getSession().getAttribute("name") != null){
             logger.debug("logged user trying to access guest page");
             CommandUtility.logOut(request);
-            //todo: print correct error massage
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

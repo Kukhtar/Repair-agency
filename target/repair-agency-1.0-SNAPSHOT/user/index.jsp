@@ -7,20 +7,37 @@
 
 <html>
 <head>
-    <title>Consumer</title>
+    <title><fmt:message key="label.manager"/> </title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css"/>
 </head>
 <body>
-<h3><fmt:message key="header.consumerPage" /></h3>
-<li>
-    <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>
-</li>
-<p><a href="${pageContext.request.contextPath}/app/user/createOrder"><fmt:message key="label.createOrder"/> </a></p>
-<p><a href="${pageContext.request.contextPath}/app/user/orders"><fmt:message key="header.yourOrders"/> </a></p>
-<p><a href="${pageContext.request.contextPath}/app/user/closed_orders"><fmt:message key="header.closedOrders"/> </a></p>
 
-<br><br>
+<div class="header">
+    <h1><fmt:message key="header.mainPage"/></h1>
+    <p><fmt:message key="header.consumerPage"/></p>
+    <div class="lang">
+        <a href="?sessionLocale=en"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/Flag-United-Kingdom.jpg"></a>
+        <a href="?sessionLocale=ua"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/UkraineFlag.png"></a>
+    </div>
+</div>
 
-<li><a href="?sessionLocale=en">English</a></li>
-<li><a href="?sessionLocale=uk">Ukrainian</a></li>
+<div class="navbar">
+    <a href="#" class="active"><fmt:message key="label.mainPage"/> </a>
+    <a href="${pageContext.request.contextPath}/app/user/createOrder"><fmt:message key="label.createOrder"/> </a>
+    <a href="${pageContext.request.contextPath}/app/user/orders"><fmt:message key="header.yourOrders"/> </a>
+    <a href="${pageContext.request.contextPath}/app/user/closed_orders"><fmt:message key="label.closedOrders"/> </a>
+    <a href="${pageContext.request.contextPath}/app/logout" class="right"><fmt:message key="label.logOut"/> </a>
+</div>
+
+<div class="main" style="background-image: url('${pageContext.request.contextPath}/images/a.webp'); height: 80%;">
+
+</div>
+
+<div class="footer">
+    <p><fmt:message key="label.phone-number"/> 380XXXXXXX</p>
+</div>
+
 </body>
 </html>

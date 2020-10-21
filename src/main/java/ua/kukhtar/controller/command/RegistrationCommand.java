@@ -10,8 +10,10 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class RegistrationCommand implements Command {
-    private static final Logger logger = LogManager.getLogger(LoginCommand.class);
-    private UserService service;
+    private static final Logger logger = LogManager.getLogger(RegistrationCommand.class);
+    private final UserService service;
+    private String massage ;
+    private static final String ENTER_ALL_DATA = "message.enterAllData";
 
     public RegistrationCommand(UserService service) {
         this.service = service;
@@ -19,36 +21,22 @@ public class RegistrationCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        //todo: make special method for getting locale
-        Object lang = request.getSession().getAttribute("lang");
-        Locale locale = lang == null ? Locale.getDefault() : new Locale((String) lang);
-
-        ResourceBundle rb = ResourceBundle.getBundle("messages", locale);
 
         if (request.getSession().getAttribute("name") != null) {
             logger.debug("logged user trying to access logIn page");
             CommandUtility.logOut(request);
-            //todo: print correct error massage
         }
-        //todo: when some field wrong, should refresh with previous data
+
         String name = request.getParameter("name");
         String pass = request.getParameter("password");
         String fullName = request.getParameter("full-name");
         String phoneNumber = request.getParameter("phone-number");
 
 
-        if (name == null || name.equals("") || pass == null || pass.equals("") || phoneNumber == null || phoneNumber.equals("")) {
-            logger.debug("some field is not filled");
-//            request.setAttribute("massage", "Please enter required data");
+        if (!isValid(name, pass, fullName, phoneNumber)) {
+            request.setAttribute("massage", massage);
             return "/jsp/registration.jsp";
         }
-
-        //todo: add exception handling from registration service
-//        if (!service.isLoginFree(name)){
-//            logger.debug("name: {} is not available", name);
-//            request.setAttribute("massage", rb.getString("message.userNameNotAvailable"));
-//            return "/jsp/registration.jsp";
-//        }
 
         request.getSession().setAttribute("name", name);
         request.getSession().setAttribute("role", User.ROLE.USER.name());
@@ -62,15 +50,26 @@ public class RegistrationCommand implements Command {
             service.addUser(user);
         } catch (Exception e) {
             logger.error(e);
-            request.setAttribute("massage", rb.getString("message.userNameNotAvailable"));
+            request.setAttribute("massage","message.userNameNotAvailable");
             return "/jsp/registration.jsp";
         }
 
-        //maybe i don't need this
-//        user.setId(service.getUserId(name));
+
         logger.info("created user object: {}", user);
         return "redirect:/user/index.jsp";
     }
 
 
+    private boolean isValid(String name, String pass, String fullName, String phoneNumber) {
+        if (name == null)
+            return false;
+            //todo: add phone number validation
+        else if (name.isEmpty() || pass.isEmpty() || fullName.isEmpty() || phoneNumber.isEmpty()) {
+            //todo: add to resource bundle
+            massage = ENTER_ALL_DATA;
+            return false;
+        }
+
+        return true;
+    }
 }

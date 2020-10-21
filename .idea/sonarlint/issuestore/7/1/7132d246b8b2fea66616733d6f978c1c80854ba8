@@ -1,14 +1,10 @@
 
-X	java:S125*"<This block of commented-out lines of code should be removed.(–ø¸Ã8ê­ÕÎÏ.
-X
-java:S3416"6Update this logger to use "RegistrationCommand.class".(î•„Ğûÿÿÿÿ8š†Ğ¾Ï.
+W
+java:S1128
+"5Remove this unused import 'java.util.ResourceBundle'.(ıÆ£¯øÿÿÿÿ8€ÿ±Ô.
 O
-java:S1135."2Complete the task associated to this TODO comment.(“Úª«8’ñ¬·Ò.
+java:S1135D"2Complete the task associated to this TODO comment.(ã÷ÜÅ8œŒƒÙÓ.
 T
-java:S1135!"2Complete the task associated to this TODO comment.(ä›ó©úÿÿÿÿ8ŸÀûáĞ.
-]	java:S125/"<This block of commented-out lines of code should be removed.(ùØë€şÿÿÿÿ8’ñ¬·Ò.
-T
-java:S1135"2Complete the task associated to this TODO comment.(¨™Ûõøÿÿÿÿ8š¢¬¼Ğ.
-]	java:S125F"<This block of commented-out lines of code should be removed.(§¾Ê¯ÿÿÿÿÿ8’ñ¬·Ò.
+java:S1135B"2Complete the task associated to this TODO comment.(çœ¨÷úÿÿÿÿ8ÓßøØÓ.
 O
-java:S1135"2Complete the task associated to this TODO comment.(äø”8´Ü‘ÀÏ.
+java:S1128	"-Remove this unused import 'java.util.Locale'.(åğ×±ûÿÿÿÿ8€ÿ±Ô.

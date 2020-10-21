@@ -10,70 +10,88 @@
 
 <html>
 <head>
-    <title>Users</title>
+    <title><fmt:message key="label.activeOrders"/></title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css"/>
+
 </head>
 <body>
-<h3><fmt:message key="label.usersList"/></h3>
-<br>
 
-<table cellspacing="2" border="1" cellpadding="5" width="600">
-    <tr>
-        <th>Consumer name</th>
-        <th>Status</th>
-        <th>Date</th>
-        <th>House number</th>
-        <th>Apartment number</th>
-        <th>Price</th>
-        <th>Master</th>
-        <th>Mange order</th>
-    </tr>
-    <c:forEach items='${requestScope.orders}' var='i'>
+<div class="header">
+    <h1><fmt:message key="header.mainPage"/></h1>
+    <p><fmt:message key="label.activeOrders"/></p>
+    <div class="lang">
+        <a href="?sessionLocale=en"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/Flag-United-Kingdom.jpg"></a>
+        <a href="?sessionLocale=ua"><img class="lang-pic" alt="Can't load image"
+                                         src="${pageContext.request.contextPath}/images/UkraineFlag.png"></a>
+    </div>
+</div>
+
+<div class="navbar">
+    <a href="${pageContext.request.contextPath}/app/index"><fmt:message key="label.mainPage"/></a>
+    <a href="#" class="active"><fmt:message key="label.activeOrders"/></a>
+    <a href="${pageContext.request.contextPath}/app/manager/closed_orders"><fmt:message key="label.closedOrders"/></a>
+        <a href="${pageContext.request.contextPath}/app/manager/all_orders"><fmt:message key="label.allOrders"/> </a>
+        <a href="${pageContext.request.contextPath}/app/logout" class="right"><fmt:message key="label.logOut"/> </a>
+</div>
+
+<div class="main" style="background-image: url('${pageContext.request.contextPath}/images/a.webp'); height: 80%; ">
+    <table id="orders" >
         <tr>
-            <td>
-                <c:out value='${i.customer.fullName}'/>
-            </td>
-            <td>
-                <c:out value='${i.status}'/>
-            </td>
-            <td>
-                <c:out value='${i.date}'/>
-            </td>
-            <td>
-                <c:out value='${i.address.houseNumber}'/>
-            </td>
-            <td>
-                <c:out value='${i.address.flat_number}'/>
-            </td>
-            <td>
-                <c:out value='${i.price}'/>
-            </td>
-            <td>
-                <c:out value='${requestScope.masters.get(i.master.id)}'/>
-            </td>
-            <td>
-                <a href="${pageContext.request.contextPath}/app/manager/manage_order?order_id=<c:out value='${i.id}'/>">
-                    <input type="button" value="Manage">
-                </a>
-            </td>
+            <th><fmt:message key="label.consumerName"/> </th>
+            <th><fmt:message key="label.status"/> </th>
+            <th><fmt:message key="label.date"/></th>
+            <th><fmt:message key="label.houseNumber"/></th>
+            <th><fmt:message key="label.flatNumber"/></th>
+            <th><fmt:message key="label.price"/></th>
+            <th><fmt:message key="label.masterName"/></th>
+            <th><fmt:message key="label.manageOrder" /></th>
         </tr>
+
+        <fmt:message key="label.manageOrder" var="manage" />
+
+        <c:forEach items='${requestScope.orders}' var='i'>
+            <tr>
+                <td>
+                    <c:out value='${i.customer.fullName}'/>
+                </td>
+                <td>
+                    <c:out value='${i.status}'/>
+                </td>
+                <td>
+                    <c:out value='${i.date}'/>
+                </td>
+                <td>
+                    <c:out value='${i.address.houseNumber}'/>
+                </td>
+                <td>
+                    <c:out value='${i.address.flat_number}'/>
+                </td>
+                <td>
+                    <c:out value='${i.price}'/>
+                </td>
+                <td>
+                    <c:out value='${requestScope.masters.get(i.master.id)}'/>
+                </td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/app/manager/manage_order?order_id=<c:out value='${i.id}'/>">
+                        <input type="button" value="${manage}">
+                    </a>
+                </td>
+            </tr>
+        </c:forEach>
+
+    </table>
+
+
+    <c:forEach begin="1" end="${requestScope.countOfPages}" varStatus="loop">
+        <a href="?page=${page=loop.index}">${loop.index} </a>
     </c:forEach>
+</div>
 
-</table>
+<div class="footer">
+    <p><fmt:message key="label.phone-number"/> 380XXXXXXX</p>
+</div>
 
-
-<c:forEach begin="1" end="${requestScope.countOfPages}" varStatus="loop">
-    <a href="?page=${page=loop.index}">${loop.index} </a>
-</c:forEach>
-
-<br>
-<li>
-    <a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="label.logOut"/> </a>
-</li>
-<br><br>
-<br>
-<br>
-
-<li><a href="?sessionLocale=en">English</a></li>
-<li><a href="?sessionLocale=uk">Ukrainian</a></li>
 </body>
 </html>

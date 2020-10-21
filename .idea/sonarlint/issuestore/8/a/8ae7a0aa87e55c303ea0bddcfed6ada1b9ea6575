@@ -1,20 +1,14 @@
 
-g Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¶õÛ—
-l Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(¤¨¼îıÿÿÿÿ
-D	Web:S1827"/Remove this deprecated "cellspacing" attribute.(Ë²ä
-l Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(ØÁú®ÿÿÿÿÿ
-D	Web:S1827"/Remove this deprecated "cellpadding" attribute.(Ë²ä
-g Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(à”÷
-HWeb:TableWithoutCaptionCheck" Add a description to this table.(Ë²ä
-l Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(éÂáİùÿÿÿÿ
-m%Web:ItemTagNotWithinContainerTagCheckI"<Surround this <li> item tag by a <ul> or <ol> container one.(ÒßÚ
-f Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(‹ÚØT
-r%Web:ItemTagNotWithinContainerTagCheckB"<Surround this <li> item tag by a <ul> or <ol> container one.(ÀŞí÷ıÿÿÿÿ
->	Web:S1827")Remove this deprecated "width" attribute.(Ë²ä
-g Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(çåßÙ
-cWeb:DoctypePresenceCheck
-":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ
-m%Web:ItemTagNotWithinContainerTagCheckJ"<Surround this <li> item tag by a <ul> or <ol> container one.(îÿñœ
 Z	Web:S5254
 "@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ
-l Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ô€•Ùøÿÿÿÿ
+cWeb:DoctypePresenceCheck
+":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ
+s Web:TableHeaderHasIdOrScopeCheck-";Add either an 'id' or a 'scope' attribute to this <th> tag.(´˜ëÂøÿÿÿÿ8Ôò¹áÓ.
+s Web:TableHeaderHasIdOrScopeCheck'";Add either an 'id' or a 'scope' attribute to this <th> tag.(‡çåâıÿÿÿÿ8Ôò¹áÓ.
+OWeb:TableWithoutCaptionCheck%" Add a description to this table.(ï©¸Ã8Éï¦Ô.
+n Web:TableHeaderHasIdOrScopeCheck(";Add either an 'id' or a 'scope' attribute to this <th> tag.(ş¿ú±8Ôò¹áÓ.
+s Web:TableHeaderHasIdOrScopeCheck+";Add either an 'id' or a 'scope' attribute to this <th> tag.(êÑ´ßüÿÿÿÿ8Ôò¹áÓ.
+s Web:TableHeaderHasIdOrScopeCheck.";Add either an 'id' or a 'scope' attribute to this <th> tag.(¹êúÚıÿÿÿÿ8Ôò¹áÓ.
+n Web:TableHeaderHasIdOrScopeCheck*";Add either an 'id' or a 'scope' attribute to this <th> tag.(˜ÂŞ‰8Ôò¹áÓ.
+s Web:TableHeaderHasIdOrScopeCheck,";Add either an 'id' or a 'scope' attribute to this <th> tag.(¥½“ºùÿÿÿÿ8Ôò¹áÓ.
+s Web:TableHeaderHasIdOrScopeCheck)";Add either an 'id' or a 'scope' attribute to this <th> tag.(ú¥øÿÿÿÿ8Ôò¹áÓ.

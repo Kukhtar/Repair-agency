@@ -1,11 +1,11 @@
 
-F
-java:S1481"*Remove this unused "order" local variable.(±ÆŠ{8ç×Ò.
->
-java:S1116"Remove this empty statement.(åŠƒûøÿÿÿÿ8¡À××Ò.
-P
-java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8¾õå×Ò.
 j
 java:S2441$"MMake "List" and its parameters serializable or don't store it in the session.(Ÿùƒ8ÕîŠ˜Ó.
+>
+java:S1116"Remove this empty statement.(åŠƒûøÿÿÿÿ8¡À××Ò.
+F
+java:S1481"*Remove this unused "order" local variable.(±ÆŠ{8ç×Ò.
 [
 java:S1128"9Remove this unused import 'ua.kukhtar.model.entity.User'.(¶äŸµúÿÿÿÿ8Œ¿Ù×Ò.
+P
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8¾õå×Ò.
