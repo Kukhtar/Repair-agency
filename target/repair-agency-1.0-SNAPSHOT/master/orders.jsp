@@ -41,7 +41,7 @@
             <th><fmt:message key="label.manageOrder"/> </th>
         </tr>
         <fmt:message key="label.manageOrder" var="manage"/>
-        <c:forEach items='${sessionScope.orders}' var='i'>
+        <c:forEach items='${requestScope.orders}' var='i'>
             <tr>
                 <td>
                     <c:out value='${i.customer.fullName}'/>

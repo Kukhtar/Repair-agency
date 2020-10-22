@@ -43,7 +43,7 @@
             <th><fmt:message key="label.feedback"/> </th>
             <th> <fmt:message key="button.giveFeedback"/></th>
         </tr>
-        <c:forEach items='${sessionScope.orders}' var='i'>
+        <c:forEach items='${requestScope.orders}' var='i'>
             <tr>
                 <td>
                     <c:out value='${i.customer.fullName}'/>

@@ -13,14 +13,25 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implements Command interface, implements logic of getting all orders of all users,
+ * also gives ability to sort and filter this orders
+ */
 public class AllOrdersCommand implements Command {
     private final OrderService orderService;
     private final UserService userService;
-    private Logger logger = LogManager.getLogger(AllOrdersCommand.class);
+    private final Logger logger = LogManager.getLogger(AllOrdersCommand.class);
     public AllOrdersCommand(OrderService orderService, UserService userService){
         this.orderService = orderService;
         this.userService = userService;
     }
+
+    /**
+     * Gets all orders, then get information about sorting and filtering from the form, and process
+     * sorting and filtering, return URL of JSP page with all orders
+     * @param request
+     * @return
+     */
     @Override
     public String execute(HttpServletRequest request) {
         List<Order> orders;
@@ -37,31 +48,38 @@ public class AllOrdersCommand implements Command {
         return "/manager/all_orders.jsp";
     }
 
+    /**
+     * Gets parameter for sorting by, and return appropriate Comparator lambda
+     * @param sortBy parameter of sorting
+     * @return appropriate Comparator
+     */
     private Comparator<Order> getComparatorFromJspPage(String sortBy){
         if (sortBy == null){
             logger.debug("sort by value not founded");
-            return (o1, o2) -> o1.getDate().compareTo(o2.getDate());
+            return Comparator.comparing(Order::getDate);
         }
         logger.debug("sortBy value: {}", sortBy);
         switch (sortBy){
-            case "date":
-                return Comparator.comparing(Order::getDate);
             case "price":
                 return Comparator.comparing(Order::getPrice);
             case "status":
                 return Comparator.comparing(Order::getStatus);
-            default: {
-                logger.debug("default statement worked");
+            default:
                 return Comparator.comparing(Order::getDate);
-            }
+
         }
     }
 
+    /**
+     * Gets filter parameters for master and status fields, operate this filtering and return list of orders
+     * @param request HttpServletRequest that contain filter parameters
+     * @param orders list that need to be filtered
+     * @return filtered list of orders
+     */
     private List<Order> filterOrders(HttpServletRequest request,List<Order> orders){
         String statusParam = request.getParameter("statusFilter");
         String masterParam = request.getParameter("masterFilter");
         if (statusParam!=null && !statusParam.equals("none")){
-            logger.debug("default value of filter = none? {}", statusParam.equals("none"));
             STATUS status = STATUS.valueOf(statusParam);
             orders = orders.stream().filter(a -> a.getStatus()==status).collect(Collectors.toList());
         }

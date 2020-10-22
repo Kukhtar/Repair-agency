@@ -40,8 +40,8 @@
     <c:set var="masterFilter" value="${param.get('masterFilter')}"/>
 
 
-    <form class="form-style-2" action="${pageContext.request.contextPath}/app/manager/all_orders" method="get">
-        <div class="sort">
+    <form class="form-style-2" style="padding: 0; margin: 0;" action="${pageContext.request.contextPath}/app/manager/all_orders" method="get">
+        <div class="sort" >
             <label for="sortBy"><fmt:message key="label.orderBy"/>
                 <select name="sortBy" id="sortBy">
                     <option value="date" ${"date" == sortBy ? 'selected' : ''}><fmt:message

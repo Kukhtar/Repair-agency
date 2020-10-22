@@ -41,7 +41,7 @@
             <th><fmt:message key="label.flatNumber"/></th>
         </tr>
         <fmt:message key="button.pay" var="pay"/>
-        <c:forEach items='${sessionScope.orders}' var='i'>
+        <c:forEach items='${requestScope.orders}' var='i'>
             <tr>
                 <td>
                     <c:out value='${i.customer.fullName}'/>

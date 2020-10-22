@@ -31,7 +31,6 @@ public class ControllerServlet extends HttpServlet {
     public void init(ServletConfig servletConfig){
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
-        //todo: logged users shouldn't have access to index page
         commands.put("index", new IndexCommand());
         commands.put("logout", new LogoutCommand());
         commands.put("login", new LoginCommand(new UserService()));

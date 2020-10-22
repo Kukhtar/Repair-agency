@@ -77,9 +77,11 @@
     </table>
 
 
-    <c:forEach begin="1" end="${requestScope.countOfPages}" varStatus="loop">
-        <a href="?page=${page=loop.index}">${loop.index} </a>
-    </c:forEach>
+    <form class="form-style-2">
+        <c:forEach begin="1" end="${requestScope.countOfPages}" varStatus="loop">
+            <a href="?page=${page=loop.index}"><input type="button" value="${loop.index}"/> </a>
+        </c:forEach>
+    </form>
 
 </div>
 

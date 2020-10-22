@@ -6,8 +6,6 @@ import ua.kukhtar.model.entity.User;
 import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class RegistrationCommand implements Command {
     private static final Logger logger = LogManager.getLogger(RegistrationCommand.class);
@@ -47,7 +45,9 @@ public class RegistrationCommand implements Command {
         user.setPhoneNumber(phoneNumber);
 
         try {
-            service.addUser(user);
+            int id = service.addUser(user);
+            request.getSession().setAttribute("id" , id);
+
         } catch (Exception e) {
             logger.error(e);
             request.setAttribute("massage","message.userNameNotAvailable");
@@ -63,9 +63,7 @@ public class RegistrationCommand implements Command {
     private boolean isValid(String name, String pass, String fullName, String phoneNumber) {
         if (name == null)
             return false;
-            //todo: add phone number validation
         else if (name.isEmpty() || pass.isEmpty() || fullName.isEmpty() || phoneNumber.isEmpty()) {
-            //todo: add to resource bundle
             massage = ENTER_ALL_DATA;
             return false;
         }

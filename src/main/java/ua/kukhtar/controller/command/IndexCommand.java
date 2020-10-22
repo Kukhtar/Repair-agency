@@ -5,6 +5,7 @@ import ua.kukhtar.model.entity.User;
 import javax.servlet.http.HttpServletRequest;
 
 public class IndexCommand implements Command {
+
     @Override
     public String execute(HttpServletRequest request) {
         Object role = request.getSession().getAttribute("role");

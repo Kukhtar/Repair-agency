@@ -9,6 +9,9 @@ import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Implements Command interface, adds user ability to pay for order
+ */
 public class PaymentCommand implements Command {
     private final OrderService orderService;
     private final UserService userService;
@@ -18,6 +21,13 @@ public class PaymentCommand implements Command {
         this.orderService = orderService;
         this.userService = userService;
     }
+
+    /**
+     * gets bank account from form and check is it valid, if so
+     * set order as PAID and return URL of JSP page with active orders of current user
+     * @param request
+     * @return
+     */
     @Override
     public String execute(HttpServletRequest request) {
 
@@ -41,6 +51,11 @@ public class PaymentCommand implements Command {
         return "redirect:/app/user/orders";
     }
 
+    /**
+     * check if bank account contain 12 digits
+     * @param number
+     * @return boolean result of validation
+     */
     private boolean isValid(String number){
         if (number==null){
             return false;

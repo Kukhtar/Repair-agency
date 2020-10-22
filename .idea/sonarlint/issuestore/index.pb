@@ -81,8 +81,6 @@ h
 8src/main/java/ua/kukhtar/model/service/OrderService.java,a/6/a63c6fdda0e10cb4c87ec1d9fd760798e1149c98
 b
 2src/main/java/ua/kukhtar/model/dao/AddressDao.java,5/1/51bb8231d6bbfe912ba0f05eb67183763c9e77e9
-U
-%src/main/webapp/manager/consumers.jsp,2/8/284f1540d1d0220273de508e1fda801f68891619
 b
 2src/main/java/ua/kukhtar/model/entity/Address.java,9/0/9018af6d2f89ef7752a10b7cb042166d5111d6f3
 k
@@ -113,8 +111,6 @@ X
 Lsrc/main/java/ua/kukhtar/controller/command/consumer/CreateOrderCommand.java,3/f/3f47da6732d905369ce2e52e429496dcb26c5ce7
 }
 Msrc/main/java/ua/kukhtar/controller/command/manager/ManagerOrdersCommand.java,b/5/b54e0ea82cc2a72380ccbcb9676e0bbf085ccb31
-x
-Hsrc/main/java/ua/kukhtar/controller/command/manager/UserListCommand.java,2/5/25f441056fcb5d86fccac9af30cdf4da6a3888be
 }
 Msrc/main/java/ua/kukhtar/controller/command/manager/OrderManagingCommand.java,3/c/3c39740b196a1801e03281268b73c7ecc8ad752e
 {
@@ -171,3 +167,17 @@ c
 3target/repair-agency-1.0-SNAPSHOT/user/feedback.jsp,8/1/81bd0b6c8fe9b5b9e12431b9921ec52623d99d16
 h
 8src/main/java/ua/kukhtar/controller/command/Command.java,2/b/2b1fb41e079b70378103482d5f6e70c0c62e8d1a
+b
+2target/repair-agency-1.0-SNAPSHOT/master/index.jsp,c/2/c2722d936ebab8dae0d0ac30908f9c71082abb27
+j
+:target/repair-agency-1.0-SNAPSHOT/manager/order_manage.jsp,4/3/43aa72e9758cd2d08e1c9c6798707f2c9b42719a
+i
+9target/repair-agency-1.0-SNAPSHOT/master/order_manage.jsp,1/e/1e603eaa8a894ae036cc4c7e0e0d475a644f6766
+c
+3target/repair-agency-1.0-SNAPSHOT/master/orders.jsp,9/6/9690734cc4568c0c2f8c7f67fc7057e6e40f60f0
+a
+1target/repair-agency-1.0-SNAPSHOT/user/orders.jsp,7/f/7fa87626b966eba27f4ebc5f86fd63e5fe2f7ea6
+g
+7target/repair-agency-1.0-SNAPSHOT/user/payment_page.jsp,b/d/bdbc1e1d7c239364343236d2415f2bea93b4c509
+m
+=src/main/java/ua/kukhtar/controller/command/IndexCommand.java,a/8/a836dd13b55d636397ffd8f01376b04590f0c714

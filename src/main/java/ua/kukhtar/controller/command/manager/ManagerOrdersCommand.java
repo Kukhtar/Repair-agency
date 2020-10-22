@@ -4,19 +4,22 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.kukhtar.controller.command.Command;
 import ua.kukhtar.model.entity.Order;
-import ua.kukhtar.model.entity.enums.STATUS;
 import ua.kukhtar.model.service.OrderService;
 import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
+/**
+ * Implements Command interface, implements logic of getting specified count of orders
+ * (count of records on one page is set in final variable RECORDS_ON_ONE_PAGE)
+ * also send to JSP total count of pages
+ * if flag active is true, than display active orders, else - closed.
+ */
 public class ManagerOrdersCommand implements Command {
     private final OrderService orderService;
     private final UserService userService;
-    private Logger logger = LogManager.getLogger(ManagerOrdersCommand.class);
+    private final Logger logger = LogManager.getLogger(ManagerOrdersCommand.class);
     private static final int RECORDS_ON_ONE_PAGE = 8;
     private final boolean activeOrders;
     public ManagerOrdersCommand(OrderService orderService, UserService userService, boolean activeOrders){
@@ -24,6 +27,14 @@ public class ManagerOrdersCommand implements Command {
         this.userService = userService;
         this.activeOrders = activeOrders;
     }
+
+    /**
+     * checks if flag active is true, then gets list of active orders, else list of closed orders
+     * and than send this list to the JSP page as an attribute
+     * also send count of pages to the JSP page
+     * @param request
+     * @return URL of the JSP page with one page of orders
+     */
     @Override
     public String execute(HttpServletRequest request) {
         List<Order> orders;
@@ -45,8 +56,13 @@ public class ManagerOrdersCommand implements Command {
         return activeOrders?"/manager/active_orders.jsp":"/manager/closed_orders.jsp";
     }
 
+    /**
+     * Calculates position to start read records in table with orders
+     * @param page number of page
+     * @return position of first record to read
+     */
     private int getStartOfOrders(String page) {
-        if (page == null || page == "") {
+        if (page == null || page.equals("")) {
             return 0;
         } else {
             return (Integer.parseInt(page) - 1) * RECORDS_ON_ONE_PAGE;

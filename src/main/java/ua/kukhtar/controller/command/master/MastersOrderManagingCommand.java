@@ -4,15 +4,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.kukhtar.controller.command.Command;
 import ua.kukhtar.model.entity.Order;
-import ua.kukhtar.model.entity.User;
 import ua.kukhtar.model.entity.enums.STATUS;
 import ua.kukhtar.model.service.OrderService;
 import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.Optional;
 
+/**
+ * Implements Command interface, also implements logic of order managing by master.
+ * Master can only change status from PAID to IN_PROCESS, and from IN_PROCESS to DONE
+ */
 public class MastersOrderManagingCommand implements Command {
     private static final Logger logger = LogManager.getLogger(MastersOrderManagingCommand.class);
     private final OrderService orderService;
@@ -25,6 +26,14 @@ public class MastersOrderManagingCommand implements Command {
         this.orderService = orderService;
         this.userService = userService;
     }
+
+    /**
+     * Gets gets order id from query parameters, if
+     * id not null, then call method {@code initCallManaging()}
+     * else, specify operation that need to be done, depends on current status of order
+     * @param request HttpServletRequest object
+     * @return URL of the JSP page depends on result of updating order
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String id = request.getParameter("order_id");
@@ -36,10 +45,15 @@ public class MastersOrderManagingCommand implements Command {
             throw new IllegalStateException("Order not founded");
         }
 
-        return processOrder(request);
+        return processOrder();
     }
 
-        private void initCallManaging(HttpServletRequest request ,String id){
+    /**
+     *Gets Order object by id, also gets full name of master
+     * @param request HttpServletRequest object
+     * @param id order id
+     */
+    private void initCallManaging(HttpServletRequest request ,String id){
              managingOrder = orderService.findOrderByID(Integer.parseInt(id));
             logger.debug("Order id = {}", id);
             master = userService.getUserById(managingOrder.getMaster().getId()).get().getFullName();
@@ -47,7 +61,11 @@ public class MastersOrderManagingCommand implements Command {
         setJspAttribute(request);
     }
 
-    public String processOrder(HttpServletRequest request){
+    /**
+     * Specifies operation that need to be done depends on status of current order
+     * @return URL of JSP page
+     */
+    public String processOrder(){
 
         if (managingOrder.getStatus() == STATUS.PAID){
             managingOrder.setStatus(STATUS.IN_PROCESS);
