@@ -1,16 +1,0 @@
-
-[
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(£ëäâ
-—
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ŠÏÜ†
-d
-java:S1192"NDefine a constant instead of duplicating this literal "sessionLocale" 3 times.(Í‰ß
-—
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÂéÏä
-T
-java:S1854"8Remove this useless assignment to local variable "resp".(ªïşS8š°ªÙÓ.
-]	java:S125"<This block of commented-out lines of code should be removed.(­òßüÿÿÿÿ8š°ªÙÓ.
-O
-java:S1135"2Complete the task associated to this TODO comment.(—½¿‰8š°ªÙÓ.
-E
-java:S1481")Remove this unused "resp" local variable.(ªïşS8š°ªÙÓ.
