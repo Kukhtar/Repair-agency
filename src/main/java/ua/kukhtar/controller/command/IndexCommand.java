@@ -12,7 +12,6 @@ public class IndexCommand implements Command {
         if (role == null){
             return "/jsp/index.jsp";
         }
-
         String roleName = (String)role;
         return CommandUtility.getHomePageForUser(User.ROLE.valueOf(roleName));
     }
