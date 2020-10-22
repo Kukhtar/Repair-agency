@@ -25,10 +25,21 @@ public class OrderDaoImpl implements OrderDao {
         this.dataSource = dataSource;
     }
 
+    /**
+     * gets connection from Connection Pool
+     * @return Connection object
+     * @throws SQLException if can't get connection
+     */
     private Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
 
+    /**
+     * gets data from result, then creates from it new Order object
+     * @param resultSet
+     * @return Address object
+     * @throws SQLException
+     */
     public static Order extractOrderFromResultSet(ResultSet resultSet) throws SQLException {
         Order order = new Order();
         order.setStatus(STATUS.valueOf(resultSet.getString("status")));
@@ -40,6 +51,12 @@ public class OrderDaoImpl implements OrderDao {
         return order;
     }
 
+    /**
+     * Executes SQL query and return list of active order generated from result set
+     * @param start
+     * @param count
+     * @return
+     */
     @Override
     public List<Order> findActive(int start, int count) {
         List<Order> orders = new ArrayList<>();
@@ -207,6 +224,12 @@ public class OrderDaoImpl implements OrderDao {
     public void delete( Order object) {
     }
 
+    /**
+     * Updates status of order in db, and if Status was changed to CLOSED or DONE than call
+     * method {@code closeOrder()} to delete this order from table orders, and create it in table closedOrders
+     * Implements transaction, to rollback if something go wrong
+     * @param order
+     */
     @Override
     public void updateStatus(Order order) {
         Connection connection;
@@ -249,7 +272,13 @@ public class OrderDaoImpl implements OrderDao {
         }
     }
 
-
+    /**
+     * Remove order from table orders, and create it in table closedOrders,
+     * this method is part of transaction, so it just take open connection and don;t close it
+     * @param connection
+     * @param order
+     * @throws SQLException
+     */
     private void closeOrder(Connection connection, Order order) throws SQLException {
         try(PreparedStatement deleteOrder = connection.prepareStatement(SQLQueryConstant.SQL_DELETE_ORDER_BY_ID);
             PreparedStatement insertOrder = connection.prepareStatement(SQLQueryConstant.SQL_INSERT_CLOSED_ORDER)) {

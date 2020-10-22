@@ -53,8 +53,8 @@ public class CreateOrderCommand implements Command {
     /**
      * Check if the input data two numbers that is greater then zero, if so return true
      * else set error massage as a attribute and return false
-     * @param flatNumber
-     * @param houseNumber
+     * @param flatNumber number of flat
+     * @param houseNumber number of house
      * @return boolean result of validation
      */
     private boolean isValid(String flatNumber, String houseNumber){

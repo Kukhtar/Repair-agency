@@ -32,7 +32,13 @@
 </div>
 
 <div class="main" style="background-image: url('${pageContext.request.contextPath}/images/a.webp'); height: 80%;">
-
+    <div class="content">
+        <span class="info">
+            <h3>
+            <fmt:message key="massage.userMassage"/>
+            </h3>
+        </span>
+    </div>
 </div>
 
 <div class="footer">

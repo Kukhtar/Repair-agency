@@ -7,6 +7,11 @@ import ua.kukhtar.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Implements Command interface, implements registration logic, User enter
+ * login, password and other information, and if all data is valid new user is created in db,
+ * and user is redirected to user home page
+ */
 public class RegistrationCommand implements Command {
     private static final Logger logger = LogManager.getLogger(RegistrationCommand.class);
     private final UserService service;
@@ -17,6 +22,13 @@ public class RegistrationCommand implements Command {
         this.service = service;
     }
 
+    /**
+     * Gets all data from registration form, invokes method {@code isValid()}
+     * and result is true creates new user records in db, and send URL of user home page
+     * else send error massage
+     * @param request HttpServletRequest object that came from controller servlet
+     * @return
+     */
     @Override
     public String execute(HttpServletRequest request) {
 

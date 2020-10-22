@@ -8,7 +8,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css"/>
-    <title><fmt:message key="header.mainPage"/> </title>
+    <title><fmt:message key="header.mainPage"/></title>
 </head>
 <body>
 <div class="header">
@@ -29,7 +29,13 @@
 </div>
 
 <div class="main" style="background-image: url('${pageContext.request.contextPath}/images/a.webp'); height: 80%;">
-
+    <div class="content">
+        <span class="info">
+            <h3>
+            <fmt:message key="massage.youNeedToLogIn"/>
+            </h3>
+        </span>
+    </div>
 </div>
 
 <div class="footer">

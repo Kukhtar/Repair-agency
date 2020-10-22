@@ -12,6 +12,9 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.Optional;
 
+/**
+ * Class that implements generic dao for Address class
+ */
 public class AddressDaoImpl implements AddressDao {
     private static final Logger logger = LogManager.getLogger(UserDaoImpl.class);
 
@@ -21,10 +24,21 @@ public class AddressDaoImpl implements AddressDao {
         this.dataSource = dataSource;
     }
 
+    /**
+     * get connection from Connection Pool
+     * @return Connection object
+     * @throws SQLException if can't get connection
+     */
     private Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
 
+    /**
+     * get data from result, then create from it new Address object
+     * @param resultSet
+     * @return Address object
+     * @throws SQLException
+     */
     public static Address extractAddressFromResultSet(ResultSet resultSet) throws SQLException {
         Address address = new Address();
 

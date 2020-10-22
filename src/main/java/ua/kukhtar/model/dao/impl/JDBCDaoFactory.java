@@ -4,6 +4,9 @@ import ua.kukhtar.model.dao.*;
 
 import javax.sql.DataSource;
 
+/**
+ * Implementation of DaoFactory for JDBC
+ */
 public class JDBCDaoFactory extends DaoFactory {
     private DataSourceBuilder dataSourceBuilder = new DBCPDataSourceBuilder();
     private DataSource dataSource =  dataSourceBuilder.getDataSource();

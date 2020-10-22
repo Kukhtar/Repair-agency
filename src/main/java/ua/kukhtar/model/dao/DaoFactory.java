@@ -2,6 +2,9 @@ package ua.kukhtar.model.dao;
 
 import ua.kukhtar.model.dao.impl.JDBCDaoFactory;
 
+/**
+ * Abstract Factory, for easy creating different Dao factories
+ */
 public abstract class DaoFactory {
     private static DaoFactory daoFactory;
 

@@ -22,11 +22,21 @@ public class UserDaoImpl implements UserDao {
         this.dataSource = dataSource;
     }
 
+    /**
+     * Gets active connection from connection pool
+     * @return
+     * @throws SQLException
+     */
     private Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
 
-
+    /**
+     * Gets data from result set and return new User object
+     * @param resultSet
+     * @return
+     * @throws SQLException
+     */
     private static User extractUserFromResultSet(ResultSet resultSet) throws SQLException {
         User user = new User();
         user.setFullName(resultSet.getString("full_name"));

@@ -31,10 +31,6 @@ public class UserService {
         return userDao.create(user);
     }
 
-    public List<User> getAllUsers(){
-        return userDao.findByRole(User.ROLE.USER);
-    }
-
     public List<Order> getActiveOrders(String name){
         return userDao.getActiveOrders(name);
     }

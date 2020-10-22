@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Filter that check if the current user have access to the page he want to get
+ */
 public class AuthFilter implements Filter {
     Logger logger = LogManager.getLogger(AuthFilter.class);
     @Override
@@ -16,6 +19,15 @@ public class AuthFilter implements Filter {
 
     }
 
+    /**
+     * Takes from URL required role, and check if the user have this role,
+     * if no, than redirect to log in page, or print error massage
+     * @param servletRequest request from user
+     * @param servletResponse response
+     * @param filterChain filter chain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
@@ -53,9 +65,7 @@ public class AuthFilter implements Filter {
             logger.info("Access confirmed");
             return true;
         }
-
         return false;
-
     }
 
     @Override

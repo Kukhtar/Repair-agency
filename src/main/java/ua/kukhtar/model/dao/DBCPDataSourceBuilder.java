@@ -8,6 +8,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+/**
+ * Implementation for DataSourceBuilder that use Apache DBCP
+ * to get DataSource
+ */
 public class DBCPDataSourceBuilder implements DataSourceBuilder{
 
     final private DataSource dataSource;

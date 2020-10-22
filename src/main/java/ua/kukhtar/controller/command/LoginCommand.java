@@ -8,6 +8,11 @@ import ua.kukhtar.model.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
+/**
+ * Implements Command interface, implements logic of logging in,
+ * User enter his login and password and if he was registered earlier he gets access to pages
+ * that are specified for his role
+ */
 public class LoginCommand implements Command {
     private static final Logger logger = LogManager.getLogger(LoginCommand.class);
     private UserService service ;
@@ -20,6 +25,12 @@ public class LoginCommand implements Command {
         this.service = service;
     }
 
+    /**
+     * Gets login and password from session and tries to find match in db,
+     * if success return home page for this user, else return error massage
+     * @param request HttpServletRequest object that came from controller servlet
+     * @return URL of JSP page
+     */
     @Override
     public String execute(HttpServletRequest request) {
 
@@ -52,6 +63,12 @@ public class LoginCommand implements Command {
         return "/jsp/login.jsp";
     }
 
+    /**
+     * Checks if login and password is valid
+     * @param name user's login
+     * @param pass user's password
+     * @return boolean result of validation
+     */
     private boolean isValid(String name, String pass){
         if (name == null)
             return false;

@@ -22,12 +22,21 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+/**
+ * Implements Controller layer, this Servlet is mapped to all queries that start from /app,
+ * and depends on URL, redirects it to appropriate Command class
+ */
 public class ControllerServlet extends HttpServlet {
 
     private final Logger logger = (Logger) LogManager.getLogger(ControllerServlet.class);
 
     private Map<String, Command> commands = new HashMap<>();
 
+    /**
+     * Creates HashMap that contained URL as keys, and Command objects that used
+     * to process this query, as an value,
+     * @param servletConfig
+     */
     public void init(ServletConfig servletConfig){
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
@@ -49,17 +58,38 @@ public class ControllerServlet extends HttpServlet {
 
     }
 
+    /**
+     * redirect all Get request to method {@code processRequest()}
+     * @param req request from user
+     * @param resp response that user will get
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
     }
 
+    /**
+     * redirect all Get request to method {@code processRequest()}
+     * @param request request from user
+     * @param response response that user will get
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
 
+    /**
+     * Injects from URL query key for getting appropriate Command object from HashMap
+     * @param request request from user
+     * @param response response that user will get
+     * @throws ServletException
+     * @throws IOException
+     */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String path = request.getRequestURI();
         path = path.replaceAll(".*/app/" , "");
