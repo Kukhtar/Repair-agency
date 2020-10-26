@@ -23,7 +23,7 @@ import java.util.HashSet;
 import java.util.Map;
 
 /**
- * Implements Controller layer, this Servlet is mapped to all queries that start from /app,
+ * Implements Controller layer, this Servlet is mapped to all queries that start with /app,
  * and depends on URL, redirects it to appropriate Command class
  */
 public class ControllerServlet extends HttpServlet {
@@ -98,7 +98,7 @@ public class ControllerServlet extends HttpServlet {
                 commands.get("index"));
         String page = command.execute(request);
         if(page.contains("redirect:")){
-            response.sendRedirect(page.replace("redirect:", "/repair_agency"));
+            response.sendRedirect(page.replace("redirect:", request.getContextPath()));
         }else {
             request.getRequestDispatcher(page).forward(request, response);
         }
